@@ -25,6 +25,12 @@
     "react/jsx-curly-brace-presence": [
       "error",
       { "props": "never", "children": "never" }
+    ],
+    "prettier/prettier": [
+      "error",
+      {
+        "endOfLine": "auto"
+      }
     ]
   }
 }
