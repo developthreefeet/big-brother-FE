@@ -34,7 +34,7 @@
 
     --radius: 0.5rem;
 
-    --black : #000;
+    --black: #000;
   }
 
   .dark {
@@ -75,7 +75,7 @@
   body {
     @apply bg-background text-foreground;
     height: 100svh;
-    width: 100svw;
-    background-color: white;
+    width: 100%;
+    background-color: #eeeeee;
   }
 }
