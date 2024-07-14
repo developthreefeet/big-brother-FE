@@ -63,6 +63,11 @@ const config = {
           800: '#001229',
           900: '#000914',
         },
+        gray: {
+          100: '#E1E1E1',
+          200: '#B7B7B7',
+          300: '#7B7B7B',
+        },
       },
       borderRadius: {
         lg: 'var(--radius)',
