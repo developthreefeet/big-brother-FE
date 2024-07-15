@@ -25,9 +25,9 @@ export default function RootLayout({
     <html lang="kr" className={pretendard.variable}>
       <body className={pretendard.className}>
         <QueryProvider>
-          <div className="w-96 mx-auto bg-white min-h-full">
+          <div className="w-96 mx-auto bg-white min-h-full flex flex-col">
             <Header />
-            <div className="p-5">{children}</div>
+            <div className="p-5 flex-grow">{children}</div>
             <Footer />
           </div>
         </QueryProvider>
