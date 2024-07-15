@@ -1,8 +1,13 @@
 import './globals.css';
-import { Inter } from 'next/font/google';
+import localFont from 'next/font/local';
 import QueryProvider from './providers/QueryProvider';
 
-const inter = Inter({ subsets: ['latin'] });
+const pretendard = localFont({
+  src: '../../public/static/fonts/PretendardVariable.woff2',
+  display: 'swap',
+  weight: '45 920',
+  variable: '--font-pretendard',
+});
 
 export const metadata = {
   title: 'Big Brother',
@@ -15,9 +20,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>
-        <QueryProvider>{children}</QueryProvider>
+    <html lang="kr" className={pretendard.variable}>
+      <body className={pretendard.className}>
+        <QueryProvider>
+          <div className="w-96 mx-auto bg-white">{children}</div>
+        </QueryProvider>
       </body>
     </html>
   );
