@@ -26,7 +26,7 @@ export default function RootLayout({
         <QueryProvider>
           <div className="w-96 mx-auto bg-white min-h-full">
             <Header />
-            {children}
+            <div className="p-5">{children}</div>
           </div>
         </QueryProvider>
       </body>
