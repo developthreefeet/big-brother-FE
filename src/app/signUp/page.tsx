@@ -15,18 +15,15 @@ import {
   InputOTPGroup,
   InputOTPSlot,
 } from '@/shared/ui/ui/input-otp';
-import {
-  Select,
-  SelectTrigger,
-  SelectValue,
-  SelectContent,
-  SelectItem,
-  SelectGroup,
-} from '@/shared/ui/ui/select';
+import SelectComponent from '@/views/signUp/SelectComponent';
+
 import { useForm } from 'react-hook-form';
 
 const Page = () => {
   const form = useForm();
+
+  const collageItems = ['ICT융합대학', '경영대학', '사회과학대학'];
+  const departmentItems = ['융합소프트웨어학부', '법학과', '경영학과'];
 
   return (
     <>
@@ -70,7 +67,6 @@ const Page = () => {
               </FormItem>
             )}
           />
-
           <div className="space-y-2">
             <p className="text-sm cursor-default">인증 번호</p>
             <InputOTP maxLength={6}>
@@ -110,22 +106,10 @@ const Page = () => {
                 <FormItem>
                   <FormLabel>단과대 선택</FormLabel>
                   <FormControl>
-                    <Select>
-                      <SelectTrigger>
-                        <SelectValue placeholder="단과대를 선택해주세요." />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectGroup>
-                          <SelectItem value="경영대학">경영대학</SelectItem>
-                          <SelectItem value="사회과학대학">
-                            사회과학대학
-                          </SelectItem>
-                          <SelectItem value="ICT융합대학">
-                            ICT융합대학
-                          </SelectItem>
-                        </SelectGroup>
-                      </SelectContent>
-                    </Select>
+                    <SelectComponent
+                      placeholder="단과대를 선택해주세요."
+                      items={collageItems}
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -138,20 +122,10 @@ const Page = () => {
                 <FormItem>
                   <FormLabel>학과 선택</FormLabel>
                   <FormControl>
-                    <Select>
-                      <SelectTrigger>
-                        <SelectValue placeholder="학과를 선택해주세요." />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectGroup>
-                          <SelectItem value="경영학과">경영학과</SelectItem>
-                          <SelectItem value="융합소프트웨어학부">
-                            융합소프트웨어학부
-                          </SelectItem>
-                          <SelectItem value="법학과">법학과</SelectItem>
-                        </SelectGroup>
-                      </SelectContent>
-                    </Select>
+                    <SelectComponent
+                      placeholder="학과를 선택해주세요."
+                      items={departmentItems}
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
