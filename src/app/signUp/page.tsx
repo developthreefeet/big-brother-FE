@@ -157,7 +157,7 @@ const Page = () => {
             />
           </div>
           <div className="flex justify-center">
-            <Button type="submit">Submit</Button>
+            <Button type="submit">가입하기</Button>
           </div>
         </form>
       </Form>
