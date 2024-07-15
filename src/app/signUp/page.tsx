@@ -72,7 +72,7 @@ const Page = () => {
           />
 
           <div className="space-y-2">
-            <p className="text-sm">인증 번호</p>
+            <p className="text-sm cursor-default">인증 번호</p>
             <InputOTP maxLength={6}>
               <InputOTPGroup>
                 <InputOTPSlot index={0} />
@@ -108,6 +108,7 @@ const Page = () => {
               name="college"
               render={({ field }) => (
                 <FormItem>
+                  <FormLabel>단과대 선택</FormLabel>
                   <FormControl>
                     <Select>
                       <SelectTrigger>
@@ -135,10 +136,11 @@ const Page = () => {
               name="department"
               render={({ field }) => (
                 <FormItem>
+                  <FormLabel>학과 선택</FormLabel>
                   <FormControl>
                     <Select>
                       <SelectTrigger>
-                        <SelectValue placeholder="과를 선택해주세요." />
+                        <SelectValue placeholder="학과를 선택해주세요." />
                       </SelectTrigger>
                       <SelectContent>
                         <SelectGroup>
