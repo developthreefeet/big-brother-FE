@@ -98,7 +98,7 @@ const Page = () => {
               </FormItem>
             )}
           />
-          <div className="flex-row space-y-3">
+          <div className="space-y-3">
             <FormField
               control={form.control}
               name="college"
