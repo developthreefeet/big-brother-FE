@@ -64,7 +64,7 @@ const Page = () => {
                       {...field}
                     />
                   </FormControl>
-                  <Button>인증번호 발송</Button>
+                  <Button variant="outline">인증번호 발송</Button>
                 </div>
                 <FormMessage />
               </FormItem>
@@ -157,7 +157,9 @@ const Page = () => {
             />
           </div>
           <div className="flex justify-center">
-            <Button type="submit">가입하기</Button>
+            <Button type="submit" size="long">
+              가입하기
+            </Button>
           </div>
         </form>
       </Form>
