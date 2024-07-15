@@ -2,6 +2,7 @@ import './globals.css';
 import localFont from 'next/font/local';
 import QueryProvider from './providers/QueryProvider';
 import Header from '@/widgets/Header';
+import Footer from '@/widgets/Footer';
 
 const pretendard = localFont({
   src: '../../public/static/fonts/PretendardVariable.woff2',
@@ -27,6 +28,7 @@ export default function RootLayout({
           <div className="w-96 mx-auto bg-white min-h-full">
             <Header />
             <div className="p-5">{children}</div>
+            <Footer />
           </div>
         </QueryProvider>
       </body>
