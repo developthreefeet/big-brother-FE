@@ -23,7 +23,7 @@ export default function RootLayout({
     <html lang="kr" className={pretendard.variable}>
       <body className={pretendard.className}>
         <QueryProvider>
-          <div className="w-96 mx-auto bg-white">{children}</div>
+          <div className="w-96 mx-auto bg-white min-h-full">{children}</div>
         </QueryProvider>
       </body>
     </html>
