@@ -1,3 +1,5 @@
+'use client';
+
 import { Button } from '@/shared/ui/ui/button';
 import {
   TooltipProvider,
@@ -5,9 +7,13 @@ import {
   TooltipContent,
   Tooltip,
 } from '@/shared/ui/ui/tooltip';
+import { usePathname } from 'next/navigation';
 import { FaUserLarge } from 'react-icons/fa6';
 
 const MainHeader = () => {
+  let pathname = usePathname();
+  console.log(pathname);
+
   return (
     <div className="h-[50px] bg-white top-0 border-y sticky z-10 flex justify-between items-center px-2">
       <Button
@@ -17,22 +23,23 @@ const MainHeader = () => {
         Big Brother
       </Button>
       <TooltipProvider>
-        {/**로그인, 회원가입 화면에서는 없어야 함 */}
-        <Tooltip>
-          <TooltipTrigger asChild>
-            <Button variant="link">
-              {
+        {pathname === '/signUp' || pathname === '/signIn' ? (
+          ''
+        ) : (
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <Button variant="link">
                 <FaUserLarge
                   size="16"
                   className="text-gray-200 hover:opacity-50"
                 />
-              }
-            </Button>
-          </TooltipTrigger>
-          <TooltipContent className="relative -ml-5">
-            <p>마이페이지</p>
-          </TooltipContent>
-        </Tooltip>
+              </Button>
+            </TooltipTrigger>
+            <TooltipContent className="relative -ml-5">
+              <p>마이페이지</p>
+            </TooltipContent>
+          </Tooltip>
+        )}
       </TooltipProvider>
     </div>
   );
