@@ -7,6 +7,7 @@ import {
   TooltipContent,
   Tooltip,
 } from '@/shared/ui/ui/tooltip';
+import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { FaUserLarge } from 'react-icons/fa6';
 
@@ -17,9 +18,10 @@ const MainHeader = () => {
     <div className="h-[50px] bg-white top-0 border-y sticky z-10 flex justify-between items-center px-2">
       <Button
         variant="link"
+        asChild
         className="text-xl font-bold text-blue-500 hover:no-underline"
       >
-        Big Brother
+        <Link href="/main">Big Brother</Link>
       </Button>
       <TooltipProvider>
         {pathname === '/signUp' || pathname === '/signIn' ? (
@@ -27,14 +29,14 @@ const MainHeader = () => {
         ) : (
           <Tooltip>
             <TooltipTrigger asChild>
-              <Button variant="link">
+              <Link href="/profile">
                 <FaUserLarge
                   size="16"
-                  className="text-gray-200 hover:opacity-50"
+                  className="text-gray-200 hover:opacity-50 mr-3"
                 />
-              </Button>
+              </Link>
             </TooltipTrigger>
-            <TooltipContent className="relative -ml-5">
+            <TooltipContent className="relative -ml-10">
               <p>마이페이지</p>
             </TooltipContent>
           </Tooltip>
