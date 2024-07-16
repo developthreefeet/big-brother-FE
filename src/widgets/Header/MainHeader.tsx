@@ -1,6 +1,5 @@
 'use client';
 
-import { Button } from '@/shared/ui/ui/button';
 import {
   TooltipProvider,
   TooltipTrigger,
@@ -8,12 +7,9 @@ import {
   Tooltip,
 } from '@/shared/ui/ui/tooltip';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
 import { FaUserLarge } from 'react-icons/fa6';
 
 const MainHeader = () => {
-  let pathname = usePathname();
-
   return (
     <div className="h-[50px] bg-white top-0 border-y sticky z-10 flex justify-between items-center px-2">
       <p className="text-xl font-bold text-blue-500 ml-4 cursor-default">
