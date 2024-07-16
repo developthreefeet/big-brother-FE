@@ -12,7 +12,6 @@ import { FaUserLarge } from 'react-icons/fa6';
 
 const MainHeader = () => {
   let pathname = usePathname();
-  console.log(pathname);
 
   return (
     <div className="h-[50px] bg-white top-0 border-y sticky z-10 flex justify-between items-center px-2">
