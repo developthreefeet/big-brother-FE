@@ -54,21 +54,23 @@ const CommonHeader = () => {
         />
       </Button>
       <p className="text-lg font-bold text-blue-500">{getPageName()}</p>
-      <TooltipProvider>
-        <Tooltip>
-          <TooltipTrigger asChild>
-            <Link href="/profile">
-              <FaUserLarge
-                size="16"
-                className="text-gray-200 hover:opacity-50 mr-3"
-              />
-            </Link>
-          </TooltipTrigger>
-          <TooltipContent className="relative -ml-10">
-            <p>마이페이지</p>
-          </TooltipContent>
-        </Tooltip>
-      </TooltipProvider>
+      <div className="flex justify-center items-center">
+        <TooltipProvider>
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <Link href="/profile" className="w-[50px] flex justify-center">
+                <FaUserLarge
+                  size="16"
+                  className="text-gray-200 hover:opacity-50"
+                />
+              </Link>
+            </TooltipTrigger>
+            <TooltipContent className="relative -ml-10">
+              <p>마이페이지</p>
+            </TooltipContent>
+          </Tooltip>
+        </TooltipProvider>
+      </div>
     </div>
   );
 };
