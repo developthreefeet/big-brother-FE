@@ -28,6 +28,8 @@ const CommonHeader = () => {
         return '입/출금 내역';
       case '/profile':
         return '마이 페이지';
+      case '/signUp':
+        return '회원가입';
       default:
         return ' ';
     }
