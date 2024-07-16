@@ -15,7 +15,7 @@ import {
   InputOTPGroup,
   InputOTPSlot,
 } from '@/shared/ui/ui/input-otp';
-import SelectComponent from '@/views/signUp/SelectComponent';
+import SelectComponent from '@/widgets/SelectComponent';
 
 import { useForm } from 'react-hook-form';
 
