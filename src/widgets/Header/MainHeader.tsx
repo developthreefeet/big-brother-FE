@@ -24,23 +24,19 @@ const MainHeader = () => {
         <Link href="/main">Big Brother</Link>
       </Button>
       <TooltipProvider>
-        {pathname === '/signUp' ? (
-          ''
-        ) : (
-          <Tooltip>
-            <TooltipTrigger asChild>
-              <Link href="/profile">
-                <FaUserLarge
-                  size="16"
-                  className="text-gray-200 hover:opacity-50 mr-3"
-                />
-              </Link>
-            </TooltipTrigger>
-            <TooltipContent className="relative -ml-10">
-              <p>마이페이지</p>
-            </TooltipContent>
-          </Tooltip>
-        )}
+        <Tooltip>
+          <TooltipTrigger asChild>
+            <Link href="/profile">
+              <FaUserLarge
+                size="16"
+                className="text-gray-200 hover:opacity-50 mr-3"
+              />
+            </Link>
+          </TooltipTrigger>
+          <TooltipContent className="relative -ml-10">
+            <p>마이페이지</p>
+          </TooltipContent>
+        </Tooltip>
       </TooltipProvider>
     </div>
   );
