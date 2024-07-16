@@ -3,6 +3,8 @@ import localFont from 'next/font/local';
 import QueryProvider from './providers/QueryProvider';
 import MainHeader from '@/widgets/Header/MainHeader';
 import Footer from '@/widgets/Footer';
+import CommonHeader from '@/widgets/Header/CommonHeader';
+import { headers } from 'next/headers';
 
 const pretendard = localFont({
   src: '../../public/static/fonts/PretendardVariable.woff2',
@@ -21,12 +23,20 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const headersList = headers();
+  const pathname = headersList.get('x-pathname');
+  console.log(pathname);
+
   return (
     <html lang="kr" className={pretendard.variable}>
       <body className={pretendard.className}>
         <QueryProvider>
           <div className="w-96 mx-auto bg-white min-h-full flex flex-col">
-            <MainHeader />
+            {pathname === '/main' || 'signIn' || 'signUp' ? (
+              <MainHeader />
+            ) : (
+              <CommonHeader />
+            )}
             <div className="p-5 flex-grow">{children}</div>
             <Footer />
           </div>
