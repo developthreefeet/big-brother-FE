@@ -25,7 +25,6 @@ export default function RootLayout({
 }) {
   const headersList = headers();
   const pathname = headersList.get('x-pathname');
-  console.log(pathname);
 
   return (
     <html lang="kr" className={pretendard.variable}>
