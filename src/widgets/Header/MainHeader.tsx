@@ -17,6 +17,7 @@ const MainHeader = () => {
         Big Brother
       </Button>
       <TooltipProvider>
+        {/**로그인, 회원가입 화면에서는 없어야 함 */}
         <Tooltip>
           <TooltipTrigger asChild>
             <Button variant="link">
