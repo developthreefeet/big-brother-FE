@@ -8,7 +8,7 @@ import {
 } from '@/shared/ui/ui/select';
 
 interface SelectComponentProps {
-  placeholder: string;
+  placeholder?: string;
   items: string[];
 }
 
@@ -16,7 +16,7 @@ const SelectComponent = ({ placeholder, items }: SelectComponentProps) => {
   return (
     <Select>
       <SelectTrigger>
-        <SelectValue placeholder={placeholder} />
+        <SelectValue placeholder={placeholder ? placeholder : items[0]} />
       </SelectTrigger>
       <SelectContent>
         <SelectGroup>
