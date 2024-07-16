@@ -32,6 +32,8 @@ const CommonHeader = () => {
         return '마이페이지';
       case '/signUp':
         return '회원가입';
+      case '/rule':
+        return '학칙/회칙';
       default:
         return ' ';
     }
