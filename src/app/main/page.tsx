@@ -7,6 +7,7 @@ import {
   CarouselPrevious,
 } from '@/shared/ui/ui/carousel';
 import IconComponent from '@/views/main/IconComponent';
+import Link from 'next/link';
 import {
   FcList,
   FcRules,
@@ -62,13 +63,40 @@ const page = () => {
           ))}
         </div>
       </div>
-      <div className="w-full grid grid-cols-3 gap-3">
-        <IconComponent icon={FcList} text="행사" />
-        <IconComponent icon={FcRules} text="회의록" />
-        <IconComponent icon={FcDepartment} text="학칙/회칙" />
-        <IconComponent icon={FcCustomerSupport} text="FAQ" />
-        <IconComponent icon={FcCurrencyExchange} text="입/출금 내역" />
-        <IconComponent icon={FcBusinessman} text="마이페이지" />
+      <div className="w-full grid grid-cols-3 ">
+        <Link
+          href="/event"
+          className="flex items-center flex-col justify-center"
+        >
+          <IconComponent icon={FcList} text="행사" />
+        </Link>
+        <Link
+          href="/proceeding"
+          className="flex items-center flex-col justify-center"
+        >
+          <IconComponent icon={FcRules} text="회의록" />
+        </Link>
+        <Link
+          href="/rule"
+          className="flex items-center flex-col justify-center"
+        >
+          <IconComponent icon={FcDepartment} text="학칙/회칙" />
+        </Link>
+        <Link href="/faq" className="flex items-center flex-col justify-center">
+          <IconComponent icon={FcCustomerSupport} text="FAQ" />
+        </Link>
+        <Link
+          href="/transaction"
+          className="flex items-center flex-col justify-center"
+        >
+          <IconComponent icon={FcCurrencyExchange} text="입/출금 내역" />
+        </Link>
+        <Link
+          href="/profile"
+          className="flex items-center flex-col justify-center"
+        >
+          <IconComponent icon={FcBusinessman} text="마이페이지" />
+        </Link>
       </div>
     </div>
   );
