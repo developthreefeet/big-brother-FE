@@ -1,7 +1,7 @@
 import './globals.css';
 import localFont from 'next/font/local';
 import QueryProvider from './providers/QueryProvider';
-import Header from '@/widgets/Header';
+import MainHeader from '@/widgets/Header/MainHeader';
 import Footer from '@/widgets/Footer';
 
 const pretendard = localFont({
@@ -26,7 +26,7 @@ export default function RootLayout({
       <body className={pretendard.className}>
         <QueryProvider>
           <div className="w-96 mx-auto bg-white min-h-full flex flex-col">
-            <Header />
+            <MainHeader />
             <div className="p-5 flex-grow">{children}</div>
             <Footer />
           </div>
