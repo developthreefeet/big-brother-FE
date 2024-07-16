@@ -11,7 +11,9 @@ import {
   FcList,
   FcRules,
   FcDepartment,
+  FcCustomerSupport,
   FcCurrencyExchange,
+  FcBusinessman,
 } from 'react-icons/fc';
 
 const page = () => {
@@ -64,7 +66,9 @@ const page = () => {
         <IconComponent icon={FcList} text="행사" />
         <IconComponent icon={FcRules} text="회의록" />
         <IconComponent icon={FcDepartment} text="학칙/회칙" />
+        <IconComponent icon={FcCustomerSupport} text="FAQ" />
         <IconComponent icon={FcCurrencyExchange} text="입/출금 내역" />
+        <IconComponent icon={FcBusinessman} text="마이페이지" />
       </div>
     </div>
   );
