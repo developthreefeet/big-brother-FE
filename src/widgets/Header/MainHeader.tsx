@@ -16,13 +16,9 @@ const MainHeader = () => {
 
   return (
     <div className="h-[50px] bg-white top-0 border-y sticky z-10 flex justify-between items-center px-2">
-      <Button
-        variant="link"
-        asChild
-        className="text-xl font-bold text-blue-500 hover:no-underline"
-      >
-        <Link href="/main">Big Brother</Link>
-      </Button>
+      <p className="text-xl font-bold text-blue-500 ml-4 cursor-default">
+        Big Brother
+      </p>
       <TooltipProvider>
         <Tooltip>
           <TooltipTrigger asChild>
