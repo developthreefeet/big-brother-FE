@@ -7,6 +7,12 @@ import {
   CarouselPrevious,
 } from '@/shared/ui/ui/carousel';
 import IconComponent from '@/views/main/IconComponent';
+import {
+  FcList,
+  FcRules,
+  FcDepartment,
+  FcCurrencyExchange,
+} from 'react-icons/fc';
 
 const page = () => {
   const noticeContents = [
@@ -32,8 +38,8 @@ const page = () => {
         <CarouselPrevious className="absolute left-2 top-1/2 transform -translate-y-1/2" />
         <CarouselNext className="absolute right-2 top-1/2 transform -translate-y-1/2" />
       </Carousel>
-      <div className="flex flex-col w-full space-y-3">
-        <div className="flex flex-row  items-center justify-between">
+      <div className="flex flex-col w-full space-y-1">
+        <div className="flex flex-row items-center justify-between">
           <p className="text-xl font-bold">공지사항</p>
           <Button
             variant="link"
@@ -55,10 +61,10 @@ const page = () => {
         </div>
       </div>
       <div className="w-full grid grid-cols-3 gap-3">
-        <IconComponent text="행사" />
-        <IconComponent text="회의록" />
-        <IconComponent text="학칙/회칙" />
-        <IconComponent text="입/출금 내역" />
+        <IconComponent icon={FcList} text="행사" />
+        <IconComponent icon={FcRules} text="회의록" />
+        <IconComponent icon={FcDepartment} text="학칙/회칙" />
+        <IconComponent icon={FcCurrencyExchange} text="입/출금 내역" />
       </div>
     </div>
   );
