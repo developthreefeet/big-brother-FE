@@ -29,7 +29,7 @@ const CommonHeader = () => {
       case '/transaction':
         return '입/출금 내역';
       case '/profile':
-        return '마이 페이지';
+        return '마이페이지';
       case '/signUp':
         return '회원가입';
       default:
