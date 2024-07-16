@@ -5,13 +5,14 @@ import {
   AccordionTrigger,
 } from '@/shared/ui/ui/accordion';
 import SelectComponent from '@/widgets/SelectComponent';
+import Title from '@/widgets/Title';
 import React from 'react';
 
 const page = () => {
   const organizationItems = ['총학', '단과대', '학과'];
   return (
     <div className="flex flex-col space-y-3">
-      <h1 className="font-bold text-2xl">FAQ</h1>
+      <Title text="FAQ" />
       <div className="flex flex-col space-y-1">
         <p>구분을 선택해주세요.</p>
         <SelectComponent items={organizationItems} />
