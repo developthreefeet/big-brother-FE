@@ -32,9 +32,7 @@ export default function RootLayout({
       <body className={pretendard.className}>
         <QueryProvider>
           <div className="w-96 mx-auto bg-white min-h-full flex flex-col">
-            {pathname === '/main' ||
-            pathname === 'signIn' ||
-            pathname === 'signUp' ? (
+            {pathname === '/main' || 'signIn' || 'signUp' ? (
               <MainHeader />
             ) : (
               <CommonHeader />
