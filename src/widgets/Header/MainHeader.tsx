@@ -24,7 +24,7 @@ const MainHeader = () => {
         <Link href="/main">Big Brother</Link>
       </Button>
       <TooltipProvider>
-        {pathname === '/signUp' || pathname === '/signIn' ? (
+        {pathname === '/signUp' ? (
           ''
         ) : (
           <Tooltip>
