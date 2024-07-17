@@ -46,9 +46,9 @@ const page = () => {
           <p className="text-xl font-bold">공지사항</p>
           <Button
             variant="link"
-            className="text-black hover:no-underline hover:opacity-50"
+            className="text-black hover:no-underline hover:opacity-50 pr-0"
           >
-            {'바로가기 >'}
+            <Link href="/notice">{'바로가기 >'}</Link>
           </Button>
         </div>
         <div className="flex flex-col ml-1">
