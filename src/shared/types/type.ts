@@ -28,8 +28,8 @@ export interface ProceedingList {
   proceeding_title: string;
   meeting_date: string;
   meeting_place: string;
-  participant: string;
-  non_participant: string;
+  participant: string[];
+  non_participant: string[];
   item: string;
   content: string;
   affiliation: string;
