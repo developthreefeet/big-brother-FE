@@ -3,7 +3,9 @@ import ListLayoutComponent from '@/views/ListLayoutComponent';
 const page = () => {
   const eventItems = [
     {
-      eventName: 'Event 1',
+      eventName:
+        '이벤트명이 졸라 길면 목록에서 어떻게 나오는지 확인해서 몇 자에서 자를 지',
+      event_id: 'event1',
       target: 'Target 1',
       content: 'Content 1',
       start_date: '2024-07-01',
@@ -15,6 +17,7 @@ const page = () => {
     },
     {
       eventName: 'Event 2',
+      event_id: 'event2',
       target: 'Target 2',
       content: 'Content 2',
       start_date: '2024-08-01',

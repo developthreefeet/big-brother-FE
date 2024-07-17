@@ -1,6 +1,7 @@
 //ListComponent를 위한 임시 타입 지정
 export interface EventList {
   eventName: string;
+  event_id: string;
   target: string;
   content: string;
   start_date: string;
@@ -28,8 +29,8 @@ export interface ProceedingList {
   proceeding_title: string;
   meeting_date: string;
   meeting_place: string;
-  participant: string;
-  non_participant: string;
+  participant: string[];
+  non_participant: string[];
   item: string;
   content: string;
   affiliation: string;
@@ -42,6 +43,7 @@ export interface ProceedingList {
 export interface RuleList {
   rule_title: string;
   create_at: string;
+  rule_id: string;
 }
 
 export type ListItem = EventList | NoticeList | ProceedingList | RuleList;
