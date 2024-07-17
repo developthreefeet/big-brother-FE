@@ -18,10 +18,10 @@ const MainHeader = () => {
       <TooltipProvider>
         <Tooltip>
           <TooltipTrigger asChild>
-            <Link href="/profile">
+            <Link href="/profile" className="w-[50px] flex justify-center">
               <FaUserLarge
                 size="16"
-                className="text-gray-200 hover:opacity-50 mr-3"
+                className="text-gray-200 hover:opacity-50"
               />
             </Link>
           </TooltipTrigger>

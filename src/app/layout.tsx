@@ -38,7 +38,7 @@ export default function RootLayout({
             ) : (
               <CommonHeader />
             )}
-            <div className="p-5 flex-grow">{children}</div>
+            <div className="p-8 flex-grow">{children}</div>
             <Footer />
           </div>
         </QueryProvider>

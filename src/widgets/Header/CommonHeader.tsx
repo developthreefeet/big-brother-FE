@@ -32,6 +32,8 @@ const CommonHeader = () => {
         return '마이페이지';
       case '/signUp':
         return '회원가입';
+      case '/rule':
+        return '학칙/회칙';
       default:
         return ' ';
     }
@@ -55,10 +57,10 @@ const CommonHeader = () => {
       <TooltipProvider>
         <Tooltip>
           <TooltipTrigger asChild>
-            <Link href="/profile">
+            <Link href="/profile" className="w-[50px] flex justify-center">
               <FaUserLarge
                 size="16"
-                className="text-gray-200 hover:opacity-50 mr-3"
+                className="text-gray-200 hover:opacity-50"
               />
             </Link>
           </TooltipTrigger>

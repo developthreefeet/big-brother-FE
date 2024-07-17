@@ -10,7 +10,7 @@ const IconComponent = ({ icon: Icon, text }: IconComponentProps) => {
   return (
     <Button
       variant="link"
-      className="h-[100px] flex flex-col justify-center items-center space-y-3 hover:opacity-50 hover:no-underline text-black"
+      className="w-[100px] h-[100px] flex flex-col space-y-3 hover:opacity-50 hover:no-underline text-black"
     >
       <Icon size="24" />
       <p className="text-sm">{text}</p>
