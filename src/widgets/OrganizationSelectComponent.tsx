@@ -1,7 +1,7 @@
 import React from 'react';
 import SelectComponent from './SelectComponent';
 
-const OrganizationTitleSelectComponent = () => {
+const OrganizationSelectComponent = () => {
   const organizationItems = ['총학생회', '단과대', '학과'];
   return (
     <div className="flex flex-col space-y-1">
@@ -11,4 +11,4 @@ const OrganizationTitleSelectComponent = () => {
   );
 };
 
-export default OrganizationTitleSelectComponent;
+export default OrganizationSelectComponent;

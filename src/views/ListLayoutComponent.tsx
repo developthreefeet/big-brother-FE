@@ -8,7 +8,7 @@ import {
   Pagination,
 } from '@/shared/ui/ui/pagination';
 import ListComponent from '@/widgets/ListComponent';
-import OrganizationTitleSelectComponent from '@/widgets/OrganizationSelectComponent';
+import OrganizationSelectComponent from '@/widgets/OrganizationSelectComponent';
 import Title from '@/widgets/Title';
 import React from 'react';
 
@@ -22,7 +22,7 @@ const ListLayoutComponent = ({ items, title }: ListLayoutComponentProps) => {
     <div className="flex flex-col space-y-10">
       <div className="flex flex-col space-y-3">
         <Title text={title} />
-        <OrganizationTitleSelectComponent />
+        <OrganizationSelectComponent />
         <ListComponent list={items} />
       </div>
       <Pagination>
