@@ -63,7 +63,7 @@ const page = () => {
           ))}
         </div>
       </div>
-      <div className="w-full grid grid-cols-3 ">
+      <div className="w-[100%] grid grid-cols-3 gap-5">
         <Link
           href="/event"
           className="flex items-center flex-col justify-center"
