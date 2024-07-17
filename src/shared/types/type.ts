@@ -43,6 +43,7 @@ export interface ProceedingList {
 export interface RuleList {
   rule_title: string;
   create_at: string;
+  rule_id: string;
 }
 
 export type ListItem = EventList | NoticeList | ProceedingList | RuleList;
