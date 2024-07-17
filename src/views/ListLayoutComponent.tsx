@@ -19,7 +19,7 @@ interface ListLayoutComponentProps {
 
 const ListLayoutComponent = ({ items, title }: ListLayoutComponentProps) => {
   return (
-    <div className="flex flex-col space-y-96">
+    <div className="flex flex-col space-y-10">
       <div className="flex flex-col space-y-3">
         <Title text={title} />
         <OrganizationTitleSelectComponent />
