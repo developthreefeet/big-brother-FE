@@ -9,7 +9,6 @@ import {
 import ListComponent from '@/widgets/ListComponent';
 import OrganizationTitleSelectComponent from '@/widgets/OrganizationSelectComponent';
 import Title from '@/widgets/Title';
-import React from 'react';
 
 const page = () => {
   const eventItems = [
