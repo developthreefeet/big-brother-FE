@@ -21,7 +21,7 @@ export const formatDate = (dateString: string) => {
   return `${year}/${month}/${day}`;
 };
 
-/**ListComponent를 위한 title 반환 함수 관련 함수들*/
+/**각 데이터 타입 가드 */
 const isEventList = (item: ListItem): item is EventList => {
   return (item as EventList).eventName !== undefined;
 };
@@ -38,11 +38,20 @@ const isRuleList = (item: ListItem): item is RuleList => {
   return (item as RuleList).rule_title !== undefined;
 };
 
-// 속성 이름을 반환하는 함수
+/**ListComponent를 위한 각 데이터 title명 반환 함수 */
 export const getTitle = (item: ListItem): string => {
   if (isEventList(item)) return item.eventName;
   if (isNoticeList(item)) return item.notice_title;
   if (isProceedingList(item)) return item.proceeding_title;
   if (isRuleList(item)) return item.rule_title;
+  return '';
+};
+
+/**ListComponent를 위한 각 데이터 id명 반환 함수 */
+export const getId = (item: ListItem): string => {
+  if (isEventList(item)) return item.event_id;
+  if (isNoticeList(item)) return item.notice_id;
+  if (isProceedingList(item)) return item.proceeding_id;
+  if (isRuleList(item)) return item.rule_id;
   return '';
 };
