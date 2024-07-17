@@ -1,6 +1,7 @@
 //ListComponent를 위한 임시 타입 지정
 export interface EventList {
   eventName: string;
+  event_id: string;
   target: string;
   content: string;
   start_date: string;

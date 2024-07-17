@@ -4,6 +4,7 @@ const page = () => {
   const eventItems = [
     {
       eventName: 'Event 1',
+      event_id: 'event1',
       target: 'Target 1',
       content: 'Content 1',
       start_date: '2024-07-01',
@@ -15,6 +16,7 @@ const page = () => {
     },
     {
       eventName: 'Event 2',
+      event_id: 'event2',
       target: 'Target 2',
       content: 'Content 2',
       start_date: '2024-08-01',
