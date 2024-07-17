@@ -1,11 +1,11 @@
 import { type ClassValue, clsx } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 import {
-  EventList,
+  EventItem,
   ListItem,
-  NoticeList,
-  ProceedingList,
-  RuleList,
+  NoticeItem,
+  ProceedingItem,
+  RuleItem,
 } from '../types/type';
 
 export function cn(...inputs: ClassValue[]) {
@@ -22,20 +22,20 @@ export const formatDate = (dateString: string) => {
 };
 
 /**각 데이터 타입 가드 */
-const isEventList = (item: ListItem): item is EventList => {
-  return (item as EventList).eventName !== undefined;
+const isEventList = (item: ListItem): item is EventItem => {
+  return (item as EventItem).eventName !== undefined;
 };
 
-const isNoticeList = (item: ListItem): item is NoticeList => {
-  return (item as NoticeList).notice_title !== undefined;
+const isNoticeList = (item: ListItem): item is NoticeItem => {
+  return (item as NoticeItem).notice_title !== undefined;
 };
 
-const isProceedingList = (item: ListItem): item is ProceedingList => {
-  return (item as ProceedingList).proceeding_title !== undefined;
+const isProceedingList = (item: ListItem): item is ProceedingItem => {
+  return (item as ProceedingItem).proceeding_title !== undefined;
 };
 
-const isRuleList = (item: ListItem): item is RuleList => {
-  return (item as RuleList).rule_title !== undefined;
+const isRuleList = (item: ListItem): item is RuleItem => {
+  return (item as RuleItem).rule_title !== undefined;
 };
 
 /**ListComponent를 위한 각 데이터 title명 반환 함수 */

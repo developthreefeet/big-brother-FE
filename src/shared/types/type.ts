@@ -1,5 +1,5 @@
 //ListComponent를 위한 임시 타입 지정
-export interface EventList {
+export interface EventItem {
   eventName: string;
   event_id: string;
   target: string;
@@ -12,7 +12,7 @@ export interface EventList {
   update_at: string;
 }
 
-export interface NoticeList {
+export interface NoticeItem {
   notice_title: string;
   notice_id: string;
   notice_type: string;
@@ -24,7 +24,7 @@ export interface NoticeList {
   affiliation: string;
 }
 
-export interface ProceedingList {
+export interface ProceedingItem {
   proceeding_id: string;
   proceeding_title: string;
   meeting_date: string;
@@ -40,14 +40,30 @@ export interface ProceedingList {
   update_at: string;
 }
 
-export interface RuleList {
+export interface RuleItem {
   rule_title: string;
   create_at: string;
   rule_id: string;
 }
 
-export type ListItem = EventList | NoticeList | ProceedingList | RuleList;
+export type ListItem = EventItem | NoticeItem | ProceedingItem | RuleItem;
 
 export interface ListComponentProps {
   list: ListItem[];
+}
+
+export interface TransactionItem {
+  trans_id: string;
+  corporate_number: string;
+  bank_account_number: string;
+  trans_direction: string;
+  deposit: string;
+  withdraw: string;
+  balance: string;
+  trans_date: string;
+  trans: string;
+}
+
+export interface TransactionListComponentProps {
+  list: TransactionItem[];
 }
