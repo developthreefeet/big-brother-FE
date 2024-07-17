@@ -47,6 +47,14 @@ export const getTitle = (item: ListItem): string => {
   return '';
 };
 
+/**ListComponent에서 title 길이가 길면 잘라주는 함수 */
+export const truncateTitle = (title: string, maxLength: number) => {
+  if (title.length > maxLength) {
+    return `${title.substring(0, maxLength)}...`;
+  }
+  return title;
+};
+
 /**ListComponent를 위한 각 데이터 id명 반환 함수 */
 export const getId = (item: ListItem): string => {
   if (isEventList(item)) return item.event_id;
