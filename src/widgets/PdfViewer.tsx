@@ -17,10 +17,9 @@ const PdfViewer = ({ pdf }: { pdf: string }) => {
     <>
       <Document file={pdf} onLoadSuccess={onDocumentLoadSuccess}>
         {Array.from(new Array(numPages), (_, index) => (
-          <div className="mb-1">
+          <div className="mb-1" key={index}>
             <Page
               width={300}
-              key={index}
               pageNumber={index + 1}
               renderAnnotationLayer={false}
             />
