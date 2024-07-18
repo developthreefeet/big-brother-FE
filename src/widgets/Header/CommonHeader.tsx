@@ -28,12 +28,14 @@ const CommonHeader = () => {
         return '행사';
       case '/transaction':
         return '입/출금 내역';
-      case '/profile':
+      case '/mypage':
         return '마이페이지';
-      case '/signUp':
+      case '/join':
         return '회원가입';
       case '/rule':
         return '학칙/회칙';
+      case '/modify':
+        return '정보 수정';
       default:
         return ' ';
     }

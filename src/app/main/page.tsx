@@ -92,7 +92,7 @@ const page = () => {
           <IconComponent icon={FcCurrencyExchange} text="입/출금 내역" />
         </Link>
         <Link
-          href="/profile"
+          href="/mypage"
           className="flex items-center flex-col justify-center"
         >
           <IconComponent icon={FcBusinessman} text="마이페이지" />
