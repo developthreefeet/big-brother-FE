@@ -48,7 +48,7 @@ const CommonHeader = () => {
   };
 
   return (
-    <div className="h-[50px] bg-white top-0 border-y sticky z-10 flex justify-between items-center px-2">
+    <div className="h-[50px] bg-white top-0 border-b sticky z-10 flex justify-between items-center px-2">
       <Button variant="link" onClick={handleGoBack}>
         <IoIosArrowBack
           size="20"
