@@ -9,6 +9,7 @@ import {
   FormMessage,
 } from '@/shared/ui/ui/form';
 import { Input } from '@/shared/ui/ui/input';
+import Link from 'next/link';
 import { useForm } from 'react-hook-form';
 
 const page = () => {
@@ -55,7 +56,7 @@ const page = () => {
       <div className="flex justify-center items-center mt-1">
         <p className="text-sm">아직 회원이 아니라면?</p>
         <Button variant="link" className="text-blue-300">
-          회원가입
+          <Link href="/join">회원가입</Link>
         </Button>
       </div>
     </>
