@@ -27,10 +27,10 @@ const Page = () => {
 
   return (
     <>
-      <h3 className="font-bold mt-4">정보를 입력해 주세요.</h3>
+      <h3 className="font-bold">정보를 입력해 주세요.</h3>
       <Form {...form}>
         <form
-          className="space-y-9 my-10"
+          className="space-y-9 my-8"
           onSubmit={form.handleSubmit((data) => console.log(data))}
         >
           <FormField
