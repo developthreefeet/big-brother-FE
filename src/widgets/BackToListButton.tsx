@@ -2,10 +2,11 @@
 
 import { Button } from '@/shared/ui/ui/button';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import React from 'react';
 
 const BackToListButton = () => {
-  const { pathname } = window.location;
+  const pathname = usePathname();
   const listPath = pathname.split('/').slice(0, 2).join('/');
 
   return (

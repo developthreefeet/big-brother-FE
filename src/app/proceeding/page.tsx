@@ -1,4 +1,4 @@
-import ListLayoutComponent from '@/views/ListLayoutComponent';
+import ListLayoutComponent from '@/widgets/ListLayoutComponent';
 import React from 'react';
 
 const page = () => {

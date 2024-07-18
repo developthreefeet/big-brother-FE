@@ -1,4 +1,4 @@
-import CommonDetailComponent from '@/views/CommonDetailComponent';
+import CommonDetailComponent from '@/widgets/CommonDetailComponent';
 
 const page = () => {
   return <CommonDetailComponent />;
