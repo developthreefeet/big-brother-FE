@@ -40,7 +40,9 @@ export default function RootLayout({
               <CommonHeader />
             )}
             <div className="p-8 flex-grow">{children}</div>
-            {pathname !== '/main' && <BackToTopButton />}
+            {pathname !== '/main' && pathname !== '/join' && (
+              <BackToTopButton />
+            )}
             <Footer />
           </div>
         </QueryProvider>
