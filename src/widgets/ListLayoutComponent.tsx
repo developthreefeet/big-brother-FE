@@ -1,12 +1,4 @@
 import { ListItem } from '@/shared/types/type';
-import {
-  PaginationContent,
-  PaginationItem,
-  PaginationPrevious,
-  PaginationLink,
-  PaginationNext,
-  Pagination,
-} from '@/shared/ui/ui/pagination';
 import ListComponent from '@/widgets/ListComponent';
 import OrganizationSelectComponent from '@/widgets/OrganizationSelectComponent';
 import Title from '@/widgets/Title';
@@ -25,31 +17,6 @@ const ListLayoutComponent = ({ items, title }: ListLayoutComponentProps) => {
         <OrganizationSelectComponent />
         <ListComponent list={items} />
       </div>
-      <Pagination>
-        <PaginationContent>
-          <PaginationItem>
-            <PaginationPrevious href="#" />
-          </PaginationItem>
-          <PaginationItem>
-            <PaginationLink href="#">1</PaginationLink>
-          </PaginationItem>
-          <PaginationItem>
-            <PaginationLink href="#">2</PaginationLink>
-          </PaginationItem>
-          <PaginationItem>
-            <PaginationLink href="#">3</PaginationLink>
-          </PaginationItem>
-          <PaginationItem>
-            <PaginationLink href="#">4</PaginationLink>
-          </PaginationItem>
-          <PaginationItem>
-            <PaginationLink href="#">5</PaginationLink>
-          </PaginationItem>
-          <PaginationItem>
-            <PaginationNext href="#" />
-          </PaginationItem>
-        </PaginationContent>
-      </Pagination>
     </div>
   );
 };
