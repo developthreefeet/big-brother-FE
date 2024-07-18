@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { FaArrowUp } from 'react-icons/fa';
+import { IoArrowUp } from 'react-icons/io5';
 import 'tailwindcss/tailwind.css';
 
 const BackToTopButton = () => {
@@ -35,7 +35,7 @@ const BackToTopButton = () => {
           onClick={scrollToTop}
           className="p-2 bg-blue-500 text-white rounded-full shadow-lg hover:bg-blue-600 transition duration-300"
         >
-          <FaArrowUp />
+          <IoArrowUp />
         </button>
       </div>
     )
