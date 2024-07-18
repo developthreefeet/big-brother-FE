@@ -34,7 +34,7 @@ export default function RootLayout({
           <div className="w-96 mx-auto bg-white min-h-full flex flex-col relative">
             {pathname === '/main' ? (
               <MainHeader />
-            ) : pathname === '/signIn' ? (
+            ) : pathname === '/login' ? (
               ''
             ) : (
               <CommonHeader />
