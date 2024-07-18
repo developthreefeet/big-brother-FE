@@ -4,9 +4,10 @@ import { formatDate, getId, getTitle, truncateTitle } from '@/shared/lib/utils';
 import { ListComponentProps } from '@/shared/types/type';
 import DateText from './DateText';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 const ListComponent = ({ list }: ListComponentProps) => {
-  const { pathname } = window.location;
+  const pathname = usePathname();
 
   return (
     <div className="flex flex-col space-y-2 ">
