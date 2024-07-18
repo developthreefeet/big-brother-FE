@@ -59,7 +59,7 @@ const CommonHeader = () => {
       <TooltipProvider>
         <Tooltip>
           <TooltipTrigger asChild>
-            <Link href="/profile" className="w-[50px] flex justify-center">
+            <Link href="/mypage" className="w-[50px] flex justify-center">
               <FaUserLarge
                 size="16"
                 className="text-gray-200 hover:opacity-50"
