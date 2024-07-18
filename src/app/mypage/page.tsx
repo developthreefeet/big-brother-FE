@@ -1,5 +1,6 @@
 import { Button } from '@/shared/ui/ui/button';
 import Title from '@/widgets/Title';
+import Link from 'next/link';
 
 const page = () => {
   return (
@@ -15,7 +16,9 @@ const page = () => {
             </div>
           </div>
         </div>
-        <Button variant="secondary">정보 수정</Button>
+        <Button variant="secondary">
+          <Link href="/modify">정보 수정</Link>
+        </Button>
       </div>
       <hr />
       <ul>
