@@ -1,11 +1,10 @@
 import './globals.css';
 import localFont from 'next/font/local';
 import QueryProvider from './providers/QueryProvider';
-import MainHeader from '@/widgets/Header/MainHeader';
 import Footer from '@/widgets/Footer';
-import CommonHeader from '@/widgets/Header/CommonHeader';
 import { headers } from 'next/headers';
 import BackToTopButton from '@/widgets/BackToTopButton';
+import Header from '@/widgets/Header/Header';
 
 const pretendard = localFont({
   src: '../../public/static/fonts/PretendardVariable.woff2',
@@ -32,13 +31,7 @@ export default function RootLayout({
       <body className={pretendard.className}>
         <QueryProvider>
           <div className="w-96 mx-auto bg-white min-h-full flex flex-col relative">
-            {pathname === '/main' ? (
-              <MainHeader />
-            ) : pathname === '/login' ? (
-              ''
-            ) : (
-              <CommonHeader />
-            )}
+            <Header />
             <div className="p-8 flex-grow">{children}</div>
             {pathname !== '/main' && pathname !== '/join' && (
               <BackToTopButton />
