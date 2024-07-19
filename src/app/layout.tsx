@@ -2,7 +2,6 @@ import './globals.css';
 import localFont from 'next/font/local';
 import QueryProvider from './providers/QueryProvider';
 import Footer from '@/widgets/Footer';
-import { headers } from 'next/headers';
 import BackToTopButton from '@/widgets/BackToTopButton';
 import Header from '@/widgets/Header/Header';
 
@@ -23,9 +22,6 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const headersList = headers();
-  const pathname = headersList.get('x-pathname');
-
   return (
     <html lang="kr" className={pretendard.variable}>
       <body className={pretendard.className}>
