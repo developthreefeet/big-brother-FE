@@ -13,7 +13,7 @@ const Preference = () => {
 
   return (
     <div className="flex flex-col space-y-3 justify-center items-center mt-12 mb-10">
-      <p className="font-bold">이 글이 마음에 드셨나요?</p>
+      <p className="font-bold">이 글에 대해 어떻게 생각하요?</p>
       <div className="flex space-x-2">
         <Button
           className={`flex space-x-3 rounded-3xl hover:bg-emerald-500 ${
