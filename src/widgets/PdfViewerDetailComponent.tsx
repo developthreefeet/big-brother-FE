@@ -4,6 +4,7 @@ import DateText from './DateText';
 import PdfViewer from './PdfViewer';
 import Title from './Title';
 import Preference from './Preference';
+import CommentComponent from './CommentComponent';
 
 const PdfViewerDetailComponent = () => {
   return (
@@ -18,6 +19,7 @@ const PdfViewerDetailComponent = () => {
       <div className="flex justify-center">
         <Preference />
       </div>
+      <CommentComponent />
       <div className="flex justify-end">
         <BackToListButton />
       </div>

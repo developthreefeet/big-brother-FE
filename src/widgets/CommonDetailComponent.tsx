@@ -2,6 +2,7 @@ import BackToListButton from '@/widgets/BackToListButton';
 import DateText from '@/widgets/DateText';
 import Title from '@/widgets/Title';
 import Preference from './Preference';
+import CommentComponent from './CommentComponent';
 
 const CommonDetailComponent = () => {
   return (
@@ -26,6 +27,7 @@ const CommonDetailComponent = () => {
       <div className="flex justify-center">
         <Preference />
       </div>
+      <CommentComponent />
       <div className="flex justify-end">
         <BackToListButton />
       </div>
