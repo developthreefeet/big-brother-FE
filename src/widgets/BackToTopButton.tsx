@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from 'react';
 import { IoArrowUp } from 'react-icons/io5';
-import 'tailwindcss/tailwind.css';
 
 const BackToTopButton = () => {
   const [isScrolled, setIsScrolled] = useState(false);
