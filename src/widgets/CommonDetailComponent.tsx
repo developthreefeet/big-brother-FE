@@ -1,6 +1,7 @@
 import BackToListButton from '@/widgets/BackToListButton';
 import DateText from '@/widgets/DateText';
 import Title from '@/widgets/Title';
+import Preference from './Preference';
 
 const CommonDetailComponent = () => {
   return (
@@ -21,6 +22,9 @@ const CommonDetailComponent = () => {
       <hr />
       <div className="p-2 text-md">
         Lorem ipsum dolor, sit amet consectetur adipisicing elit. Modi obcaecati
+      </div>
+      <div className="flex justify-center">
+        <Preference />
       </div>
       <div className="flex justify-end">
         <BackToListButton />
