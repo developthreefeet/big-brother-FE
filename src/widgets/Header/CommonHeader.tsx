@@ -56,7 +56,7 @@ const CommonHeader = () => {
         />
       </Button>
       <p className="text-lg font-bold text-blue-500">{getPageName()}</p>
-      {pathname !== '/join' ? (
+      {pathname !== '/join' && pathname !== '/account' ? (
         <TooltipProvider>
           <Tooltip>
             <TooltipTrigger asChild>
