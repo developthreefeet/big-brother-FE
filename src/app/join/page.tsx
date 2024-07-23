@@ -61,9 +61,10 @@ const Page = () => {
                       {...field}
                     />
                   </FormControl>
-                  <Button variant="outline">인증번호 발송</Button>
+                  <Button variant="outline">중복 확인</Button>
                 </div>
                 <FormMessage />
+                <Button variant="secondary">인증번호 발송</Button>
               </FormItem>
             )}
           />
