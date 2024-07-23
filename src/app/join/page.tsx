@@ -38,9 +38,9 @@ const Page = () => {
             name="username"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>닉네임</FormLabel>
+                <FormLabel>이름</FormLabel>
                 <FormControl>
-                  <Input placeholder="알파벳 대/소문자, 한글" {...field} />
+                  <Input placeholder="한글" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -61,9 +61,10 @@ const Page = () => {
                       {...field}
                     />
                   </FormControl>
-                  <Button variant="outline">인증번호 발송</Button>
+                  <Button variant="outline">중복 확인</Button>
                 </div>
                 <FormMessage />
+                <Button variant="secondary">인증번호 발송</Button>
               </FormItem>
             )}
           />
@@ -90,7 +91,7 @@ const Page = () => {
                 <FormControl>
                   <Input
                     type="password"
-                    placeholder="알파벳 대/소문자, 숫자 조합"
+                    placeholder="알파벳 소문자, 숫자, 특수문자 조합 (8~20자)"
                     {...field}
                   />
                 </FormControl>
