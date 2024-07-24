@@ -14,7 +14,7 @@ import {
   InputOTPGroup,
   InputOTPSlot,
 } from '@/shared/ui/ui/input-otp';
-import SelectComponent from '@/widgets/SelectComponent';
+import FormSelectComponent from '@/widgets/FormSelectComponent';
 import { Input } from '@/shared/ui/ui/input';
 import { useJoin } from '../model/useJoin';
 import { collageItems, departmentItems } from '@/shared/lib/assets';
@@ -103,7 +103,7 @@ const JoinForm = () => {
               <FormItem>
                 <FormLabel>단과대 선택</FormLabel>
                 <FormControl>
-                  <SelectComponent
+                  <FormSelectComponent
                     placeholder="단과대를 선택해주세요."
                     items={collageItems}
                     control={form.control}
@@ -121,7 +121,7 @@ const JoinForm = () => {
               <FormItem>
                 <FormLabel>학과 선택</FormLabel>
                 <FormControl>
-                  <SelectComponent
+                  <FormSelectComponent
                     placeholder="학과를 선택해주세요."
                     items={departmentItems}
                     control={form.control}
