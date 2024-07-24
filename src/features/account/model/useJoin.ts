@@ -47,6 +47,16 @@ export const useJoin = () => {
     },
   });
 
+  const {
+    formState: { errors },
+  } = form;
+
+  const isSubmitButtonEnabled =
+    !errors.userName &&
+    form.getValues('college') &&
+    form.getValues('department') &&
+    !errors.password;
+
   const onSubmit = async (data: any) => {
     console.log(data);
   };
@@ -54,5 +64,6 @@ export const useJoin = () => {
   return {
     form,
     onSubmit,
+    isSubmitButtonEnabled,
   };
 };

@@ -20,7 +20,7 @@ import { useJoin } from '../model/useJoin';
 import { collageItems, departmentItems } from '@/shared/lib/assets';
 
 const JoinForm = () => {
-  const { form, onSubmit } = useJoin();
+  const { form, onSubmit, isSubmitButtonEnabled } = useJoin();
 
   return (
     <Form {...form}>
@@ -134,7 +134,7 @@ const JoinForm = () => {
           />
         </div>
         <div className="flex justify-center">
-          <Button type="submit" size="long">
+          <Button type="submit" size="long" disabled={!isSubmitButtonEnabled}>
             가입하기
           </Button>
         </div>
