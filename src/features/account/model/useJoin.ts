@@ -3,6 +3,7 @@
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { useRouter } from 'next/navigation';
 
 export const useJoin = () => {
   const userNameRegex = /^[가-힣]+$/;
@@ -57,8 +58,11 @@ export const useJoin = () => {
     form.getValues('department') &&
     !errors.password;
 
+  const router = useRouter();
+
   const onSubmit = async (data: any) => {
     console.log(data);
+    router.push('/login');
   };
 
   return {
