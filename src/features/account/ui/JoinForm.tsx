@@ -27,12 +27,16 @@ const JoinForm = () => {
       <form className="space-y-9 my-8" onSubmit={form.handleSubmit(onSubmit)}>
         <FormField
           control={form.control}
-          name="username"
+          name="userName"
           render={({ field }) => (
             <FormItem>
               <FormLabel>이름</FormLabel>
               <FormControl>
-                <Input placeholder="한글" {...field} />
+                <Input
+                  placeholder="한글 조합 (2~15자)"
+                  maxLength={15}
+                  {...field}
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -47,7 +51,6 @@ const JoinForm = () => {
               <div className="flex">
                 <FormControl>
                   <Input
-                    type="email"
                     placeholder="bigBrother@mju.ac.kr"
                     className="mr-3"
                     {...field}
@@ -85,6 +88,7 @@ const JoinForm = () => {
                   type="password"
                   placeholder="알파벳 소문자, 숫자, 특수문자 조합 (8~20자)"
                   {...field}
+                  maxLength={20}
                 />
               </FormControl>
               <FormMessage />
@@ -95,13 +99,15 @@ const JoinForm = () => {
           <FormField
             control={form.control}
             name="college"
-            render={({ field }) => (
+            render={() => (
               <FormItem>
                 <FormLabel>단과대 선택</FormLabel>
                 <FormControl>
                   <SelectComponent
                     placeholder="단과대를 선택해주세요."
                     items={collageItems}
+                    control={form.control}
+                    name="college"
                   />
                 </FormControl>
                 <FormMessage />
@@ -111,13 +117,15 @@ const JoinForm = () => {
           <FormField
             control={form.control}
             name="department"
-            render={({ field }) => (
+            render={() => (
               <FormItem>
                 <FormLabel>학과 선택</FormLabel>
                 <FormControl>
                   <SelectComponent
                     placeholder="학과를 선택해주세요."
                     items={departmentItems}
+                    control={form.control}
+                    name="department"
                   />
                 </FormControl>
                 <FormMessage />

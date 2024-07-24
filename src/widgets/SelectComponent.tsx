@@ -1,3 +1,4 @@
+import { Controller } from 'react-hook-form';
 import {
   Select,
   SelectTrigger,
@@ -10,24 +11,37 @@ import {
 interface SelectComponentProps {
   placeholder?: string;
   items: string[];
+  control: any;
+  name: string;
 }
 
-const SelectComponent = ({ placeholder, items }: SelectComponentProps) => {
+const SelectComponent = ({
+  placeholder,
+  items,
+  control,
+  name,
+}: SelectComponentProps) => {
   return (
-    <Select>
-      <SelectTrigger>
-        <SelectValue placeholder={placeholder ? placeholder : items[0]} />
-      </SelectTrigger>
-      <SelectContent>
-        <SelectGroup>
-          {items.map((item, index) => (
-            <SelectItem key={index} value={item}>
-              {item}
-            </SelectItem>
-          ))}
-        </SelectGroup>
-      </SelectContent>
-    </Select>
+    <Controller
+      name={name}
+      control={control}
+      render={({ field }) => (
+        <Select onValueChange={field.onChange} value={field.value}>
+          <SelectTrigger>
+            <SelectValue placeholder={placeholder ? placeholder : items[0]} />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectGroup>
+              {items.map((item, index) => (
+                <SelectItem key={index} value={item}>
+                  {item}
+                </SelectItem>
+              ))}
+            </SelectGroup>
+          </SelectContent>
+        </Select>
+      )}
+    />
   );
 };
 
