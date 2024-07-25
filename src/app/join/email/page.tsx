@@ -21,7 +21,9 @@ const page = () => {
     form,
     isEmailValid,
     emailDuplicationCheck,
+    isDuplicationChecked,
     isEmailDuplicated,
+    setIsDuplicationChecked,
     verificationComplete,
     handleVerifyOtp,
     setOtpVisible,
@@ -30,7 +32,7 @@ const page = () => {
     otpInput,
     otpError,
     onSubmit,
-    isVerificationButtonEnabled,
+    moveToJoin,
   } = useEmail();
 
   return (
@@ -52,30 +54,33 @@ const page = () => {
                       placeholder="bigBrother@mju.ac.kr"
                       className="mr-3"
                       {...field}
+                      onChange={(e) => {
+                        field.onChange(e);
+                        setIsDuplicationChecked(false);
+                      }}
                     />
                   </FormControl>
                   <Button
-                    type="button"
+                    type="submit"
                     variant="outline"
-                    disabled={!isEmailValid || !isEmailDuplicated}
                     onClick={emailDuplicationCheck}
                   >
                     중복 확인
                   </Button>
                 </div>
-                {isEmailValid && (
-                  <div>
-                    {isEmailDuplicated ? (
+                <div>
+                  {isDuplicationChecked &&
+                    isEmailValid &&
+                    (isEmailDuplicated ? (
                       <p className="text-sm text-red-500">
                         이미 가입된 이메일입니다.
                       </p>
                     ) : (
                       <p className="text-sm">중복 확인 완료 ✔️</p>
-                    )}
-                  </div>
-                )}
+                    ))}
+                </div>
                 <FormMessage />
-                {isVerificationButtonEnabled && (
+                {!isEmailDuplicated && isDuplicationChecked && isEmailValid && (
                   <Button
                     type="button"
                     variant="secondary"
@@ -113,9 +118,10 @@ const page = () => {
             </div>
           )}
           <Button
-            type="submit"
+            type="button"
             className="w-[320px] fixed bottom-80"
             disabled={!verificationComplete}
+            onClick={moveToJoin}
           >
             다음
           </Button>

@@ -7,7 +7,8 @@ import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 
 export const useEmail = () => {
-  const [isEmailDuplicated, setIsEmailDuplicated] = useState(true);
+  const [isEmailDuplicated, setIsEmailDuplicated] = useState(false);
+  const [isDuplicationChecked, setIsDuplicationChecked] = useState(false);
   const [otpVisible, setOtpVisible] = useState(false);
   const [verificationComplete, setVerificationComplete] = useState(false);
   const [otpInput, setOtpInput] = useState('');
@@ -37,16 +38,14 @@ export const useEmail = () => {
 
   const emailDuplicationCheck = () => {
     const email = form.getValues('email');
-    if (email) {
-      if (email.includes('test')) {
-        setIsEmailDuplicated(true);
-      } else {
-        setIsEmailDuplicated(false);
-      }
-    }
-  };
 
-  const isVerificationButtonEnabled = !isEmailDuplicated && isEmailValid;
+    if (email.includes('test')) {
+      setIsEmailDuplicated(true);
+    } else {
+      setIsEmailDuplicated(false);
+    }
+    setIsDuplicationChecked(true);
+  };
 
   const handleVerifyOtp = () => {
     //임시로 111111과 일치할 경우로 달아놓음. api 자리
@@ -60,8 +59,12 @@ export const useEmail = () => {
   };
 
   const router = useRouter();
+
   const onSubmit = (data: any) => {
     console.log(data);
+  };
+
+  const moveToJoin = () => {
     router.push('/join');
   };
 
@@ -69,8 +72,10 @@ export const useEmail = () => {
     form,
     isEmailValid,
     emailDuplicationCheck,
+    isDuplicationChecked,
     isEmailDuplicated,
     verificationComplete,
+    setIsDuplicationChecked,
     otpVisible,
     handleVerifyOtp,
     setOtpVisible,
@@ -78,6 +83,6 @@ export const useEmail = () => {
     otpInput,
     otpError,
     onSubmit,
-    isVerificationButtonEnabled,
+    moveToJoin,
   };
 };
