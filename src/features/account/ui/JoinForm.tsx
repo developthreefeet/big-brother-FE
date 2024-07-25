@@ -9,11 +9,7 @@ import {
   FormLabel,
   FormMessage,
 } from '@/shared/ui/ui/form';
-import {
-  InputOTP,
-  InputOTPGroup,
-  InputOTPSlot,
-} from '@/shared/ui/ui/input-otp';
+
 import FormSelectComponent from '@/widgets/FormSelectComponent';
 import { Input } from '@/shared/ui/ui/input';
 import { useJoin } from '../model/useJoin';
