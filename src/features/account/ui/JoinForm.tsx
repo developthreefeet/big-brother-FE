@@ -83,7 +83,9 @@ const JoinForm = () => {
               {isEmailValid && isEmailDuplicatedExecuted && (
                 <div>
                   {isEmailDuplicated ? (
-                    <p className="text-sm">이미 가입된 이메일입니다.</p>
+                    <p className="text-sm text-red-500">
+                      이미 가입된 이메일입니다.
+                    </p>
                   ) : (
                     <p className="text-sm">중복 확인 완료 ✔️</p>
                   )}
