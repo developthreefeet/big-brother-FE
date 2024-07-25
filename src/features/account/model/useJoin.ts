@@ -88,7 +88,9 @@ export const useJoin = () => {
     !errors.userName &&
     form.getValues('college') &&
     form.getValues('department') &&
-    !errors.password;
+    !errors.password &&
+    !isEmailDuplicated &&
+    verificationComplete;
 
   const router = useRouter();
 
