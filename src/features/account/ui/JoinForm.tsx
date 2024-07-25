@@ -24,7 +24,6 @@ const JoinForm = () => {
     form,
     isEmailValid,
     emailDuplicationCheck,
-    isEmailDuplicatedExecuted,
     isEmailDuplicated,
     verificationComplete,
     handleVerifyOtp,
@@ -74,13 +73,13 @@ const JoinForm = () => {
                 </FormControl>
                 <Button
                   variant="outline"
-                  disabled={!isEmailValid || isEmailDuplicatedExecuted}
+                  disabled={!isEmailValid || !isEmailDuplicated}
                   onClick={emailDuplicationCheck}
                 >
                   중복 확인
                 </Button>
               </div>
-              {isEmailValid && isEmailDuplicatedExecuted && (
+              {isEmailValid && (
                 <div>
                   {isEmailDuplicated ? (
                     <p className="text-sm text-red-500">

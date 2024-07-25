@@ -7,9 +7,7 @@ import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 
 export const useJoin = () => {
-  const [isEmailDuplicated, setIsEmailDuplicated] = useState(false);
-  const [isEmailDuplicatedExecuted, setIsEmailDuplicatedExecuted] =
-    useState(false);
+  const [isEmailDuplicated, setIsEmailDuplicated] = useState(true);
   const [otpVisible, setOtpVisible] = useState(false);
   const [verificationComplete, setVerificationComplete] = useState(false);
   const [otpInput, setOtpInput] = useState('');
@@ -66,12 +64,10 @@ export const useJoin = () => {
       } else {
         setIsEmailDuplicated(false);
       }
-      setIsEmailDuplicatedExecuted(true);
     }
   };
 
-  const isVerificationButtonEnabled =
-    isEmailDuplicatedExecuted && !isEmailDuplicated && isEmailValid;
+  const isVerificationButtonEnabled = !isEmailDuplicated && isEmailValid;
 
   const handleVerifyOtp = () => {
     //임시로 111111과 일치할 경우로 달아놓음. api 자리
@@ -103,7 +99,6 @@ export const useJoin = () => {
     form,
     isEmailValid,
     emailDuplicationCheck,
-    isEmailDuplicatedExecuted,
     isEmailDuplicated,
     verificationComplete,
     otpVisible,
