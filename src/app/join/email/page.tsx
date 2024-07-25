@@ -38,7 +38,7 @@ const page = () => {
       <h3 className="font-bold">학교 이메일 인증</h3>
       <Form {...form}>
         <form
-          className="space-y-9 mb-8 mt-3"
+          className="space-y-9 mb-8 mt-3 relative"
           onSubmit={form.handleSubmit(onSubmit)}
         >
           <FormField
@@ -55,6 +55,7 @@ const page = () => {
                     />
                   </FormControl>
                   <Button
+                    type="button"
                     variant="outline"
                     disabled={!isEmailValid || !isEmailDuplicated}
                     onClick={emailDuplicationCheck}
@@ -76,6 +77,7 @@ const page = () => {
                 <FormMessage />
                 {isVerificationButtonEnabled && (
                   <Button
+                    type="button"
                     variant="secondary"
                     disabled={verificationComplete}
                     onClick={() => setOtpVisible(true)}
@@ -110,6 +112,13 @@ const page = () => {
               </Button>
             </div>
           )}
+          <Button
+            type="submit"
+            className="w-[320px] fixed bottom-80"
+            disabled={!verificationComplete}
+          >
+            다음
+          </Button>
         </form>
       </Form>
     </>
