@@ -20,7 +20,23 @@ import { useJoin } from '../model/useJoin';
 import { collageItems, departmentItems } from '@/shared/lib/assets';
 
 const JoinForm = () => {
-  const { form, onSubmit, isSubmitButtonEnabled } = useJoin();
+  const {
+    form,
+    isEmailValid,
+    emailDuplicationCheck,
+    isEmailDuplicatedExecuted,
+    isEmailDuplicated,
+    verificationComplete,
+    handleVerifyOtp,
+    setOtpVisible,
+    otpVisible,
+    setOtpInput,
+    otpInput,
+    otpError,
+    onSubmit,
+    isSubmitButtonEnabled,
+    isVerificationButtonEnabled,
+  } = useJoin();
 
   return (
     <Form {...form}>
@@ -56,27 +72,60 @@ const JoinForm = () => {
                     {...field}
                   />
                 </FormControl>
-                <Button variant="outline">중복 확인</Button>
+                <Button
+                  variant="outline"
+                  disabled={!isEmailValid || isEmailDuplicatedExecuted}
+                  onClick={emailDuplicationCheck}
+                >
+                  중복 확인
+                </Button>
               </div>
+              {isEmailValid && isEmailDuplicatedExecuted && (
+                <div>
+                  {isEmailDuplicated ? (
+                    <p className="text-sm">이미 가입된 이메일입니다.</p>
+                  ) : (
+                    <p className="text-sm">중복 확인 완료 ✔️</p>
+                  )}
+                </div>
+              )}
               <FormMessage />
-              <Button variant="secondary">인증번호 발송</Button>
+              {isVerificationButtonEnabled && (
+                <Button
+                  variant="secondary"
+                  disabled={verificationComplete}
+                  onClick={() => setOtpVisible(true)}
+                >
+                  인증번호 발송
+                </Button>
+              )}
             </FormItem>
           )}
         />
-        <div className="space-y-2">
-          <p className="text-sm cursor-default">인증 번호</p>
-          <InputOTP maxLength={6}>
-            <InputOTPGroup>
-              <InputOTPSlot index={0} />
-              <InputOTPSlot index={1} />
-              <InputOTPSlot index={2} />
-              <InputOTPSlot index={3} />
-              <InputOTPSlot index={4} />
-              <InputOTPSlot index={5} />
-            </InputOTPGroup>
-          </InputOTP>
-          <FormMessage />
-        </div>
+        {otpVisible && (
+          <div className="space-y-2">
+            <p className="text-sm cursor-default">인증 번호</p>
+            <InputOTP maxLength={6} onChange={setOtpInput} value={otpInput}>
+              <InputOTPGroup>
+                <InputOTPSlot index={0} />
+                <InputOTPSlot index={1} />
+                <InputOTPSlot index={2} />
+                <InputOTPSlot index={3} />
+                <InputOTPSlot index={4} />
+                <InputOTPSlot index={5} />
+              </InputOTPGroup>
+            </InputOTP>
+            {otpError && (
+              <p className="text-sm text-red-500">
+                인증번호가 일치하지 않습니다.
+              </p>
+            )}
+            <FormMessage />
+            <Button onClick={handleVerifyOtp} disabled={verificationComplete}>
+              {verificationComplete ? '인증완료' : '인증'}
+            </Button>
+          </div>
+        )}
         <FormField
           control={form.control}
           name="password"
