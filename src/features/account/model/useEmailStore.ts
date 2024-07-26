@@ -20,7 +20,7 @@ export const useEmailStore = create<VerificationState>()(
         set({ verificationComplete: false, email: '' }),
     }),
     {
-      name: 'verification-storage',
+      name: 'email-storage',
       getStorage: () => localStorage,
     },
   ),
