@@ -34,7 +34,7 @@ const CommonHeader = () => {
         return '회원가입';
       case '/join/email':
         return '회원가입';
-      case '/account':
+      case '/changePw':
         return '비밀번호 변경';
       case '/rule':
         return '학칙/회칙';
@@ -62,7 +62,7 @@ const CommonHeader = () => {
       <p className="text-lg font-bold text-blue-500">{getPageName()}</p>
       {pathname !== '/join' &&
       pathname !== '/join/email' &&
-      pathname !== '/account' ? (
+      pathname !== '/changePw' ? (
         <TooltipProvider>
           <Tooltip>
             <TooltipTrigger asChild>

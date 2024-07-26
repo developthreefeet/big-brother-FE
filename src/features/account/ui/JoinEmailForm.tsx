@@ -17,7 +17,7 @@ import { Input } from '@/shared/ui/ui/input';
 import { useEmail } from '@/features/account/model/useEmail';
 import { useEmailStore } from '../model/useEmailStore';
 
-const EmailForm = () => {
+const JoinEmailForm = () => {
   const {
     form,
     isEmailValid,
@@ -151,4 +151,4 @@ const EmailForm = () => {
   );
 };
 
-export default EmailForm;
+export default JoinEmailForm;
