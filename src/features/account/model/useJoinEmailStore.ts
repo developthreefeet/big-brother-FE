@@ -9,7 +9,7 @@ interface VerificationState {
   setEmail: (email: string) => void;
 }
 
-export const useEmailStore = create<VerificationState>()(
+export const useJoinEmailStore = create<VerificationState>()(
   persist(
     (set) => ({
       verificationComplete: false,

@@ -14,8 +14,8 @@ import {
   InputOTPSlot,
 } from '@/shared/ui/ui/input-otp';
 import { Input } from '@/shared/ui/ui/input';
-import { useEmail } from '@/features/account/model/useEmail';
-import { useEmailStore } from '../model/useEmailStore';
+import { useJoinEmail } from '@/features/account/model/useJoinEmail';
+import { useJoinEmailStore } from '../model/useJoinEmailStore';
 
 const JoinEmailForm = () => {
   const {
@@ -33,9 +33,9 @@ const JoinEmailForm = () => {
     otpError,
     onSubmit,
     moveToJoin,
-  } = useEmail();
+  } = useJoinEmail();
 
-  const { verificationComplete, email } = useEmailStore();
+  const { verificationComplete, email } = useJoinEmailStore();
 
   return (
     <Form {...form}>
