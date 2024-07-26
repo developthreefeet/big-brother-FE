@@ -9,7 +9,7 @@ import {
 } from '@/shared/ui/ui/form';
 import { Input } from '@/shared/ui/ui/input';
 import { Button } from '@/shared/ui/ui/button';
-import { useLogIn } from '../model/useLogin';
+import { useLogIn } from '../model/useLogIn';
 
 const LoginForm = () => {
   const { form } = useLogIn();
