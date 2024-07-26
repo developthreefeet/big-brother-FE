@@ -34,6 +34,8 @@ const CommonHeader = () => {
         return '회원가입';
       case '/join/email':
         return '회원가입';
+      case '/account':
+        return '비밀번호 변경';
       case '/rule':
         return '학칙/회칙';
       case '/modify':
