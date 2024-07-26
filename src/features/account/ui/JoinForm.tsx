@@ -16,12 +16,7 @@ import { useJoin } from '../model/useJoin';
 import { collageItems, departmentItems } from '@/shared/lib/assets';
 
 const JoinForm = () => {
-  const {
-    form,
-
-    onSubmit,
-    isSubmitButtonEnabled,
-  } = useJoin();
+  const { form, onSubmit, isSubmitButtonEnabled } = useJoin();
 
   return (
     <Form {...form}>
@@ -43,7 +38,6 @@ const JoinForm = () => {
             </FormItem>
           )}
         />
-
         <FormField
           control={form.control}
           name="password"
