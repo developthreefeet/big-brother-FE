@@ -46,7 +46,9 @@ const CommonHeader = () => {
   const router = useRouter();
 
   const handleGoBack = () => {
-    router.back();
+    if (pathname === '/join') {
+      router.push('/login');
+    } else router.back();
   };
 
   return (
