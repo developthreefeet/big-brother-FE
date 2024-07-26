@@ -3,11 +3,11 @@
 import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import JoinForm from '@/features/account/ui/JoinForm';
-import { useEmailStore } from '@/features/account/model/useEmailStore';
+import { useJoinEmailStore } from '@/features/account/model/useJoinEmailStore';
 
 const Page = () => {
   const router = useRouter();
-  const { verificationComplete } = useEmailStore();
+  const { verificationComplete } = useJoinEmailStore();
 
   useEffect(() => {
     if (!verificationComplete) {
