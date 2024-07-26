@@ -4,8 +4,11 @@ import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useRouter } from 'next/navigation';
+import { useEmailStore } from './useEmailStore';
 
 export const useJoin = () => {
+  const { resetVerificationComplete } = useEmailStore();
+
   const userNameRegex = /^[가-힣]+$/;
   const passwordRegex =
     /^(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[a-z\d@$!%*?&]{8,20}$/;
@@ -51,6 +54,7 @@ export const useJoin = () => {
 
   const onSubmit = (data: any) => {
     console.log(data);
+    resetVerificationComplete();
     router.push('/login');
   };
 

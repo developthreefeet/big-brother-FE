@@ -5,12 +5,13 @@ import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
+import { useEmailStore } from './useEmailStore';
 
 export const useEmail = () => {
   const [isEmailDuplicated, setIsEmailDuplicated] = useState(false);
   const [isDuplicationChecked, setIsDuplicationChecked] = useState(false);
   const [otpVisible, setOtpVisible] = useState(false);
-  const [verificationComplete, setVerificationComplete] = useState(false);
+  const { setVerificationComplete, setEmail } = useEmailStore();
   const [otpInput, setOtpInput] = useState('');
   const [otpError, setOtpError] = useState(false);
 
@@ -61,7 +62,7 @@ export const useEmail = () => {
   const router = useRouter();
 
   const onSubmit = (data: any) => {
-    console.log(data);
+    setEmail(data.email);
   };
 
   const moveToJoin = () => {
@@ -74,7 +75,6 @@ export const useEmail = () => {
     emailDuplicationCheck,
     isDuplicationChecked,
     isEmailDuplicated,
-    verificationComplete,
     setIsDuplicationChecked,
     otpVisible,
     handleVerifyOtp,
