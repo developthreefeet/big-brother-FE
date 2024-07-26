@@ -4,10 +4,10 @@ import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useRouter } from 'next/navigation';
-import { useEmailStore } from './useEmailStore';
+import { useJoinEmailStore } from './useJoinEmailStore';
 
 export const useJoin = () => {
-  const { resetVerificationComplete } = useEmailStore();
+  const { resetVerificationComplete } = useJoinEmailStore();
 
   const userNameRegex = /^[가-힣]+$/;
   const passwordRegex =
