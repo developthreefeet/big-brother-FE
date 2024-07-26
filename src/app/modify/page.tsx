@@ -10,7 +10,7 @@ import {
   FormMessage,
 } from '@/shared/ui/ui/form';
 import { Input } from '@/shared/ui/ui/input';
-import SelectComponent from '@/widgets/SelectComponent';
+import FormSelectComponent from '@/widgets/FormSelectComponent';
 import { useForm } from 'react-hook-form';
 
 const page = () => {
@@ -42,13 +42,15 @@ const page = () => {
             <FormField
               control={form.control}
               name="college"
-              render={({ field }) => (
+              render={() => (
                 <FormItem>
                   <FormLabel>단과대 선택</FormLabel>
                   <FormControl>
-                    <SelectComponent
+                    <FormSelectComponent
                       placeholder="단과대를 선택해주세요."
                       items={collageItems}
+                      control={form.control}
+                      name="college"
                     />
                   </FormControl>
                   <FormMessage />
@@ -58,13 +60,15 @@ const page = () => {
             <FormField
               control={form.control}
               name="department"
-              render={({ field }) => (
+              render={() => (
                 <FormItem>
                   <FormLabel>학과 선택</FormLabel>
                   <FormControl>
-                    <SelectComponent
+                    <FormSelectComponent
                       placeholder="학과를 선택해주세요."
                       items={departmentItems}
+                      control={form.control}
+                      name="department"
                     />
                   </FormControl>
                   <FormMessage />
