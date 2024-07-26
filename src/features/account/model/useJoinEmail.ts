@@ -5,13 +5,13 @@ import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
-import { useEmailStore } from './useEmailStore';
+import { useJoinEmailStore } from './useJoinEmailStore';
 
-export const useEmail = () => {
+export const useJoinEmail = () => {
   const [isEmailDuplicated, setIsEmailDuplicated] = useState(false);
   const [isDuplicationChecked, setIsDuplicationChecked] = useState(false);
   const [otpVisible, setOtpVisible] = useState(false);
-  const { setVerificationComplete, setEmail } = useEmailStore();
+  const { setVerificationComplete, setEmail } = useJoinEmailStore();
   const [otpInput, setOtpInput] = useState('');
   const [otpError, setOtpError] = useState(false);
 
