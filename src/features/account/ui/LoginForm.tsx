@@ -12,21 +12,21 @@ import { Button } from '@/shared/ui/ui/button';
 import { useLogIn } from '../model/useLogIn';
 
 const LoginForm = () => {
-  const { form } = useLogIn();
+  const { form, isValidAccount, onSubmit } = useLogIn();
 
   return (
     <Form {...form}>
       <form
         className="space-y-4 mt-2 w-full"
-        onSubmit={form.handleSubmit((data) => console.log(data))}
+        onSubmit={form.handleSubmit(onSubmit)}
       >
         <FormField
           control={form.control}
-          name="username"
+          name="email"
           render={({ field }) => (
             <FormItem>
               <FormControl>
-                <Input placeholder="이메일" type="email" {...field} />
+                <Input placeholder="이메일" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -38,12 +38,22 @@ const LoginForm = () => {
           render={({ field }) => (
             <FormItem>
               <FormControl>
-                <Input type="password" placeholder="비밀번호" {...field} />
+                <Input
+                  type="password"
+                  placeholder="비밀번호"
+                  {...field}
+                  maxLength={20}
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
           )}
         />
+        {!isValidAccount && (
+          <p className="text-sm text-red-500 font-semibold">
+            이메일이나 비밀번호가 맞지 않습니다.
+          </p>
+        )}
         <Button type="submit" className="w-full">
           로그인
         </Button>
