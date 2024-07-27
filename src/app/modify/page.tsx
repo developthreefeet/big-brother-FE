@@ -1,5 +1,6 @@
 'use client';
 
+import { collageItems, departmentItems } from '@/shared/lib/assets';
 import { Button } from '@/shared/ui/ui/button';
 import {
   Form,
@@ -15,8 +16,6 @@ import { useForm } from 'react-hook-form';
 
 const page = () => {
   const form = useForm();
-  const collageItems = ['ICT융합대학', '경영대학', '사회과학대학'];
-  const departmentItems = ['융합소프트웨어학부', '법학과', '경영학과'];
 
   return (
     <>
