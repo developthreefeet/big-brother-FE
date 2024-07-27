@@ -6,7 +6,6 @@ import {
 } from '@/shared/ui/ui/accordion';
 import OrganizationTitleSelectComponent from '@/widgets/OrganizationSelectComponent';
 import Title from '@/widgets/Title';
-import React from 'react';
 
 const page = () => {
   return (

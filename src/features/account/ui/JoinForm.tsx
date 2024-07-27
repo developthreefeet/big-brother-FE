@@ -47,7 +47,7 @@ const JoinForm = () => {
               <FormControl>
                 <Input
                   type="password"
-                  placeholder="알파벳 소문자, 숫자, 특수문자 조합 (8~20자)"
+                  placeholder="영문 소문자, 숫자, 특수문자 조합 (8~20자)"
                   {...field}
                   maxLength={20}
                 />

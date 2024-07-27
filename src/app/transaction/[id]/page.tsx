@@ -1,36 +1,12 @@
 'use client';
 
+import { transactionItems } from '@/shared/mock/contentList';
 import MonthComponent from '@/views/transaction/MonthComponent';
 import TransactionListComponent from '@/views/transaction/TransactionListComponent';
 import Title from '@/widgets/Title';
 import { usePathname } from 'next/navigation';
 
 const page = () => {
-  const transactionItems = [
-    {
-      trans_id: 'trans1',
-      corporate_number: '123435333321',
-      bank_account_number: '123-422312',
-      trans_direction: 'withdraw',
-      deposit: '',
-      withdraw: '35,000',
-      balance: '500,000,000',
-      trans_date: '2024-07-01T12:00:00Z',
-      trans: '아마스빈',
-    },
-    {
-      trans_id: 'trans2',
-      corporate_number: '123435333321',
-      bank_account_number: '123-422312',
-      trans_direction: 'deposit',
-      deposit: '10,000,000',
-      withdraw: '',
-      balance: '510,000,000',
-      trans_date: '2024-07-01T12:00:00Z',
-      trans: '신현진',
-    },
-  ];
-
   const pathname = usePathname();
   const id = pathname.split('/')[2];
 

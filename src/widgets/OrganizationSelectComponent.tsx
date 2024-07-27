@@ -1,4 +1,3 @@
-import React from 'react';
 import SelectComponent from './SelectComponent';
 
 const OrganizationSelectComponent = () => {

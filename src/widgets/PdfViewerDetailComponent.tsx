@@ -1,4 +1,3 @@
-import React from 'react';
 import BackToListButton from './BackToListButton';
 import DateText from './DateText';
 import PdfViewer from './PdfViewer';
