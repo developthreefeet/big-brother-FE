@@ -1,7 +1,7 @@
 import MiniNoticeList from '@/features/contentList/ui/MiniNoticeList';
 import { noticeItems } from '@/shared/mock/contentList';
 import { imageUrls } from '@/shared/mock/images';
-import CarouselComponent from '@/views/main/CarouselComponent';
+import CarouselComponent from '@/widgets/CarouselComponent';
 import IconContainer from '@/views/main/IconContainer';
 
 const page = () => {

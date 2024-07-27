@@ -1,5 +1,5 @@
 import React from 'react';
-import IconComponent from './IconComponent';
+import IconComponent from '@/widgets/IconComponent';
 import { pages } from '@/shared/mock/pages';
 
 const IconContainer = () => {
