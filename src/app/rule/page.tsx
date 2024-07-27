@@ -1,5 +1,4 @@
 import ListLayoutComponent from '@/widgets/ListLayoutComponent';
-import React from 'react';
 
 const page = () => {
   const ruleItems = [

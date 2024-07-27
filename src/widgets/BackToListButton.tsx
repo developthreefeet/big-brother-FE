@@ -3,7 +3,6 @@
 import { Button } from '@/shared/ui/ui/button';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import React from 'react';
 
 const BackToListButton = () => {
   const pathname = usePathname();
