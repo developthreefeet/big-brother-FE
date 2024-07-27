@@ -11,7 +11,7 @@ export const useJoin = () => {
 
   const userNameRegex = /^[가-힣]+$/;
   const passwordRegex =
-    /^(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[a-z\d@$!%*?&]{8,20}$/;
+    /^(?=.*[a-z])(?=.*\d)(?=.*[^\w\s])[a-z\d@$!%*?&\W]{8,20}$/;
 
   const userSchema = z.object({
     userName: z
@@ -24,7 +24,7 @@ export const useJoin = () => {
       .min(8, { message: '8글자 이상 입력해주세요.' })
       .max(20, { message: '20글자 이하로 입력해주세요.' })
       .regex(passwordRegex, {
-        message: '영문 소문자, 숫자, 특수문자(@$!%*?&) 조합이어야 합니다.',
+        message: '영문 소문자, 숫자, 특수문자 조합이어야 합니다.',
       }),
     college: z.string().min(1, { message: '단과대를 선택해주세요.' }),
     department: z.string().min(1, { message: '학과를 선택해주세요.' }),
