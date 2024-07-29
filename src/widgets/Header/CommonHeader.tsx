@@ -46,19 +46,19 @@ const CommonHeader = () => {
 
   const handleGoBack = () => {
     const patterns = [
-      'event/studentCounceil',
+      'event/studentCouncil',
       'event/college',
       'event/department',
-      'notice/studentCounceil',
+      'notice/studentCouncil',
       'notice/college',
       'notice/department',
-      'rule/studentCounceil',
+      'rule/studentCouncil',
       'rule/college',
       'rule/department',
-      'faq/studentCounceil',
+      'faq/studentCouncil',
       'faq/college',
       'faq/department',
-      'proceeding/studentCounceil',
+      'proceeding/studentCouncil',
       'proceeding/college',
       'proceeding/department',
     ];
