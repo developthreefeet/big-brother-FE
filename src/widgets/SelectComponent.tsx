@@ -1,3 +1,5 @@
+'use client';
+
 import {
   Select,
   SelectTrigger,
@@ -6,17 +8,19 @@ import {
   SelectItem,
   SelectGroup,
 } from '@/shared/ui/ui/select';
+import { useSelectStore } from '@/shared/lib/store';
 
 interface SelectComponentProps {
-  placeholder?: string;
   items: string[];
 }
 
-const SelectComponent = ({ placeholder, items }: SelectComponentProps) => {
+const SelectComponent = ({ items }: SelectComponentProps) => {
+  const { selectedValue, setSelectedValue } = useSelectStore();
+
   return (
-    <Select>
+    <Select value={selectedValue} onValueChange={setSelectedValue}>
       <SelectTrigger>
-        <SelectValue placeholder={placeholder ? placeholder : items[0]} />
+        <SelectValue placeholder={selectedValue} />
       </SelectTrigger>
       <SelectContent>
         <SelectGroup>
