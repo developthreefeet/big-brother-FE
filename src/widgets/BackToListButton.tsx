@@ -6,7 +6,7 @@ import { usePathname } from 'next/navigation';
 
 const BackToListButton = () => {
   const pathname = usePathname();
-  const listPath = pathname.split('/').slice(0, 2).join('/');
+  const listPath = pathname.split('/').slice(0, 3).join('/');
 
   return (
     <Button variant="secondary" className="w-32">

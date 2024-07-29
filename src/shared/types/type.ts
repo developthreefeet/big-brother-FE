@@ -67,3 +67,17 @@ export interface TransactionItem {
 export interface TransactionListComponentProps {
   list: TransactionItem[];
 }
+
+//User 타입 임시 지정
+export interface User {
+  user_id: string;
+  role: string;
+  email: string;
+  password: string;
+  name: string;
+  college: string;
+  department: string;
+  is_active: boolean;
+  create_at: string;
+  update_at: string;
+}

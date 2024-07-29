@@ -17,31 +17,28 @@ const CommonHeader = () => {
   let pathname = usePathname();
 
   const getPageName = () => {
-    switch (pathname) {
-      case '/notice':
-        return '공지사항';
-      case '/faq':
-        return 'FAQ';
-      case '/proceeding':
-        return '회의록';
-      case '/event':
-        return '행사';
-      case '/transaction':
-        return '입/출금 내역';
-      case '/mypage':
-        return '마이페이지';
-      case '/join':
-        return '회원가입';
-      case '/join/email':
-        return '회원가입';
-      case '/changePw':
-        return '비밀번호 변경';
-      case '/rule':
-        return '학칙/회칙';
-      case '/modify':
-        return '정보 수정';
-      default:
-        return ' ';
+    if (pathname.includes('notice')) {
+      return '공지사항';
+    } else if (pathname.includes('faq')) {
+      return 'FAQ';
+    } else if (pathname.includes('proceeding')) {
+      return '회의록';
+    } else if (pathname.includes('event')) {
+      return '행사';
+    } else if (pathname.includes('transaction')) {
+      return '입/출금 내역';
+    } else if (pathname.includes('mypage')) {
+      return '마이페이지';
+    } else if (pathname.includes('join')) {
+      return '회원가입';
+    } else if (pathname.includes('changePw')) {
+      return '비밀번호 변경';
+    } else if (pathname.includes('rule')) {
+      return '학칙/회칙';
+    } else if (pathname.includes('modify')) {
+      return '정보 수정';
+    } else {
+      return ' ';
     }
   };
 
