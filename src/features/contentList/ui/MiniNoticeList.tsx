@@ -20,7 +20,7 @@ const MiniNoticeList = ({
       </div>
       <div className="flex flex-col ml-1">
         {noticeContents.slice(0, 5).map((content, index) => (
-          <Link href={`/notice/${content.notice_id}`}>
+          <Link href={`/notice/studentCouncil/${content.notice_id}`}>
             <Button
               variant="link"
               className="justify-start text-left hover:no-underline hover:opacity-50 text-gray-300 pl-0 py-0 h-7"

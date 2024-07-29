@@ -220,3 +220,24 @@ export const transactionItems = [
     trans: '신현진',
   },
 ];
+
+export const faqItems = [
+  {
+    faq_id: 'item-1',
+    faq_name: '질문1',
+    faq_content: 'Yes. It adheres to the WAI-ARIA design pattern.',
+  },
+  {
+    faq_id: 'item-2',
+    faq_name:
+      '질문 길이가 길면 화면상에 어떻게 나오는 지 테스트를 하기 위한 긴 문장인데 진짜...... 할게 너무 많다......',
+    faq_content:
+      "Yes. It comes with default styles that match the other components' aesthetic.",
+  },
+  {
+    faq_id: 'item-3',
+    faq_name: '혼자 플젝하기 개힘들다 민수가 그립다',
+    faq_content:
+      "Yes. It's animated by default, but you can disable it if you prefer.",
+  },
+];
