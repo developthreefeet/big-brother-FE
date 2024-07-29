@@ -45,7 +45,33 @@ const CommonHeader = () => {
   const router = useRouter();
 
   const handleGoBack = () => {
-    router.back();
+    const patterns = [
+      'event/studentCounceil',
+      'event/college',
+      'event/department',
+      'notice/studentCounceil',
+      'notice/college',
+      'notice/department',
+      'rule/studentCounceil',
+      'rule/college',
+      'rule/department',
+      'faq/studentCounceil',
+      'faq/college',
+      'faq/department',
+      'proceeding/studentCounceil',
+      'proceeding/college',
+      'proceeding/department',
+    ];
+
+    const isPatternMatched = patterns.some((pattern) =>
+      pathname.includes(pattern),
+    );
+
+    if (isPatternMatched) {
+      router.push('/main');
+    } else {
+      router.back();
+    }
   };
 
   return (
