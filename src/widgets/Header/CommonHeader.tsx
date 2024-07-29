@@ -10,7 +10,7 @@ import {
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useRouter } from 'next/navigation';
-import { FaUserLarge } from 'react-icons/fa6';
+import { FaHome } from 'react-icons/fa';
 import { IoIosArrowBack } from 'react-icons/io';
 
 const CommonHeader = () => {
@@ -89,15 +89,12 @@ const CommonHeader = () => {
         <TooltipProvider>
           <Tooltip>
             <TooltipTrigger asChild>
-              <Link href="/mypage" className="w-[50px] flex justify-center">
-                <FaUserLarge
-                  size="16"
-                  className="text-gray-200 hover:opacity-50"
-                />
+              <Link href="/main" className="w-[50px] flex justify-center">
+                <FaHome size="20" className="text-gray-200 hover:opacity-50" />
               </Link>
             </TooltipTrigger>
             <TooltipContent className="relative -ml-10">
-              <p>마이페이지</p>
+              <p>메인으로</p>
             </TooltipContent>
           </Tooltip>
         </TooltipProvider>
