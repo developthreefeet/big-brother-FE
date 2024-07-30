@@ -4,6 +4,7 @@ import { usePathname, useRouter } from 'next/navigation';
 import { useEffect } from 'react';
 import { getId } from '../lib/utils';
 import { ListItem } from '../types/type';
+
 const useCommonDetail = (items: ListItem[]) => {
   const pathname = usePathname();
   const id = pathname.split('/')[3];
