@@ -63,3 +63,10 @@ export const getId = (item: ListItem): string => {
   if (isRuleList(item)) return item.rule_id;
   return '';
 };
+
+/**commonDetail 페이지를 위한 각 데이터 content 반환 함수 */
+export const getContent = (item: ListItem): string => {
+  if (isEventList(item)) return item.content;
+  if (isNoticeList(item)) return item.notice_content;
+  return '';
+};
