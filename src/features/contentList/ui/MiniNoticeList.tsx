@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { Button } from '@/shared/ui/ui/button';
 import { NoticeItem } from '@/shared/types/type';
+import { truncateTitle } from '@/shared/lib/utils';
 
 const MiniNoticeList = ({
   noticeContents,
@@ -26,7 +27,7 @@ const MiniNoticeList = ({
               className="justify-start text-left hover:no-underline hover:opacity-50 text-gray-300 pl-0 py-0 h-7"
               key={index}
             >
-              {content.notice_title}
+              {truncateTitle(content.notice_title, 29)}
             </Button>
           </Link>
         ))}

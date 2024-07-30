@@ -11,7 +11,8 @@ export const noticeItems = [
     affiliation: 'Affiliation 1',
   },
   {
-    notice_title: '공지 2',
+    notice_title:
+      '공지 2 제목이 길 때 어디까지 잘라야 하는 지 정해야 하는데 이걸 에휴',
     notice_id: 'notice2',
     notice_type: 'Type 2',
     create_at: '2024-08-01T12:00:00Z',
