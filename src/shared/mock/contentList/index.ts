@@ -232,6 +232,17 @@ export const transactionItems = [
     trans_date: '2024-07-01T12:00:00Z',
     trans: '신현진',
   },
+  {
+    trans_id: 'trans3',
+    corporate_number: '123435333321',
+    bank_account_number: '123-422312',
+    trans_direction: 'withdraw',
+    deposit: '',
+    withdraw: '5,000,000',
+    balance: '505,000,000',
+    trans_date: '2024-07-01T12:00:00Z',
+    trans: '김민수',
+  },
 ];
 
 export const faqItems = [
