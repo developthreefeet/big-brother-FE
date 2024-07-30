@@ -1,12 +1,11 @@
 'use client';
 
-import useCommonDetail from '@/shared/hooks/useCommonDetail';
+import useDetail from '@/shared/hooks/useDetail';
 import { noticeItems } from '@/shared/mock/contentList';
-import { NoticeItem } from '@/shared/types/type';
 import CommonDetailComponent from '@/widgets/CommonDetailComponent';
 
 const page = () => {
-  const noticeItem = useCommonDetail(noticeItems);
+  const noticeItem = useDetail(noticeItems);
 
   if (!noticeItem) {
     return null;

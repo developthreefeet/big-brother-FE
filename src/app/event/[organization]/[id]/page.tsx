@@ -2,10 +2,10 @@
 
 import { eventItems } from '@/shared/mock/contentList';
 import CommonDetailComponent from '@/widgets/CommonDetailComponent';
-import useCommonDetail from '@/shared/hooks/useCommonDetail';
+import useDetail from '@/shared/hooks/useDetail';
 
 const page = () => {
-  const eventItem = useCommonDetail(eventItems);
+  const eventItem = useDetail(eventItems);
 
   if (!eventItem) {
     return null;
