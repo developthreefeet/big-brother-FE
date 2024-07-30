@@ -6,6 +6,7 @@ import {
   NoticeItem,
   ProceedingItem,
   RuleItem,
+  TransactionItem,
 } from '../types/type';
 
 export function cn(...inputs: ClassValue[]) {
@@ -62,4 +63,31 @@ export const getId = (item: ListItem): string => {
   if (isProceedingList(item)) return item.proceeding_id;
   if (isRuleList(item)) return item.rule_id;
   return '';
+};
+
+/**commonDetail 페이지를 위한 각 데이터 content 반환 함수 */
+export const getContent = (item: ListItem): string => {
+  if (isEventList(item)) return item.content;
+  if (isNoticeList(item)) return item.notice_content;
+  return '';
+};
+
+/** 입/출금내역 총 거래 계산 함수 */
+export const calculateTotals = (items: TransactionItem[]) => {
+  let totalDeposit = 0;
+  let totalWithdraw = 0;
+
+  items.forEach((item) => {
+    if (item.deposit) {
+      totalDeposit += parseInt(item.deposit.replace(/,/g, ''), 10);
+    }
+    if (item.withdraw) {
+      totalWithdraw += parseInt(item.withdraw.replace(/,/g, ''), 10);
+    }
+  });
+
+  return {
+    totalDeposit,
+    totalWithdraw,
+  };
 };

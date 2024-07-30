@@ -1,3 +1,5 @@
+import { RuleItem } from '@/shared/types/type';
+
 export const noticeItems = [
   {
     notice_title: '공지 1',
@@ -148,51 +150,61 @@ export const ruleItems = [
   {
     rule_title: '학칙1',
     create_at: '2024-07-01T12:00:00Z',
+    update_at: '2024-07-01T12:00:00Z',
     rule_id: 'rule1',
   },
   {
     rule_title: '학칙2',
     create_at: '2024-07-01T12:00:00Z',
+    update_at: '2024-07-01T12:00:00Z',
     rule_id: 'rule2',
   },
   {
     rule_title: '학칙3',
     create_at: '2024-07-01T12:00:00Z',
+    update_at: '2024-07-01T12:00:00Z',
     rule_id: 'rule3',
   },
   {
     rule_title: '학칙4',
     create_at: '2024-07-01T12:00:00Z',
+    update_at: '2024-07-01T12:00:00Z',
     rule_id: 'rule4',
   },
   {
     rule_title: '학칙5',
     create_at: '2024-07-01T12:00:00Z',
+    update_at: '2024-07-01T12:00:00Z',
     rule_id: 'rule5',
   },
   {
     rule_title: '학칙6',
     create_at: '2024-07-01T12:00:00Z',
+    update_at: '2024-07-01T12:00:00Z',
     rule_id: 'rule6',
   },
   {
     rule_title: '학칙7',
     create_at: '2024-07-01T12:00:00Z',
+    update_at: '2024-07-01T12:00:00Z',
     rule_id: 'rule7',
   },
   {
     rule_title: '학칙8',
     create_at: '2024-07-01T12:00:00Z',
+    update_at: '2024-07-01T12:00:00Z',
     rule_id: 'rule8',
   },
   {
     rule_title: '학칙9',
     create_at: '2024-07-01T12:00:00Z',
+    update_at: '2024-07-01T12:00:00Z',
     rule_id: 'rule9',
   },
   {
     rule_title: '학칙10',
     create_at: '2024-07-01T12:00:00Z',
+    update_at: '2024-07-01T12:00:00Z',
     rule_id: 'rule10',
   },
 ];
@@ -219,6 +231,17 @@ export const transactionItems = [
     balance: '510,000,000',
     trans_date: '2024-07-01T12:00:00Z',
     trans: '신현진',
+  },
+  {
+    trans_id: 'trans3',
+    corporate_number: '123435333321',
+    bank_account_number: '123-422312',
+    trans_direction: 'withdraw',
+    deposit: '',
+    withdraw: '5,000,000',
+    balance: '505,000,000',
+    trans_date: '2024-07-01T12:00:00Z',
+    trans: '김민수',
   },
 ];
 

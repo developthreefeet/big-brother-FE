@@ -63,9 +63,7 @@ const CommonHeader = () => {
       'proceeding/department',
     ];
 
-    const isPatternMatched = patterns.some((pattern) =>
-      pathname.includes(pattern),
-    );
+    const isPatternMatched = patterns.some((pattern) => pathname === pattern);
 
     if (isPatternMatched) {
       router.push('/main');
