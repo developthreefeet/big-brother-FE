@@ -43,6 +43,7 @@ export interface ProceedingItem {
 export interface RuleItem {
   rule_title: string;
   create_at: string;
+  update_at: string;
   rule_id: string;
 }
 
