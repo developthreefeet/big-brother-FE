@@ -15,7 +15,7 @@ const MiniNoticeList = ({
           variant="link"
           className="text-black hover:no-underline hover:opacity-50 pr-0"
         >
-          <Link href="/notice">{'바로가기 >'}</Link>
+          <Link href="/notice/studentCouncil">{'바로가기 >'}</Link>
         </Button>
       </div>
       <div className="flex flex-col ml-1">
