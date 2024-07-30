@@ -47,6 +47,12 @@ export interface RuleItem {
   rule_id: string;
 }
 
+export interface FaqItem {
+  faq_id: string;
+  faq_name: string;
+  faq_content: string;
+}
+
 export type ListItem = EventItem | NoticeItem | ProceedingItem | RuleItem;
 
 export interface ListComponentProps {
