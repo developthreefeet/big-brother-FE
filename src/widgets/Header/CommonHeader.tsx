@@ -46,21 +46,21 @@ const CommonHeader = () => {
 
   const handleGoBack = () => {
     const patterns = [
-      'event/studentCouncil',
-      'event/college',
-      'event/department',
-      'notice/studentCouncil',
-      'notice/college',
-      'notice/department',
-      'rule/studentCouncil',
-      'rule/college',
-      'rule/department',
-      'faq/studentCouncil',
-      'faq/college',
-      'faq/department',
-      'proceeding/studentCouncil',
-      'proceeding/college',
-      'proceeding/department',
+      '/event/studentCouncil',
+      '/event/college',
+      '/event/department',
+      '/notice/studentCouncil',
+      '/notice/college',
+      '/notice/department',
+      '/rule/studentCouncil',
+      '/rule/college',
+      '/rule/department',
+      '/faq/studentCouncil',
+      '/faq/college',
+      '/faq/department',
+      '/proceeding/studentCouncil',
+      '/proceeding/college',
+      '/proceeding/department',
     ];
 
     const isPatternMatched = patterns.some((pattern) => pathname === pattern);
