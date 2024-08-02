@@ -17,6 +17,8 @@ const useOrganizationRouter = () => {
       setSelectedValue('단과대');
     } else if (pathname.includes('department')) {
       setSelectedValue('학과');
+    } else if (pathname.includes('general')) {
+      setSelectedValue('학교');
     }
   }, [pathname, setSelectedValue]);
 
@@ -32,13 +34,16 @@ const useOrganizationRouter = () => {
       case '학과':
         path = `${content}/department`;
         break;
+      case '학교':
+        path = `${content}/general`;
+        break;
       default:
         path = '/';
     }
     router.push(path);
-  }, [selectedValue, content, router]);
+  }, [selectedValue, content]);
 
-  return;
+  return null;
 };
 
 export default useOrganizationRouter;

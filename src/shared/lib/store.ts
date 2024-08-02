@@ -6,6 +6,6 @@ interface SelectStore {
 }
 
 export const useSelectStore = create<SelectStore>((set) => ({
-  selectedValue: '총학생회',
+  selectedValue: '',
   setSelectedValue: (value: string) => set({ selectedValue: value }),
 }));
