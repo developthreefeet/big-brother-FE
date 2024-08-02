@@ -16,12 +16,12 @@ const MiniNoticeList = ({
           variant="link"
           className="text-black hover:no-underline hover:opacity-50 pr-0"
         >
-          <Link href="/notice/studentCouncil">{'바로가기 >'}</Link>
+          <Link href="/notice/general">{'바로가기 >'}</Link>
         </Button>
       </div>
       <div className="flex flex-col ml-1">
         {noticeContents.slice(0, 5).map((content, index) => (
-          <Link href={`/notice/studentCouncil/${content.notice_id}`}>
+          <Link href={`/notice/general/${content.notice_id}`}>
             <Button
               variant="link"
               className="justify-start text-left hover:no-underline hover:opacity-50 text-gray-300 pl-0 py-0 h-7"

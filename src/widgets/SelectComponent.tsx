@@ -18,7 +18,10 @@ const SelectComponent = ({ items }: SelectComponentProps) => {
   const { selectedValue, setSelectedValue } = useSelectStore();
 
   return (
-    <Select value={selectedValue} onValueChange={setSelectedValue}>
+    <Select
+      value={selectedValue !== '' ? selectedValue : items[0]}
+      onValueChange={setSelectedValue}
+    >
       <SelectTrigger>
         <SelectValue placeholder={selectedValue} />
       </SelectTrigger>
