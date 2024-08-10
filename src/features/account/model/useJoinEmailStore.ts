@@ -21,7 +21,6 @@ export const useJoinEmailStore = create<VerificationState>()(
     }),
     {
       name: 'email-storage',
-      getStorage: () => localStorage,
     },
   ),
 );

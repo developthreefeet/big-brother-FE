@@ -4,14 +4,16 @@ import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useRouter } from 'next/navigation';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useJoinEmailStore } from './useJoinEmailStore';
+import { VerificationData } from '../api/types';
+import { useGetVerification } from '../api/queries';
 
 export const useJoinEmail = () => {
   const [isEmailDuplicated, setIsEmailDuplicated] = useState(false);
   const [isDuplicationChecked, setIsDuplicationChecked] = useState(false);
   const [otpVisible, setOtpVisible] = useState(false);
-  const { setVerificationComplete, setEmail } = useJoinEmailStore();
+  const { setVerificationComplete, setEmail, email } = useJoinEmailStore();
   const [otpInput, setOtpInput] = useState('');
   const [otpError, setOtpError] = useState(false);
 
@@ -37,15 +39,25 @@ export const useJoinEmail = () => {
 
   const isEmailValid = !errors.email && form.getValues('email').length > 0;
 
-  const emailDuplicationCheck = () => {
-    const email = form.getValues('email');
+  const verificationQuery = useGetVerification(
+    email as unknown as VerificationData,
+  );
 
-    if (email.includes('test')) {
-      setIsEmailDuplicated(true);
-    } else {
-      setIsEmailDuplicated(false);
+  const emailDuplicationCheck = async () => {
+    const currentEmail = form.getValues('email');
+    setEmail(currentEmail);
+
+    if (isEmailValid) {
+      console.log(isEmailValid);
+      try {
+        const result = await verificationQuery.refetch();
+        if (result.isSuccess) {
+          console.log('Verification successful:', result.data);
+        }
+      } catch (error) {
+        console.error('Error during verification:', error);
+      }
     }
-    setIsDuplicationChecked(true);
   };
 
   const handleVerifyOtp = () => {
@@ -61,6 +73,7 @@ export const useJoinEmail = () => {
 
   const router = useRouter();
 
+  // Handle form submission
   const onSubmit = (data: any) => {
     setEmail(data.email);
   };
