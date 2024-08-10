@@ -39,9 +39,7 @@ export const useJoinEmail = () => {
 
   const isEmailValid = !errors.email && form.getValues('email').length > 0;
 
-  const verificationQuery = useGetVerification(
-    email as unknown as VerificationData,
-  );
+  const verificationQuery = useGetVerification(email);
 
   const emailDuplicationCheck = async () => {
     const currentEmail = form.getValues('email');
