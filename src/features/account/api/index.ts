@@ -3,12 +3,12 @@ import { PostVerificationResData, VerificationData } from './types';
 
 export const JOIN_API = {
   //이메일 중복 검사 api
-  verification: (data: VerificationData) =>
+  verification: (email: string) =>
     instance.get<PostVerificationResData>(
-      '/api/big-brother/members/sign-up/emails/verification',
+      '/members/sign-up/emails/verification',
       {
         params: {
-          'member-email': data.email,
+          'member-email': email,
         },
       },
     ),
