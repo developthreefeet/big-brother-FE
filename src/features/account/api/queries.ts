@@ -14,3 +14,11 @@ export const usePostEmailCode = (email: string) => {
     mutationFn: () => JOIN_API.emailCode(email),
   });
 };
+
+export const useGetEmailCodeVerification = (email: string, code: string) => {
+  return useQuery({
+    queryKey: ['emailCodeVerification'],
+    queryFn: () => JOIN_API.emailCodeVerification(email, code),
+    enabled: false,
+  });
+};

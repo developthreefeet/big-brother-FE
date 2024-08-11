@@ -9,3 +9,7 @@ export interface GetVerificationResData {
 export interface PostEmailCodeResData {
   authResult: boolean;
 }
+
+export interface GetEmailCodeVerificationResData {
+  authResult: boolean;
+}

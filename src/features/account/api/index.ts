@@ -1,5 +1,9 @@
 import { instance } from '@/shared/api/instance';
-import { GetVerificationResData, PostEmailCodeResData } from './types';
+import {
+  GetEmailCodeVerificationResData,
+  GetVerificationResData,
+  PostEmailCodeResData,
+} from './types';
 
 export const JOIN_API = {
   //이메일 중복 검사 api
@@ -23,6 +27,16 @@ export const JOIN_API = {
     ),
 
   //이메일 코드 인증하는 api
+  emailCodeVerification: (email: string, code: string) =>
+    instance.get<GetEmailCodeVerificationResData>(
+      '/members/sign-up/emails/verifications',
+      {
+        params: {
+          email: email,
+          code: code,
+        },
+      },
+    ),
 
   //회원가입 api
 };
