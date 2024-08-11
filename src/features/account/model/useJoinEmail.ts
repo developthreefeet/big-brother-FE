@@ -6,7 +6,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { useJoinEmailStore } from './useJoinEmailStore';
-import { useGetVerification } from '../api/queries';
+import { useGetVerification, usePostEmailCode } from '../api/queries';
 
 export const useJoinEmail = () => {
   const [isEmailDuplicated, setIsEmailDuplicated] = useState(false);
@@ -62,6 +62,19 @@ export const useJoinEmail = () => {
     }
   };
 
+  const emailCodeQuery = usePostEmailCode(email);
+
+  const sendEmailCode = async () => {
+    try {
+      const result = await emailCodeQuery.mutateAsync();
+      if (result.data.authResult) {
+        setOtpVisible(true);
+      }
+    } catch (error) {
+      console.error('Failed to send email code:', error);
+    }
+  };
+
   const handleVerifyOtp = () => {
     //임시로 111111과 일치할 경우로 달아놓음. api 자리
     if (otpInput === '111111') {
@@ -93,6 +106,7 @@ export const useJoinEmail = () => {
     otpVisible,
     handleVerifyOtp,
     setOtpVisible,
+    sendEmailCode,
     setOtpInput,
     otpInput,
     otpError,
