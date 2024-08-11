@@ -109,33 +109,40 @@ const JoinEmailForm = () => {
                 </FormItem>
               )}
             />
-            {otpVisible && (
-              <div className="space-y-2">
-                <p className="text-sm cursor-default">인증 번호</p>
-                <InputOTP maxLength={6} onChange={setOtpInput} value={otpInput}>
-                  <InputOTPGroup>
-                    <InputOTPSlot index={0} />
-                    <InputOTPSlot index={1} />
-                    <InputOTPSlot index={2} />
-                    <InputOTPSlot index={3} />
-                    <InputOTPSlot index={4} />
-                    <InputOTPSlot index={5} />
-                  </InputOTPGroup>
-                </InputOTP>
-                {otpError && (
-                  <p className="text-sm text-red-500">
-                    인증번호가 일치하지 않습니다.
-                  </p>
-                )}
-                <FormMessage />
-                <Button
-                  onClick={handleVerifyOtp}
-                  disabled={verificationComplete}
-                >
-                  {verificationComplete ? '인증완료' : '인증'}
-                </Button>
-              </div>
-            )}
+            {!isEmailDuplicated &&
+              isDuplicationChecked &&
+              isEmailValid &&
+              otpVisible && (
+                <div className="space-y-2">
+                  <p className="text-sm cursor-default">인증 번호</p>
+                  <InputOTP
+                    maxLength={6}
+                    onChange={setOtpInput}
+                    value={otpInput}
+                  >
+                    <InputOTPGroup>
+                      <InputOTPSlot index={0} />
+                      <InputOTPSlot index={1} />
+                      <InputOTPSlot index={2} />
+                      <InputOTPSlot index={3} />
+                      <InputOTPSlot index={4} />
+                      <InputOTPSlot index={5} />
+                    </InputOTPGroup>
+                  </InputOTP>
+                  {otpError && (
+                    <p className="text-sm text-red-500">
+                      인증번호가 일치하지 않습니다.
+                    </p>
+                  )}
+                  <FormMessage />
+                  <Button
+                    onClick={handleVerifyOtp}
+                    disabled={verificationComplete}
+                  >
+                    {verificationComplete ? '인증완료' : '인증'}
+                  </Button>
+                </div>
+              )}
           </>
         )}
         <Button

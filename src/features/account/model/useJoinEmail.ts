@@ -4,9 +4,8 @@ import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useRouter } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useJoinEmailStore } from './useJoinEmailStore';
-import { VerificationData } from '../api/types';
 import { useGetVerification } from '../api/queries';
 
 export const useJoinEmail = () => {
@@ -46,12 +45,17 @@ export const useJoinEmail = () => {
     setEmail(currentEmail);
 
     if (isEmailValid) {
-      console.log(isEmailValid);
       try {
         const result = await verificationQuery.refetch();
         if (result.isSuccess) {
-          console.log('Verification successful:', result.data);
+          if (result.data.data.authResult) {
+            setIsEmailDuplicated(false);
+          } else {
+            setIsEmailDuplicated(true);
+          }
         }
+        setIsDuplicationChecked(true);
+        setOtpVisible(false);
       } catch (error) {
         console.error('Error during verification:', error);
       }
@@ -71,7 +75,6 @@ export const useJoinEmail = () => {
 
   const router = useRouter();
 
-  // Handle form submission
   const onSubmit = (data: any) => {
     setEmail(data.email);
   };
