@@ -34,6 +34,7 @@ const JoinEmailForm = () => {
     otpError,
     onSubmit,
     moveToJoin,
+    clickSendButton,
   } = useJoinEmail();
 
   const { verificationComplete, email } = useJoinEmailStore();
@@ -104,7 +105,7 @@ const JoinEmailForm = () => {
                         disabled={verificationComplete}
                         onClick={sendEmailCode}
                       >
-                        인증번호 발송
+                        {clickSendButton ? '인증번호 재발송' : '인증번호 발송'}
                       </Button>
                     )}
                 </FormItem>

@@ -6,7 +6,11 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { useJoinEmailStore } from './useJoinEmailStore';
-import { useGetVerification, usePostEmailCode } from '../api/queries';
+import {
+  useGetEmailCodeVerification,
+  useGetVerification,
+  usePostEmailCode,
+} from '../api/queries';
 
 export const useJoinEmail = () => {
   const [isEmailDuplicated, setIsEmailDuplicated] = useState(false);
@@ -15,6 +19,7 @@ export const useJoinEmail = () => {
   const { setVerificationComplete, setEmail, email } = useJoinEmailStore();
   const [otpInput, setOtpInput] = useState('');
   const [otpError, setOtpError] = useState(false);
+  const [clickSendButton, setClickSendButton] = useState(false);
 
   const emailRegex = /^[a-zA-Z0-9._%+-]+@mju\.ac\.kr$/;
 
@@ -43,6 +48,8 @@ export const useJoinEmail = () => {
   const emailDuplicationCheck = async () => {
     const currentEmail = form.getValues('email');
     setEmail(currentEmail);
+    setClickSendButton(false);
+    setOtpInput('');
 
     if (isEmailValid) {
       try {
@@ -69,20 +76,32 @@ export const useJoinEmail = () => {
       const result = await emailCodeQuery.mutateAsync();
       if (result.data.authResult) {
         setOtpVisible(true);
+        setClickSendButton(true);
       }
     } catch (error) {
       console.error('Failed to send email code:', error);
     }
   };
 
-  const handleVerifyOtp = () => {
-    //임시로 111111과 일치할 경우로 달아놓음. api 자리
-    if (otpInput === '111111') {
-      setVerificationComplete(true);
-      setOtpError(false);
-    } else {
-      setVerificationComplete(false);
-      setOtpError(true);
+  const emailCodeVerificationQuery = useGetEmailCodeVerification(
+    email,
+    otpInput,
+  );
+
+  const handleVerifyOtp = async () => {
+    try {
+      const result = await emailCodeVerificationQuery.refetch();
+      if (result.isSuccess) {
+        if (result.data.data.authResult) {
+          setVerificationComplete(true);
+          setOtpError(false);
+        } else {
+          setVerificationComplete(false);
+          setOtpError(true);
+        }
+      }
+    } catch (error) {
+      console.log('Invalid Email code: ', error);
     }
   };
 
@@ -112,5 +131,6 @@ export const useJoinEmail = () => {
     otpError,
     onSubmit,
     moveToJoin,
+    clickSendButton,
   };
 };
