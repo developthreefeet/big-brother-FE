@@ -28,6 +28,7 @@ const JoinEmailForm = () => {
     handleVerifyOtp,
     setOtpVisible,
     otpVisible,
+    sendEmailCode,
     setOtpInput,
     otpInput,
     otpError,
@@ -101,7 +102,7 @@ const JoinEmailForm = () => {
                         type="button"
                         variant="secondary"
                         disabled={verificationComplete}
-                        onClick={() => setOtpVisible(true)}
+                        onClick={sendEmailCode}
                       >
                         인증번호 발송
                       </Button>
