@@ -3,6 +3,8 @@ import {
   GetEmailCodeVerificationResData,
   GetVerificationResData,
   PostEmailCodeResData,
+  PostJoinProps,
+  PostJoinResData,
 } from './types';
 
 export const JOIN_API = {
@@ -39,4 +41,13 @@ export const JOIN_API = {
     ),
 
   //회원가입 api
+  join: (props: PostJoinProps) => {
+    return instance.post<PostJoinResData>('/members/sign-up', {
+      ...props,
+      is_active: '',
+      create_at: '',
+      update_at: '',
+      role: 'ROLE_USER',
+    });
+  },
 };

@@ -5,9 +5,11 @@ import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useRouter } from 'next/navigation';
 import { useJoinEmailStore } from './useJoinEmailStore';
+import { usePostJoin } from '../api/queries';
+import { PostJoinProps } from '../api/types';
 
 export const useJoin = () => {
-  const { resetVerificationComplete } = useJoinEmailStore();
+  const { resetVerificationComplete, email } = useJoinEmailStore();
 
   const userNameRegex = /^[가-힣]+$/;
   const passwordRegex =
@@ -52,10 +54,24 @@ export const useJoin = () => {
 
   const router = useRouter();
 
-  const onSubmit = (data: any) => {
-    console.log(data);
-    resetVerificationComplete();
-    router.push('/login');
+  const joinQuery = usePostJoin();
+
+  const onSubmit = async (data: any) => {
+    const joinData: PostJoinProps = {
+      username: data.userName,
+      password: data.password,
+      email,
+      affiliation: data.department,
+    };
+    try {
+      await joinQuery.mutateAsync(joinData);
+      router.push('/login');
+      resetVerificationComplete();
+      //res data 확인용 console (현재 password, role null로 옴)
+      console.log((await joinQuery.mutateAsync(joinData)).data);
+    } catch (error) {
+      console.error('에러: ', error);
+    }
   };
 
   return {
