@@ -5,6 +5,8 @@ import {
   PostEmailCodeResData,
   PostJoinProps,
   PostJoinResData,
+  PostLoginProps,
+  PostLoginResData,
 } from './types';
 
 export const JOIN_API = {
@@ -48,6 +50,15 @@ export const JOIN_API = {
       create_at: '',
       update_at: '',
       role: 'ROLE_USER',
+    });
+  },
+};
+
+export const LOGIN_API = {
+  //로그인 api
+  login: (props: PostLoginProps) => {
+    return instance.post<PostLoginResData>('/members/sign-in', {
+      ...props,
     });
   },
 };

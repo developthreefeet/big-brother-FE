@@ -5,6 +5,9 @@ import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
+import { usePostLogin } from '../api/queries';
+import { PostLoginProps } from '../api/types';
+import { setCookie } from 'cookies-next';
 
 export const useLogIn = () => {
   const router = useRouter();
@@ -25,12 +28,22 @@ export const useLogIn = () => {
     },
   });
 
-  const onSubmit = (data: any) => {
-    //로그인 api자리
-    if (data.email === 'test@mju.ac.kr' && data.password === 'asdf123@') {
+  const loginQuery = usePostLogin();
+
+  const onSubmit = async (data: any) => {
+    const loginData: PostLoginProps = {
+      memberEmail: data.email,
+      memberPass: data.password,
+    };
+
+    try {
+      const result = await loginQuery.mutateAsync(loginData);
       setIsValidAccount(true);
+      setCookie('accessToken', result.data.accessToken);
+      setCookie('refreshToken', result.data.refreshToken);
       router.push('/main');
-    } else {
+    } catch (error) {
+      console.log(error);
       setIsValidAccount(false);
     }
   };
