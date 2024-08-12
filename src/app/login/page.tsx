@@ -8,11 +8,12 @@ const page = () => {
     <>
       <div className="flex flex-col justify-center items-center mt-14 ">
         <Image
-          className="mb-4"
+          className="mb-4 w-auto h-auto"
           src="/static/mju-tree.png"
           alt="Tree"
           width={80}
           height={80}
+          priority
         />
         <h1 className=" font-bold text-lg text-gray-300">MyongJi Univ.</h1>
         <h1 className=" mb-8 font-bold text-3xl">Big Brother</h1>
