@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useRouter } from 'next/navigation';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useJoinEmailStore } from './useJoinEmailStore';
 import {
   useGetEmailCodeVerification,
@@ -20,6 +20,7 @@ export const useJoinEmail = () => {
   const [otpInput, setOtpInput] = useState('');
   const [otpError, setOtpError] = useState(false);
   const [clickSendButton, setClickSendButton] = useState(false);
+  const [isEmailValid, setIsEmailValid] = useState(false);
 
   const emailRegex = /^[a-zA-Z0-9._%+-]+@mju\.ac\.kr$/;
 
@@ -41,31 +42,46 @@ export const useJoinEmail = () => {
     formState: { errors },
   } = form;
 
-  const isEmailValid = !errors.email && form.getValues('email').length > 0;
+  useEffect(() => {
+    const hasErrors = Object.keys(errors).length > 0;
+    const emailLength = form.getValues('email').length;
+    const isValid = !hasErrors && emailLength > 0;
+
+    if (isValid) {
+      setIsEmailValid(true);
+    } else {
+      setIsEmailValid(false);
+    }
+  }, [errors, form]);
 
   const verificationQuery = useGetVerification(email);
 
   const emailDuplicationCheck = async () => {
-    const currentEmail = form.getValues('email');
-    setEmail(currentEmail);
-    setClickSendButton(false);
-    setOtpInput('');
+    const isValid = await form.trigger('email');
 
-    if (isEmailValid) {
-      try {
+    if (isValid) {
+      const currentEmail = form.getValues('email');
+      setEmail(currentEmail);
+      setClickSendButton(false);
+      setOtpInput('');
+
+      /*      try {
         const result = await verificationQuery.refetch();
         if (result.isSuccess) {
-          if (result.data.data.authResult) {
-            setIsEmailDuplicated(false);
-          } else {
-            setIsEmailDuplicated(true);
-          }
+          console.log('query 실행됨~');
+          setIsEmailDuplicated(false);
+          setIsDuplicationChecked(true);
+          setOtpVisible(false);
         }
-        setIsDuplicationChecked(true);
-        setOtpVisible(false);
+        if (result.isError) {
+          console.log('에러남~~~~');
+          setIsEmailDuplicated(true);
+        }
       } catch (error) {
+        setIsEmailDuplicated(true);
         console.error('Error during verification:', error);
-      }
+        console.log(isEmailDuplicated);
+      }*/
     }
   };
 
