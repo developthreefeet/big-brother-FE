@@ -6,18 +6,22 @@ import {
   CarouselPrevious,
 } from '@/shared/ui/ui/carousel';
 
-const CarouselComponent = ({ imageUrls }: { imageUrls: string[] }) => {
+const CarouselComponent = () => {
   return (
     <Carousel className="w-full " opts={{ loop: true }}>
       <CarouselContent>
-        {imageUrls.map((url, index) => (
-          <CarouselItem key={index}>
-            <img
-              src={url}
-              className="w-full h-[240px] object-cover rounded-xl"
-            />
-          </CarouselItem>
-        ))}
+        <CarouselItem key="1">
+          <img
+            src="/static/carousel-first.svg"
+            className="w-full h-[240px] object-cover rounded-xl"
+          />
+        </CarouselItem>
+        <CarouselItem key="2">
+          <img
+            src="/static/carousel-second.svg"
+            className="w-full h-[240px] object-cover rounded-xl"
+          />
+        </CarouselItem>
       </CarouselContent>
       <CarouselPrevious className="absolute left-2 top-1/2 transform -translate-y-1/2" />
       <CarouselNext className="absolute right-2 top-1/2 transform -translate-y-1/2" />
