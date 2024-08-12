@@ -15,6 +15,9 @@ const pretendard = localFont({
 export const metadata = {
   title: 'Big Brother',
   description: '명지대 올인원 플랫폼',
+  icons: {
+    icon: '/static/mju-tree.png',
+  },
 };
 
 export default function RootLayout({
