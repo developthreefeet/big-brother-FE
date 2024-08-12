@@ -18,7 +18,7 @@ const EmailForm = () => {
     <>
       <Form {...form}>
         <form
-          className="space-y-9 mb-8 mt-3 relative"
+          className="space-y-9 mb-2 mt-3 relative"
           onSubmit={form.handleSubmit(onSubmit)}
         >
           <FormField
