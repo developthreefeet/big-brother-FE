@@ -41,7 +41,6 @@ export const useLogIn = () => {
       setIsValidAccount(true);
       setCookie('accessToken', result.data.accessToken);
       setCookie('refreshToken', result.data.refreshToken);
-      console.log('성공');
       router.push('/main');
     } catch (error) {
       console.log(error);
