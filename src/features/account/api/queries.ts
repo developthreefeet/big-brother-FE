@@ -1,6 +1,6 @@
 import { useMutation, useQuery } from '@tanstack/react-query';
-import { JOIN_API } from '.';
-import { PostJoinProps } from './types';
+import { JOIN_API, LOGIN_API } from '.';
+import { PostJoinProps, PostLoginProps } from './types';
 
 export const useGetVerification = (email: string) => {
   return useQuery({
@@ -27,5 +27,11 @@ export const useGetEmailCodeVerification = (email: string, code: string) => {
 export const usePostJoin = () => {
   return useMutation({
     mutationFn: (props: PostJoinProps) => JOIN_API.join(props),
+  });
+};
+
+export const usePostLogin = () => {
+  return useMutation({
+    mutationFn: (props: PostLoginProps) => LOGIN_API.login(props),
   });
 };

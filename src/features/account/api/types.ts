@@ -34,3 +34,14 @@ export interface PostJoinResData {
   roles: string[];
   password: string;
 }
+
+export interface PostLoginProps {
+  memberEmail: string;
+  memberPass: string;
+}
+
+export interface PostLoginResData {
+  grantType: string;
+  accessToken: string;
+  refreshToken: string;
+}
