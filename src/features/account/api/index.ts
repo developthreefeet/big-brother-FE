@@ -36,16 +36,21 @@ export const JOIN_API = {
     ),
 
   //이메일 코드 인증하는 api
-  emailCodeVerification: (email: string, code: string) =>
-    instance.get<GetEmailCodeVerificationResData>(
-      '/members/sign-up/emails/verifications',
-      {
-        params: {
-          email: email,
-          code: code,
+  emailCodeVerification: async (email: string, code: string) => {
+    try {
+      return await instance.get<GetEmailCodeVerificationResData>(
+        '/members/sign-up/emails/verifications',
+        {
+          params: {
+            email: email,
+            code: code,
+          },
         },
-      },
-    ),
+      );
+    } catch (error: any) {
+      throw error;
+    }
+  },
 
   //회원가입 api
   join: (props: PostJoinProps) =>

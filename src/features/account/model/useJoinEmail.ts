@@ -55,7 +55,9 @@ export const useJoinEmail = () => {
     }
   }, [errors, form]);
 
-  const { refetch } = useGetVerification(form.getValues('email'));
+  const { refetch: refetchGetVerification } = useGetVerification(
+    form.getValues('email'),
+  );
 
   const emailDuplicationCheck = async () => {
     const isValid = await form.trigger('email');
@@ -67,7 +69,7 @@ export const useJoinEmail = () => {
       setOtpInput('');
       setIsEmailValid(true);
 
-      const { isError } = await refetch();
+      const { isError } = await refetchGetVerification();
 
       if (isError) {
         setIsEmailDuplicated(true);
@@ -99,23 +101,17 @@ export const useJoinEmail = () => {
     }
   };
 
-  const emailCodeVerificationQuery = useGetEmailCodeVerification(
-    email,
-    otpInput,
-  );
+  const { refetch: refetchGetEmailCodeVerification } =
+    useGetEmailCodeVerification(email, otpInput);
 
   const handleVerifyOtp = async () => {
-    try {
-      const result = await emailCodeVerificationQuery.refetch();
-      if (result.isSuccess) {
-        setVerificationComplete(true);
-        setOtpError(false);
-      } else {
-        setVerificationComplete(false);
-        setOtpError(true);
-      }
-    } catch (error) {
-      console.log('Invalid Email code: ', error);
+    const { isError } = await refetchGetEmailCodeVerification();
+    if (isError) {
+      setVerificationComplete(false);
+      setOtpError(true);
+    } else {
+      setVerificationComplete(true);
+      setOtpError(false);
     }
   };
 
