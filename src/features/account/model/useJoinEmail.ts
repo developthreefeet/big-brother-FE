@@ -69,11 +69,19 @@ export const useJoinEmail = () => {
       setOtpInput('');
       setIsEmailValid(true);
 
-      const { isError } = await refetchGetVerification();
+      const { isError, error } = await refetchGetVerification();
 
       if (isError) {
-        setIsEmailDuplicated(true);
-        setIsDuplicationChecked(true);
+        if (error.response?.status === 400) {
+          setIsEmailDuplicated(true);
+          setIsDuplicationChecked(true);
+        } else {
+          toast({
+            variant: 'destructive',
+            description:
+              '이메일 중복 확인에 실패했습니다. 관리자에게 문의하세요.',
+          });
+        }
       } else {
         setIsEmailDuplicated(false);
         setIsDuplicationChecked(true);
@@ -105,10 +113,17 @@ export const useJoinEmail = () => {
     useGetEmailCodeVerification(email, otpInput);
 
   const handleVerifyOtp = async () => {
-    const { isError } = await refetchGetEmailCodeVerification();
+    const { isError, error } = await refetchGetEmailCodeVerification();
     if (isError) {
-      setVerificationComplete(false);
-      setOtpError(true);
+      if (error.response?.status === 404) {
+        setVerificationComplete(false);
+        setOtpError(true);
+      } else {
+        toast({
+          variant: 'destructive',
+          description: '인증 번호 검증에 실패했습니다. 관리자에게 문의하세요.',
+        });
+      }
     } else {
       setVerificationComplete(true);
       setOtpError(false);
