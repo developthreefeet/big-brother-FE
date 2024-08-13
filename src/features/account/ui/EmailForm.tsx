@@ -11,7 +11,7 @@ import { Button } from '@/shared/ui/ui/button';
 import { useChangePwEmailStore } from '../model/useChangePwEmailStore';
 
 const EmailForm = () => {
-  const { form, onSubmit } = useChangePwEmail();
+  const { form, onSubmit, isLoading } = useChangePwEmail();
   const { isEmailValid, isSubmitted } = useChangePwEmailStore();
 
   return (
@@ -45,7 +45,7 @@ const EmailForm = () => {
           />
         </form>
       </Form>
-      {isSubmitted && !isEmailValid && (
+      {isSubmitted && !isEmailValid && !isLoading && (
         <p className="text-sm text-red-500 font-semibold">
           해당 이메일로 가입한 계정이 없습니다.
         </p>
