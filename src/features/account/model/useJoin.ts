@@ -10,7 +10,7 @@ import { PostJoinProps } from '../api/types';
 import { toast } from '@/shared/ui/ui/use-toast';
 
 export const useJoin = () => {
-  const { resetVerificationComplete, email } = useJoinEmailStore();
+  const { email } = useJoinEmailStore();
 
   const userNameRegex = /^[가-힣]+$/;
   const passwordRegex =
@@ -70,7 +70,6 @@ export const useJoin = () => {
         description: '회원 가입에 성공했습니다. 로그인 화면으로 이동합니다.',
       });
       router.push('/login');
-      resetVerificationComplete();
     } catch (error) {
       toast({
         variant: 'destructive',

@@ -1,9 +1,18 @@
+'use client';
+
+import { useJoinEmailStore } from '@/features/account/model/useJoinEmailStore';
 import ChangePassword from '@/features/account/ui/ChangePassword';
 import GoToJoin from '@/features/account/ui/GoToJoin';
 import LoginForm from '@/features/account/ui/LoginForm';
 import Image from 'next/image';
+import { useEffect } from 'react';
 
 const page = () => {
+  const { resetVerificationComplete } = useJoinEmailStore();
+  useEffect(() => {
+    resetVerificationComplete();
+  }, []);
+
   return (
     <>
       <div className="flex flex-col justify-center items-center mt-14 ">
