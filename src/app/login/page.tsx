@@ -9,7 +9,6 @@ import { getCookie } from 'cookies-next';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
-import { BounceLoader } from 'react-spinners';
 
 const Page = () => {
   const { resetVerificationComplete } = useJoinEmailStore();
