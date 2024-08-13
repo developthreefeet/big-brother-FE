@@ -11,6 +11,7 @@ import {
   useGetVerification,
   usePostEmailCode,
 } from '../api/queries';
+import { toast } from '@/shared/ui/ui/use-toast';
 
 export const useJoinEmail = () => {
   const [isEmailDuplicated, setIsEmailDuplicated] = useState(false);
@@ -85,13 +86,16 @@ export const useJoinEmail = () => {
 
   const sendEmailCode = async () => {
     try {
-      const result = await emailCodeQuery.mutateAsync();
-      if (result.data.authResult) {
-        setOtpVisible(true);
-        setClickSendButton(true);
-      }
+      await emailCodeQuery.mutateAsync();
+      setOtpVisible(true);
+      setClickSendButton(true);
+      toast({ description: '인증 번호가 전송되었습니다.' });
     } catch (error) {
-      console.error('Failed to send email code:', error);
+      console.error('이메일 인증 번호 전송 실패', error);
+      toast({
+        variant: 'destructive',
+        description: '인증 번호 전송에 실패했습니다. 관리자에게 문의하세요.',
+      });
     }
   };
 
