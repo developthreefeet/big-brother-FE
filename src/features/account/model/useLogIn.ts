@@ -8,6 +8,8 @@ import { z } from 'zod';
 import { usePostLogin } from '../api/queries';
 import { PostLoginProps } from '../api/types';
 import { setCookie } from 'cookies-next';
+import { toast } from '@/shared/ui/ui/use-toast';
+import { AxiosError } from 'axios';
 
 export const useLogIn = () => {
   const router = useRouter();
@@ -43,8 +45,19 @@ export const useLogIn = () => {
       setCookie('refreshToken', result.data.refreshToken);
       router.push('/main');
     } catch (error) {
-      console.log(error);
-      setIsValidAccount(false);
+      const axiosError = error as AxiosError;
+
+      if (
+        axiosError.response?.status === 404 ||
+        axiosError.response?.status === 500
+      ) {
+        setIsValidAccount(false);
+      } else {
+        toast({
+          variant: 'destructive',
+          description: '로그인에 실패했습니다. 관리자에게 문의하세요.',
+        });
+      }
     }
   };
 
