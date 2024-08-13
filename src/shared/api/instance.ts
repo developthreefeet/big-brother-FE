@@ -11,7 +11,6 @@ export const instance = axios.create({
   withCredentials: true,
 });
 
-/*
 const reqInterceptor = instance.interceptors.request.use(
   (config) => {
     console.log('Request Interceptor', config);
@@ -31,4 +30,3 @@ const resInterceptor = instance.interceptors.response.use(
     return Promise.reject(error);
   },
 );
-*/
