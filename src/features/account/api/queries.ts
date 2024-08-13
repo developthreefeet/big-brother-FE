@@ -1,12 +1,24 @@
-import { useMutation, useQuery } from '@tanstack/react-query';
+import { useMutation, useQuery, UseQueryOptions } from '@tanstack/react-query';
 import { JOIN_API, LOGIN_API } from '.';
-import { PostJoinProps, PostLoginProps } from './types';
+import { GetVerificationResData, PostJoinProps, PostLoginProps } from './types';
+import { AxiosError } from 'axios';
 
-export const useGetVerification = (email: string) => {
-  return useQuery({
-    queryKey: ['emailVerification'],
-    queryFn: () => JOIN_API.verification(email),
+export const useGetVerification = (
+  email: string,
+  options?: UseQueryOptions<GetVerificationResData, AxiosError>,
+) => {
+  return useQuery<GetVerificationResData, AxiosError>({
+    queryKey: ['emailVerification', email],
+    queryFn: async () => {
+      const response = await JOIN_API.verification(email);
+      return response.data;
+    },
     enabled: false,
+    refetchOnWindowFocus: false,
+    refetchOnReconnect: false,
+    refetchOnMount: false,
+    retry: false,
+    ...options,
   });
 };
 

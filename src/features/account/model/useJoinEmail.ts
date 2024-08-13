@@ -54,7 +54,7 @@ export const useJoinEmail = () => {
     }
   }, [errors, form]);
 
-  const verificationQuery = useGetVerification(email);
+  const { refetch } = useGetVerification(form.getValues('email'));
 
   const emailDuplicationCheck = async () => {
     const isValid = await form.trigger('email');
@@ -64,24 +64,20 @@ export const useJoinEmail = () => {
       setEmail(currentEmail);
       setClickSendButton(false);
       setOtpInput('');
+      setIsEmailValid(true);
 
-      /*      try {
-        const result = await verificationQuery.refetch();
-        if (result.isSuccess) {
-          console.log('query 실행됨~');
-          setIsEmailDuplicated(false);
-          setIsDuplicationChecked(true);
-          setOtpVisible(false);
-        }
-        if (result.isError) {
-          console.log('에러남~~~~');
-          setIsEmailDuplicated(true);
-        }
-      } catch (error) {
+      const { isError } = await refetch();
+
+      if (isError) {
         setIsEmailDuplicated(true);
-        console.error('Error during verification:', error);
-        console.log(isEmailDuplicated);
-      }*/
+        setIsDuplicationChecked(true);
+      } else {
+        setIsEmailDuplicated(false);
+        setIsDuplicationChecked(true);
+        setOtpVisible(false);
+      }
+    } else {
+      setIsEmailValid(false);
     }
   };
 
@@ -108,13 +104,11 @@ export const useJoinEmail = () => {
     try {
       const result = await emailCodeVerificationQuery.refetch();
       if (result.isSuccess) {
-        if (result.data.data.authResult) {
-          setVerificationComplete(true);
-          setOtpError(false);
-        } else {
-          setVerificationComplete(false);
-          setOtpError(true);
-        }
+        setVerificationComplete(true);
+        setOtpError(false);
+      } else {
+        setVerificationComplete(false);
+        setOtpError(true);
       }
     } catch (error) {
       console.log('Invalid Email code: ', error);
