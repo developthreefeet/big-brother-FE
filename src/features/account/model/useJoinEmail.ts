@@ -4,13 +4,14 @@ import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useRouter } from 'next/navigation';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useJoinEmailStore } from './useJoinEmailStore';
 import {
   useGetEmailCodeVerification,
   useGetVerification,
   usePostEmailCode,
 } from '../api/queries';
+import { toast } from '@/shared/ui/ui/use-toast';
 
 export const useJoinEmail = () => {
   const [isEmailDuplicated, setIsEmailDuplicated] = useState(false);
@@ -20,6 +21,7 @@ export const useJoinEmail = () => {
   const [otpInput, setOtpInput] = useState('');
   const [otpError, setOtpError] = useState(false);
   const [clickSendButton, setClickSendButton] = useState(false);
+  const [isEmailValid, setIsEmailValid] = useState(false);
 
   const emailRegex = /^[a-zA-Z0-9._%+-]+@mju\.ac\.kr$/;
 
@@ -41,31 +43,44 @@ export const useJoinEmail = () => {
     formState: { errors },
   } = form;
 
-  const isEmailValid = !errors.email && form.getValues('email').length > 0;
+  useEffect(() => {
+    const hasErrors = Object.keys(errors).length > 0;
+    const emailLength = form.getValues('email').length;
+    const isValid = !hasErrors && emailLength > 0;
 
-  const verificationQuery = useGetVerification(email);
+    if (isValid) {
+      setIsEmailValid(true);
+    } else {
+      setIsEmailValid(false);
+    }
+  }, [errors, form]);
+
+  const { refetch: refetchGetVerification } = useGetVerification(
+    form.getValues('email'),
+  );
 
   const emailDuplicationCheck = async () => {
-    const currentEmail = form.getValues('email');
-    setEmail(currentEmail);
-    setClickSendButton(false);
-    setOtpInput('');
+    const isValid = await form.trigger('email');
 
-    if (isEmailValid) {
-      try {
-        const result = await verificationQuery.refetch();
-        if (result.isSuccess) {
-          if (result.data.data.authResult) {
-            setIsEmailDuplicated(false);
-          } else {
-            setIsEmailDuplicated(true);
-          }
-        }
+    if (isValid) {
+      const currentEmail = form.getValues('email');
+      setEmail(currentEmail);
+      setClickSendButton(false);
+      setOtpInput('');
+      setIsEmailValid(true);
+
+      const { isError } = await refetchGetVerification();
+
+      if (isError) {
+        setIsEmailDuplicated(true);
+        setIsDuplicationChecked(true);
+      } else {
+        setIsEmailDuplicated(false);
         setIsDuplicationChecked(true);
         setOtpVisible(false);
-      } catch (error) {
-        console.error('Error during verification:', error);
       }
+    } else {
+      setIsEmailValid(false);
     }
   };
 
@@ -73,35 +88,30 @@ export const useJoinEmail = () => {
 
   const sendEmailCode = async () => {
     try {
-      const result = await emailCodeQuery.mutateAsync();
-      if (result.data.authResult) {
-        setOtpVisible(true);
-        setClickSendButton(true);
-      }
+      await emailCodeQuery.mutateAsync();
+      setOtpVisible(true);
+      setClickSendButton(true);
+      toast({ description: '인증 번호가 전송되었습니다.' });
     } catch (error) {
-      console.error('Failed to send email code:', error);
+      console.error('이메일 인증 번호 전송 실패', error);
+      toast({
+        variant: 'destructive',
+        description: '인증 번호 전송에 실패했습니다. 관리자에게 문의하세요.',
+      });
     }
   };
 
-  const emailCodeVerificationQuery = useGetEmailCodeVerification(
-    email,
-    otpInput,
-  );
+  const { refetch: refetchGetEmailCodeVerification } =
+    useGetEmailCodeVerification(email, otpInput);
 
   const handleVerifyOtp = async () => {
-    try {
-      const result = await emailCodeVerificationQuery.refetch();
-      if (result.isSuccess) {
-        if (result.data.data.authResult) {
-          setVerificationComplete(true);
-          setOtpError(false);
-        } else {
-          setVerificationComplete(false);
-          setOtpError(true);
-        }
-      }
-    } catch (error) {
-      console.log('Invalid Email code: ', error);
+    const { isError } = await refetchGetEmailCodeVerification();
+    if (isError) {
+      setVerificationComplete(false);
+      setOtpError(true);
+    } else {
+      setVerificationComplete(true);
+      setOtpError(false);
     }
   };
 

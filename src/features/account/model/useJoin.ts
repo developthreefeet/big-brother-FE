@@ -7,6 +7,7 @@ import { useRouter } from 'next/navigation';
 import { useJoinEmailStore } from './useJoinEmailStore';
 import { usePostJoin } from '../api/queries';
 import { PostJoinProps } from '../api/types';
+import { toast } from '@/shared/ui/ui/use-toast';
 
 export const useJoin = () => {
   const { resetVerificationComplete, email } = useJoinEmailStore();
@@ -65,12 +66,16 @@ export const useJoin = () => {
     };
     try {
       await joinQuery.mutateAsync(joinData);
+      toast({
+        description: '회원 가입에 성공했습니다. 로그인 화면으로 이동합니다.',
+      });
       router.push('/login');
       resetVerificationComplete();
-      //res data 확인용 console (현재 password, role null로 옴)
-      console.log((await joinQuery.mutateAsync(joinData)).data);
     } catch (error) {
-      console.error('에러: ', error);
+      toast({
+        variant: 'destructive',
+        description: '회원 가입에 실패했습니다. 관리자에게 문의하세요.',
+      });
     }
   };
 

@@ -8,8 +8,10 @@ export const instance = axios.create({
   headers: {
     'Content-Type': 'application/json',
   },
+  withCredentials: true,
 });
 
+/*
 const reqInterceptor = instance.interceptors.request.use(
   (config) => {
     console.log('Request Interceptor', config);
@@ -29,3 +31,4 @@ const resInterceptor = instance.interceptors.response.use(
     return Promise.reject(error);
   },
 );
+*/

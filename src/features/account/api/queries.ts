@@ -1,12 +1,29 @@
-import { useMutation, useQuery } from '@tanstack/react-query';
+import { useMutation, useQuery, UseQueryOptions } from '@tanstack/react-query';
 import { JOIN_API, LOGIN_API } from '.';
-import { PostJoinProps, PostLoginProps } from './types';
+import {
+  GetEmailCodeVerificationResData,
+  GetVerificationResData,
+  PostJoinProps,
+  PostLoginProps,
+} from './types';
+import { AxiosError } from 'axios';
 
-export const useGetVerification = (email: string) => {
-  return useQuery({
-    queryKey: ['emailVerification'],
-    queryFn: () => JOIN_API.verification(email),
+export const useGetVerification = (
+  email: string,
+  options?: UseQueryOptions<GetVerificationResData, AxiosError>,
+) => {
+  return useQuery<GetVerificationResData, AxiosError>({
+    queryKey: ['emailVerification', email],
+    queryFn: async () => {
+      const response = await JOIN_API.verification(email);
+      return response.data;
+    },
     enabled: false,
+    refetchOnWindowFocus: false,
+    refetchOnReconnect: false,
+    refetchOnMount: false,
+    retry: false,
+    ...options,
   });
 };
 
@@ -16,11 +33,23 @@ export const usePostEmailCode = (email: string) => {
   });
 };
 
-export const useGetEmailCodeVerification = (email: string, code: string) => {
+export const useGetEmailCodeVerification = (
+  email: string,
+  code: string,
+  options?: UseQueryOptions<GetEmailCodeVerificationResData, AxiosError>,
+) => {
   return useQuery({
-    queryKey: ['emailCodeVerification'],
-    queryFn: () => JOIN_API.emailCodeVerification(email, code),
+    queryKey: ['emailCodeVerification', email, code],
+    queryFn: async () => {
+      const response = await JOIN_API.emailCodeVerification(email, code);
+      return response.data;
+    },
     enabled: false,
+    refetchOnWindowFocus: false,
+    refetchOnReconnect: false,
+    refetchOnMount: false,
+    retry: false,
+    ...options,
   });
 };
 
