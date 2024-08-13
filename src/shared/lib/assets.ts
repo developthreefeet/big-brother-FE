@@ -11,5 +11,5 @@ export const collageItems = [
   '건축대학',
   '방목기초교육대학',
 ];
-//임시 '융소' => 백엔드 학과코드 더미로 올라가 있음
-export const departmentItems = ['융소', '법학과', '경영학과'];
+//임시 '응용소프트웨어전공' => 백엔드 학과코드 더미로 올라가 있음
+export const departmentItems = ['응용소프트웨어전공', '법학과', '경영학과'];
