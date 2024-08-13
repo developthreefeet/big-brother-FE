@@ -88,7 +88,7 @@ const JoinEmailForm = () => {
                     {isDuplicationChecked &&
                       isEmailValid &&
                       (isEmailDuplicated ? (
-                        <p className="text-sm text-red-500">
+                        <p className="text-sm text-red-500 font-bold">
                           이미 가입된 이메일입니다.
                         </p>
                       ) : (
@@ -132,7 +132,7 @@ const JoinEmailForm = () => {
                     </InputOTPGroup>
                   </InputOTP>
                   {otpError && (
-                    <p className="text-sm text-red-500">
+                    <p className="text-sm text-red-500 font-bold">
                       인증번호가 일치하지 않습니다.
                     </p>
                   )}
