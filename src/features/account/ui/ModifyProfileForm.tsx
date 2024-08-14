@@ -11,9 +11,11 @@ import {
 } from '@/shared/ui/ui/form';
 import { Input } from '@/shared/ui/ui/input';
 import { useModifyProfile } from '../model/useModifyProfile';
+import { useUserNameStore } from '../model/useUserNameStore';
 
 const ModifyProfileForm = () => {
   const { form, onSubmit } = useModifyProfile();
+  const { userName } = useUserNameStore();
 
   return (
     <Form {...form}>
@@ -25,7 +27,11 @@ const ModifyProfileForm = () => {
             <FormItem>
               <FormLabel>이름</FormLabel>
               <FormControl>
-                <Input placeholder="한글 조합 (2~15자)" {...field} />
+                <Input
+                  placeholder="한글 조합 (2~15자)"
+                  {...field}
+                  defaultValue={userName}
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
