@@ -8,6 +8,7 @@ import {
   RuleItem,
   TransactionItem,
 } from '../types/type';
+import { deleteCookie } from 'cookies-next';
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -90,4 +91,10 @@ export const calculateTotals = (items: TransactionItem[]) => {
     totalDeposit,
     totalWithdraw,
   };
+};
+
+//로그아웃
+export const deleteToken = () => {
+  deleteCookie('accessToken');
+  deleteCookie('refreshToken');
 };
