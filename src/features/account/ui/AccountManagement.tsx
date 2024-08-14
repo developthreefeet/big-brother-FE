@@ -3,9 +3,12 @@
 import { deleteToken } from '@/shared/lib/utils';
 import { Button } from '@/shared/ui/ui/button';
 import { useRouter } from 'next/navigation';
+import { useWithdraw } from '../model/useWithdrwa';
 
 const AccountManagement = () => {
   const router = useRouter();
+  const { handleWithdrawClick } = useWithdraw();
+
   return (
     <ul>
       <li>
@@ -27,6 +30,17 @@ const AccountManagement = () => {
           }}
         >
           로그아웃
+        </Button>
+      </li>
+      <li>
+        <Button
+          variant="link"
+          className=" p-0 hover:no-underline hover:opacity-50 text-red-600"
+          onClick={() => {
+            handleWithdrawClick();
+          }}
+        >
+          회원탈퇴
         </Button>
       </li>
     </ul>

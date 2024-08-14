@@ -4,7 +4,13 @@ import {
   useQuery,
   UseQueryOptions,
 } from '@tanstack/react-query';
-import { CHANGE_PW_API, JOIN_API, LOGIN_API, MYPAGE_API } from '.';
+import {
+  CHANGE_PW_API,
+  JOIN_API,
+  LOGIN_API,
+  MYPAGE_API,
+  WITHDRAW_API,
+} from '.';
 import {
   GetEmailCodeVerificationResData,
   GetProfileResData,
@@ -84,5 +90,11 @@ export const usePatchChangePw = (): UseMutationResult<
 > => {
   return useMutation({
     mutationFn: (props: PatchChangePwProps) => CHANGE_PW_API.changePw(props),
+  });
+};
+
+export const useDeleteWithdraw = () => {
+  return useMutation({
+    mutationFn: WITHDRAW_API.withdraw,
   });
 };
