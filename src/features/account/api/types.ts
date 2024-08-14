@@ -72,3 +72,20 @@ export interface PatchChangePwProps {
   email: string;
   password: string;
 }
+
+export interface PatchProfileResData {
+  data: {
+    memberName: string;
+    email: string;
+    createAt: string;
+    updateAt: string;
+    affiliationListDto: {
+      affiliationTypeList: Array<{
+        councilType: string;
+        role: string;
+        affiliationCode: string;
+      }>;
+      memberName: string;
+    };
+  };
+}

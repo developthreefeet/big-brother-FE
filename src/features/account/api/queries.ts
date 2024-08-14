@@ -16,6 +16,7 @@ import {
   GetProfileResData,
   GetVerificationResData,
   PatchChangePwProps,
+  PatchProfileResData,
   PostJoinProps,
   PostLoginProps,
 } from './types';
@@ -96,5 +97,11 @@ export const usePatchChangePw = (): UseMutationResult<
 export const useDeleteWithdraw = () => {
   return useMutation({
     mutationFn: WITHDRAW_API.withdraw,
+  });
+};
+
+export const usePatchModifyProfile = () => {
+  return useMutation({
+    mutationFn: (userName: string) => MYPAGE_API.modify(userName),
   });
 };

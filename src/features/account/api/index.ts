@@ -100,13 +100,25 @@ export const MYPAGE_API = {
   //유저 상세 정보 가져오는 api
   profile: async () => {
     try {
-      const response = await instance.get<GetProfileResData>('/members');
+      const response = await instance.get<GetProfileResData>(
+        '/members/information',
+      );
       return response.data;
     } catch (error) {
       throw error;
     }
   },
   //유저 정보 수정 api
+  modify: async (userName: string) => {
+    try {
+      const response = await instance.patch('/members/information', {
+        userName,
+      });
+      return response.data;
+    } catch (error) {
+      throw error;
+    }
+  },
 };
 
 export const REFRESH_API = {
