@@ -22,6 +22,7 @@ const Page = () => {
     if (accessToken) {
       setLoading(true);
       router.push('/main');
+      setLoading(false);
     }
   }, [router]);
 
