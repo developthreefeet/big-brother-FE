@@ -7,7 +7,8 @@ import { useEffect, useState } from 'react';
 import { toast } from '@/shared/ui/ui/use-toast';
 
 export const useChangePwEmail = () => {
-  const { setIsEmailValid, setIsSubmitted } = useChangePwEmailStore();
+  const { setIsEmailValid, setIsSubmitted, email, setEmail } =
+    useChangePwEmailStore();
   const [isLoading, setIsLoading] = useState(false);
 
   const emailSchema = z.object({
@@ -21,11 +22,10 @@ export const useChangePwEmail = () => {
     },
   });
 
-  const [email, setEmail] = useState('');
-
   useEffect(() => {
-    setEmail(form.getValues('email'));
-  }, [form.getValues('email')]);
+    const emailValue = form.getValues('email');
+    setEmail(emailValue);
+  }, [form.watch('email')]);
 
   const { refetch: refetchGetVerification } = useGetVerification(email);
 

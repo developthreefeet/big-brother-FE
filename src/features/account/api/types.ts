@@ -71,3 +71,8 @@ export interface GetRefreshResData {
     refreshToken: string;
   };
 }
+
+export interface PatchChangePwProps {
+  email: string;
+  password: string;
+}
