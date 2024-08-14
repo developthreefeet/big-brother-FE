@@ -39,10 +39,10 @@ export const useLogIn = () => {
     };
 
     try {
-      const result = await loginQuery.mutateAsync(loginData);
+      const { data } = await loginQuery.mutateAsync(loginData);
       setIsValidAccount(true);
-      setCookie('accessToken', result.data.data.accessToken);
-      setCookie('refreshToken', result.data.data.refreshToken);
+      setCookie('accessToken', data.accessToken);
+      setCookie('refreshToken', data.refreshToken);
       router.push('/main');
     } catch (error) {
       const axiosError = error as AxiosError;

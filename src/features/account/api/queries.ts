@@ -15,10 +15,7 @@ export const useGetVerification = (
 ) => {
   return useQuery<GetVerificationResData, AxiosError>({
     queryKey: ['emailVerification', email],
-    queryFn: async () => {
-      const response = await JOIN_API.verification(email);
-      return response.data;
-    },
+    queryFn: () => JOIN_API.verification(email),
     enabled: false,
     refetchOnWindowFocus: false,
     refetchOnReconnect: false,
@@ -41,10 +38,7 @@ export const useGetEmailCodeVerification = (
 ) => {
   return useQuery({
     queryKey: ['emailCodeVerification', email, code],
-    queryFn: async () => {
-      const response = await JOIN_API.emailCodeVerification(email, code);
-      return response.data;
-    },
+    queryFn: () => JOIN_API.emailCodeVerification(email, code),
     enabled: false,
     refetchOnWindowFocus: false,
     refetchOnReconnect: false,
@@ -71,10 +65,7 @@ export const useGetProfile = (
 ) => {
   return useQuery({
     queryKey: ['profile'],
-    queryFn: async () => {
-      const response = await MYPAGE_API.profile();
-      return response.data;
-    },
+    queryFn: MYPAGE_API.profile,
     ...options,
   });
 };
