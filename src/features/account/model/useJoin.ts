@@ -67,7 +67,7 @@ export const useJoin = () => {
     try {
       await joinQuery.mutateAsync(joinData);
       toast({
-        description: '회원 가입에 성공했습니다. 로그인 화면으로 이동합니다.',
+        description: '회원 가입에 성공했습니다. 환영합니다!',
       });
       router.push('/login');
     } catch (error) {
