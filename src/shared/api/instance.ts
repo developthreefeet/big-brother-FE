@@ -1,5 +1,7 @@
+import { REFRESH_API } from '@/features/account/api';
 import axios from 'axios';
-import { deleteCookie, getCookie } from 'cookies-next';
+import { deleteCookie, getCookie, setCookie } from 'cookies-next';
+import { deleteToken } from '../lib/utils';
 
 const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
 
@@ -25,42 +27,47 @@ instance.interceptors.request.use(
   },
 );
 
-const handleUnauthorized = () => {
-  deleteCookie('accessToken');
-  deleteCookie('refreshToken');
-  alert('세션이 만료되었습니다. 다시 로그인해주세요.');
-  window.location.replace('/login');
-};
-
 instance.interceptors.response.use(
   (response) => {
     return response;
   },
-  (error) => {
-    //에러코드 임시로 달아둠
-    if (error.response?.status === 401) {
-      if (error.response?.data && 'code' in error.response.data) {
-        // 리프레시 토큰이 유효하지 않을 때 (에러코드 임시)
-        if (error.response.data.code === 1001) {
-          handleUnauthorized();
+  async (error) => {
+    /*
+    const statusCode = error.response?.status;
+    const errorCode = error.response?.data?.responseCode;
+
+    if (statusCode === 400 || statusCode === 404) {
+      if (errorCode) {
+        // ACCESS 토큰 만료
+        if (errorCode === 'TOKEN_001') {
+          try {
+            // Access Token 재발급
+            const refreshData = await REFRESH_API.refresh();
+            setCookie('accessToken', refreshData.data.accessToken);
+            setCookie('refreshToken', refreshData.data.refreshToken);
+            // 기존 요청 재시도
+            error.config.headers['Authorization'] =
+              `Bearer ${refreshData.data.accessToken}`;
+            return instance.request(error.config);
+          } catch (refreshError: any) {
+            // Refresh 토큰이 만료되었거나, 리프레시 실패 시
+            if (refreshError.response?.data?.code === 'TOKEN_002') {
+              deleteToken();
+              alert('세션이 만료되었습니다. 다시 로그인해주세요.');
+              window.location.replace('/login');
+            }
+            return Promise.reject(refreshError);
+          }
         }
-      } else {
-        const accessToken = getCookie('accessToken');
-        if (accessToken) {
-          //refresh 토큰 재요청하는 api
-          /*const res = await REFRESH_API.refreshToken({
-            accessToken: accessToken,
-            refreshToken: getCookie('refreshToken') as string,
-          });
-          setCookie('accessToken', res.data.accessToken);
-          setCookie('refreshToken', res.data.refreshToken);*/
-        } else {
-          deleteCookie('accessToken');
-          deleteCookie('refreshToken');
+        // Refresh 토큰이 만료된 경우
+        if (errorCode === 'TOKEN_002') {
+          deleteToken();
+          alert('리프레시 토큰이 만료되었습니다. 다시 로그인해주세요.');
           window.location.replace('/login');
+          return;
         }
       }
-    }
+    }*/
     return Promise.reject(error);
   },
 );

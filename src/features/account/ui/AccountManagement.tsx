@@ -1,5 +1,6 @@
 'use client';
 
+import { deleteToken } from '@/shared/lib/utils';
 import { Button } from '@/shared/ui/ui/button';
 import { useRouter } from 'next/navigation';
 
@@ -20,6 +21,10 @@ const AccountManagement = () => {
         <Button
           variant="link"
           className="text-black p-0 hover:no-underline hover:opacity-50"
+          onClick={() => {
+            deleteToken();
+            router.push('/login');
+          }}
         >
           로그아웃
         </Button>
