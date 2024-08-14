@@ -1,9 +1,15 @@
-import { useMutation, useQuery, UseQueryOptions } from '@tanstack/react-query';
-import { JOIN_API, LOGIN_API, MYPAGE_API } from '.';
+import {
+  useMutation,
+  UseMutationResult,
+  useQuery,
+  UseQueryOptions,
+} from '@tanstack/react-query';
+import { CHANGE_PW_API, JOIN_API, LOGIN_API, MYPAGE_API } from '.';
 import {
   GetEmailCodeVerificationResData,
   GetProfileResData,
   GetVerificationResData,
+  PatchChangePwProps,
   PostJoinProps,
   PostLoginProps,
 } from './types';
@@ -67,5 +73,16 @@ export const useGetProfile = (
     queryKey: ['profile'],
     queryFn: MYPAGE_API.profile,
     ...options,
+  });
+};
+
+export const usePatchChangePw = (): UseMutationResult<
+  {},
+  Error,
+  PatchChangePwProps,
+  unknown
+> => {
+  return useMutation({
+    mutationFn: (props: PatchChangePwProps) => CHANGE_PW_API.changePw(props),
   });
 };

@@ -4,6 +4,7 @@ import {
   GetProfileResData,
   GetRefreshResData,
   GetVerificationResData,
+  PatchChangePwProps,
   PostEmailCodeResData,
   PostJoinProps,
   PostJoinResData,
@@ -117,6 +118,17 @@ export const REFRESH_API = {
     try {
       const response =
         await instance.get<GetRefreshResData>('/members/refresh');
+      return response.data;
+    } catch (error) {
+      throw error;
+    }
+  },
+};
+
+export const CHANGE_PW_API = {
+  changePw: async (props: PatchChangePwProps): Promise<{}> => {
+    try {
+      const response = await instance.patch('/members', { ...props });
       return response.data;
     } catch (error) {
       throw error;
