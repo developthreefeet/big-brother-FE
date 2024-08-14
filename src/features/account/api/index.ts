@@ -135,3 +135,14 @@ export const CHANGE_PW_API = {
     }
   },
 };
+
+export const WITHDRAW_API = {
+  withdraw: async () => {
+    try {
+      const response = await instance.delete('/members');
+      return response.data;
+    } catch (error) {
+      throw error;
+    }
+  },
+};
