@@ -8,15 +8,14 @@ import { useState, useEffect } from 'react';
 
 const page = () => {
   const router = useRouter();
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const accessToken = getCookie('accessToken');
 
     if (accessToken) {
+      setLoading(true);
       router.push('/main');
-    } else {
-      setLoading(false);
     }
   }, [router]);
 

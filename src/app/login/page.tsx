@@ -13,16 +13,15 @@ import { useEffect, useState } from 'react';
 const Page = () => {
   const { resetVerificationComplete } = useJoinEmailStore();
   const router = useRouter();
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     resetVerificationComplete();
     const accessToken = getCookie('accessToken');
 
     if (accessToken) {
+      setLoading(true);
       router.push('/main');
-    } else {
-      setLoading(false);
     }
   }, [router]);
 
