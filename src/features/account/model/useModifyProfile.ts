@@ -21,7 +21,7 @@ export const useModifyProfile = () => {
   const form = useForm({
     resolver: zodResolver(userSchema),
     defaultValues: {
-      userName: localStorage.getItem('userName'),
+      userName: localStorage.getItem('userName') as string,
     },
   });
 
