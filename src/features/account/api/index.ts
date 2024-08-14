@@ -1,6 +1,7 @@
 import { instance } from '@/shared/api/instance';
 import {
   GetEmailCodeVerificationResData,
+  GetProfileResData,
   GetVerificationResData,
   PostEmailCodeResData,
   PostJoinProps,
@@ -69,4 +70,16 @@ export const LOGIN_API = {
     instance.post<PostLoginResData>('/members/sign-in', {
       ...props,
     }),
+};
+
+export const MYPAGE_API = {
+  //유저 상세 정보 가져오는 api
+  profile: async () => {
+    try {
+      return await instance.get<GetProfileResData>('/members');
+    } catch (error) {
+      throw error;
+    }
+  },
+  //유저 정보 수정 api
 };

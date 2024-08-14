@@ -1,15 +1,16 @@
+'use client';
+
 import AccountManagement from '@/features/account/ui/AccountManagement';
 import Profile from '@/features/account/ui/Profile';
-import { mockUser } from '@/shared/mock/user';
 
-const page = () => {
+const Page = () => {
   return (
     <div className="flex flex-col space-y-6">
-      <Profile user={mockUser} />
+      <Profile />
       <hr />
       <AccountManagement />
     </div>
   );
 };
 
-export default page;
+export default Page;

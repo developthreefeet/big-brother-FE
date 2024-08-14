@@ -41,7 +41,26 @@ export interface PostLoginProps {
 }
 
 export interface PostLoginResData {
-  grantType: string;
-  accessToken: string;
-  refreshToken: string;
+  data: {
+    grantType: string;
+    accessToken: string;
+    refreshToken: string;
+  };
+}
+
+export interface GetProfileResData {
+  data: {
+    memberName: string;
+    email: string;
+    createAt: string;
+    updateAt: string;
+    affiliationListDto: {
+      affiliationTypeList: Array<{
+        councilType: string;
+        role: string;
+        affiliationCode: string;
+      }>;
+      memberName: string;
+    };
+  };
 }

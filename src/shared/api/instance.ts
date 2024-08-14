@@ -4,7 +4,7 @@ import { deleteCookie, getCookie } from 'cookies-next';
 const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
 
 export const instance = axios.create({
-  baseURL: `${baseUrl}/api/big-brother`,
+  baseURL: `${baseUrl}/api/v1`,
   timeout: 1000 * 60,
   headers: {
     'Content-Type': 'application/json',
