@@ -1,3 +1,4 @@
+import { getCookie } from 'cookies-next';
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
@@ -10,7 +11,7 @@ export function middleware(req: NextRequest) {
     return NextResponse.next();
   }
 
-  const isAuthenticated = Boolean(req.cookies.get('accessToken'));
+  const isAuthenticated = Boolean(getCookie('accessToken'));
 
   if (!isAuthenticated) {
     const url = req.nextUrl.clone();
