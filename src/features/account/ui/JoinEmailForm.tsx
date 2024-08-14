@@ -77,7 +77,7 @@ const JoinEmailForm = () => {
                       />
                     </FormControl>
                     <Button
-                      type="submit"
+                      type="button"
                       variant="outline"
                       onClick={emailDuplicationCheck}
                     >
