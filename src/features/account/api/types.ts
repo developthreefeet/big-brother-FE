@@ -17,11 +17,8 @@ export interface GetEmailCodeVerificationResData {
 export interface PostJoinProps {
   username: string;
   email: string;
-  create_at?: string;
-  update_at?: string;
-  role?: string;
-  is_active?: string;
   password: string;
+  college: string;
   affiliation: string;
 }
 
@@ -30,9 +27,8 @@ export interface PostJoinResData {
   memberName: string;
   email: string;
   create_at: string;
-  update_at: string;
-  roles: string[];
-  password: string;
+  college: string;
+  affiliation: string;
 }
 
 export interface PostLoginProps {

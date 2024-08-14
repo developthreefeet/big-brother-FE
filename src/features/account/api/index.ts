@@ -70,10 +70,6 @@ export const JOIN_API = {
         '/members/sign-up',
         {
           ...props,
-          is_active: '',
-          create_at: '',
-          update_at: '',
-          role: 'ROLE_USER',
         },
       );
       return response.data;
