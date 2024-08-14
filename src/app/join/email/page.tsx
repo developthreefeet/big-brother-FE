@@ -16,6 +16,7 @@ const page = () => {
     if (accessToken) {
       setLoading(true);
       router.push('/main');
+      setLoading(false);
     }
   }, [router]);
 

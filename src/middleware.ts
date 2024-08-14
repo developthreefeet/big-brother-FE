@@ -11,7 +11,7 @@ export function middleware(req: NextRequest) {
     return NextResponse.next();
   }
 
-  const isAuthenticated = Boolean(getCookie('accessToken'));
+  const isAuthenticated = Boolean(req.cookies.get('accessToken'));
 
   if (!isAuthenticated) {
     const url = req.nextUrl.clone();
