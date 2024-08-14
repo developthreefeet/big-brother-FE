@@ -23,7 +23,7 @@ export const useModifyProfile = () => {
   });
 
   const router = useRouter();
-  const { mutate: modifyProfile } = usePatchModifyProfile();
+  const { mutateAsync: modifyProfile } = usePatchModifyProfile();
 
   const onSubmit = (data: any) => {
     //정보 수정 api
