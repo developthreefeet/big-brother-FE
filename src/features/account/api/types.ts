@@ -41,7 +41,9 @@ export interface PostLoginProps {
 }
 
 export interface PostLoginResData {
-  grantType: string;
-  accessToken: string;
-  refreshToken: string;
+  data: {
+    grantType: string;
+    accessToken: string;
+    refreshToken: string;
+  };
 }
