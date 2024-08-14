@@ -100,7 +100,7 @@ export const LOGIN_API = {
 
 export const MYPAGE_API = {
   //유저 상세 정보 가져오는 api
-  profile: async () => {
+  profile: async (): Promise<GetProfileResData> => {
     try {
       const response = await instance.get<GetProfileResData>('/members');
       return response.data;
