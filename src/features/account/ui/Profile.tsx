@@ -16,8 +16,8 @@ const Profile = () => {
   }
 
   if (data) {
-    const affiliationType =
-      data.data.affiliationListDto?.affiliationTypeList[0];
+    const college = data.data.affiliationListDto?.affiliationTypeList[0];
+    const department = data.data.affiliationListDto?.affiliationTypeList[1];
 
     return (
       <div className="flex justify-between items-center">
@@ -26,8 +26,8 @@ const Profile = () => {
           <div className="flex flex-col space-y-1">
             <p>{data.data.email}</p>
             <div className="flex items-center space-x-1 text-gray-300 text-sm">
-              <p>{affiliationType?.councilType}</p>
-              <p>{affiliationType?.affiliationCode}</p>
+              <p>{college?.affiliationCode}</p>
+              <p>{department?.affiliationCode}</p>
             </div>
           </div>
         </div>
