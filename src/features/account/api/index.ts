@@ -83,10 +83,19 @@ export const JOIN_API = {
 
 export const LOGIN_API = {
   //로그인 api
-  login: (props: PostLoginProps) =>
-    instance.post<PostLoginResData>('/members/sign-in', {
-      ...props,
-    }),
+  login: async (props: PostLoginProps) => {
+    try {
+      const response = await instance.post<PostLoginResData>(
+        '/members/sign-in',
+        {
+          ...props,
+        },
+      );
+      return response.data;
+    } catch (error) {
+      throw error;
+    }
+  },
 };
 
 export const MYPAGE_API = {
