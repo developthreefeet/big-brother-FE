@@ -1,12 +1,18 @@
-import { zodResolver } from '@hookform/resolvers/zod';
 import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { useChangePwEmailStore } from './useChangePwEmailStore';
+import { toast } from '@/shared/ui/ui/use-toast';
+import { usePatchChangePw } from '../api/queries';
+import { getCookie } from 'cookies-next';
+import { deleteToken } from '@/shared/lib/utils';
 
 export const useChangePw = () => {
   const router = useRouter();
-  const { setIsEmailValid, setIsSubmitted } = useChangePwEmailStore();
+  const { email, setIsEmailValid, setIsSubmitted, resetChangePw } =
+    useChangePwEmailStore();
+  const { mutate: changePassword } = usePatchChangePw();
 
   const passwordRegex =
     /^(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[a-z\d@$!%*?&]{8,20}$/;
@@ -36,9 +42,24 @@ export const useChangePw = () => {
     !errors.password && form.getValues('password').length > 0;
 
   const onSubmit = () => {
+    setIsSubmitted(true);
     setIsEmailValid(false);
-    setIsSubmitted(false);
-    router.push('/login');
+
+    const newPassword = form.getValues('password');
+
+    try {
+      changePassword({ email, password: newPassword });
+      const accessToken = getCookie('accessToken');
+      if (accessToken) deleteToken();
+      resetChangePw();
+      router.push('/login');
+    } catch (error) {
+      toast({
+        variant: 'destructive',
+        description: '비밀번호 변경에 실패했습니다. 담당자에게 문의해주세요.',
+      });
+    }
   };
+
   return { form, onSubmit, isPasswordValid };
 };
