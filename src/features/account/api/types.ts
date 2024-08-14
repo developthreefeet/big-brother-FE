@@ -64,3 +64,10 @@ export interface GetProfileResData {
     };
   };
 }
+
+export interface GetRefreshResData {
+  data: {
+    accessToken: string;
+    refreshToken: string;
+  };
+}

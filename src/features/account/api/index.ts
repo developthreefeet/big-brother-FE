@@ -2,6 +2,7 @@ import { instance } from '@/shared/api/instance';
 import {
   GetEmailCodeVerificationResData,
   GetProfileResData,
+  GetRefreshResData,
   GetVerificationResData,
   PostEmailCodeResData,
   PostJoinProps,
@@ -100,7 +101,7 @@ export const LOGIN_API = {
 
 export const MYPAGE_API = {
   //유저 상세 정보 가져오는 api
-  profile: async (): Promise<GetProfileResData> => {
+  profile: async () => {
     try {
       const response = await instance.get<GetProfileResData>('/members');
       return response.data;
@@ -109,4 +110,16 @@ export const MYPAGE_API = {
     }
   },
   //유저 정보 수정 api
+};
+
+export const REFRESH_API = {
+  refresh: async () => {
+    try {
+      const response =
+        await instance.get<GetRefreshResData>('/members/refresh');
+      return response.data;
+    } catch (error) {
+      throw error;
+    }
+  },
 };
