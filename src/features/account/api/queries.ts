@@ -1,7 +1,8 @@
 import { useMutation, useQuery, UseQueryOptions } from '@tanstack/react-query';
-import { JOIN_API, LOGIN_API } from '.';
+import { JOIN_API, LOGIN_API, MYPAGE_API } from '.';
 import {
   GetEmailCodeVerificationResData,
+  GetProfileResData,
   GetVerificationResData,
   PostJoinProps,
   PostLoginProps,
@@ -62,5 +63,18 @@ export const usePostJoin = () => {
 export const usePostLogin = () => {
   return useMutation({
     mutationFn: (props: PostLoginProps) => LOGIN_API.login(props),
+  });
+};
+
+export const useGetProfile = (
+  options?: UseQueryOptions<GetProfileResData, AxiosError>,
+) => {
+  return useQuery({
+    queryKey: ['profile'],
+    queryFn: async () => {
+      const response = await MYPAGE_API.profile();
+      return response.data;
+    },
+    ...options,
   });
 };

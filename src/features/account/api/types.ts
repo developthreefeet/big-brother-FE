@@ -47,3 +47,18 @@ export interface PostLoginResData {
     refreshToken: string;
   };
 }
+
+export interface GetProfileResData {
+  memberName: string;
+  email: string;
+  createAt: string;
+  updateAt: string;
+  affiliationListDto: {
+    affiliationTypeList: Array<{
+      councilType: string;
+      role: string;
+      affiliationCode: string;
+    }>;
+    memberName: string;
+  };
+}

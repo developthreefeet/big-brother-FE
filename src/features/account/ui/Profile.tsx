@@ -1,18 +1,26 @@
-import { User } from '@/shared/types/type';
+'use client';
+
 import { Button } from '@/shared/ui/ui/button';
 import Title from '@/widgets/Title';
 import Link from 'next/link';
 
-const Profile = ({ user }: { user: User }) => {
+import { GetProfileResData } from '../api/types';
+
+interface ProfileProps {
+  data?: GetProfileResData;
+}
+
+const Profile = ({ data }: ProfileProps) => {
+  const affiliationType = data?.affiliationListDto?.affiliationTypeList[0];
   return (
     <div className="flex justify-between items-center">
       <div className="flex flex-col space-y-2">
-        <Title text={`${user.name} 님`} />
+        <Title text={`${data?.memberName} 님`} />
         <div className="flex flex-col space-y-1">
-          <p>{user.email}</p>
+          <p>{data?.email}</p>
           <div className="flex items-center space-x-1 text-gray-300 text-sm">
-            <p>{user.college}</p>
-            <p>{user.department}</p>
+            <p>{affiliationType?.councilType}</p>
+            <p>{affiliationType?.affiliationCode}</p>
           </div>
         </div>
       </div>
