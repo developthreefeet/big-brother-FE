@@ -24,10 +24,10 @@ const CommonDetailComponent = ({ content }: { content: ListItem }) => {
       </div>
       <hr />
       <div className="p-2 text-md">{getContent(content)}</div>
-      <div className="flex justify-center">
+      {/*<div className="flex justify-center">
         <Preference />
       </div>
-      <CommentComponent />
+      <CommentComponent />*/}
       <div className="flex justify-end">
         <BackToListButton />
       </div>

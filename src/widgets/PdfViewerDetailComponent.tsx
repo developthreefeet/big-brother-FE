@@ -17,10 +17,10 @@ const PdfViewerDetailComponent = ({ item }: { item: ListItem }) => {
       <hr />
       <PdfViewer pdf="/static/test.pdf" />
       <hr />
-      <div className="flex justify-center">
+      {/*<div className="flex justify-center">
         <Preference />
       </div>
-      <CommentComponent />
+      <CommentComponent />*/}
       <div className="flex justify-end">
         <BackToListButton />
       </div>
