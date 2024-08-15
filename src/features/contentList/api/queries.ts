@@ -1,6 +1,7 @@
 import {
   useInfiniteQuery,
   UseInfiniteQueryOptions,
+  UseInfiniteQueryResult,
   useQuery,
   UseQueryOptions,
 } from '@tanstack/react-query';
@@ -60,10 +61,7 @@ export const useGetCampusNotice = (
 };
 
 //학교 공지 무한스크롤용
-export const useGetInfiniteCampusNotice = (
-  campusNoticeType: string,
-  options?: UseInfiniteQueryOptions<GetNoticeResData, AxiosError>,
-) => {
+export const useGetInfiniteCampusNotice = (campusNoticeType: string) => {
   return useInfiniteQuery({
     queryKey: ['infiniteCampusNotice', campusNoticeType],
     queryFn: async ({ pageParam }) => {
@@ -80,7 +78,6 @@ export const useGetInfiniteCampusNotice = (
       if (lastPage.content.length < 6) return undefined;
       return lastPage.number + 1;
     },
-    ...options,
   });
 };
 
