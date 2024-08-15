@@ -67,12 +67,7 @@ export const NOTICE_API = {
   campusNoticeDetail: async (campusNoticeId: number) => {
     try {
       const response = await instance.get<GetNoticeDetailResData>(
-        '/campusnotice',
-        {
-          params: {
-            campusNoticeId,
-          },
-        },
+        `/campusnotice/${campusNoticeId}`,
       );
       return response.data;
     } catch (error: any) {
