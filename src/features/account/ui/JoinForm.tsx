@@ -13,10 +13,12 @@ import {
 import FormSelectComponent from '@/widgets/FormSelectComponent';
 import { Input } from '@/shared/ui/ui/input';
 import { useJoin } from '../model/useJoin';
-import { collageItems, departmentItems } from '@/shared/lib/assets';
+import { departmentItems } from '@/shared/lib/assets';
+import { useOrganizationList } from '@/features/contentList/model/useOrganizationList';
 
 const JoinForm = () => {
   const { form, onSubmit, isSubmitButtonEnabled } = useJoin();
+  const { collegeNameList, isLoading } = useOrganizationList();
 
   return (
     <Form {...form}>
@@ -66,7 +68,7 @@ const JoinForm = () => {
                 <FormControl>
                   <FormSelectComponent
                     placeholder="단과대를 선택해주세요."
-                    items={collageItems}
+                    items={isLoading ? ['로딩중...'] : collegeNameList || [' ']}
                     control={form.control}
                     name="college"
                   />

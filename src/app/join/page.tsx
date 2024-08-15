@@ -9,12 +9,13 @@ const Page = () => {
   const router = useRouter();
   const { verificationComplete } = useJoinEmailStore();
 
+  /*
   useEffect(() => {
     if (!verificationComplete) {
       router.push('/join/email');
     }
   }, [verificationComplete]);
-
+*/
   return (
     <>
       <h3 className="font-bold">정보를 입력해 주세요.</h3>
