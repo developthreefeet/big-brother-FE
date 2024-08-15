@@ -1,11 +1,11 @@
 import { instance } from '@/shared/api/instance';
 import {
-  ApiResponse,
   GetCollegeResData,
   GetDepartmentResData,
   GetNoticeDetailResData,
   GetNoticeResData,
 } from './types';
+import { ApiResponse } from '@/shared/types/type';
 
 export const ORGANIZATION_API = {
   //단과대 리스트 api

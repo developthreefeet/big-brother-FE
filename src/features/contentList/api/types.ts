@@ -1,7 +1,3 @@
-export interface ApiResponse<T> {
-  data: T;
-}
-
 export interface GetCollegeResData {
   data: Array<{
     val: number;
