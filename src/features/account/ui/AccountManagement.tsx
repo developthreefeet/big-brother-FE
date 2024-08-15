@@ -3,7 +3,7 @@
 import { deleteToken } from '@/shared/lib/utils';
 import { Button } from '@/shared/ui/ui/button';
 import { useRouter } from 'next/navigation';
-import { useWithdraw } from '../model/useWithdrwa';
+import { useWithdraw } from '../model/useWithdraw';
 
 const AccountManagement = () => {
   const router = useRouter();
