@@ -7,11 +7,13 @@ import { toast } from '@/shared/ui/ui/use-toast';
 import { usePatchChangePw } from '../api/queries';
 import { getCookie } from 'cookies-next';
 import { deleteToken } from '@/shared/lib/utils';
+import { useUserNameStore } from './useUserNameStore';
 
 export const useChangePw = () => {
   const router = useRouter();
   const { email, resetChangePw } = useChangePwEmailStore();
   const { mutateAsync: changePassword } = usePatchChangePw();
+  const { resetUserName } = useUserNameStore();
 
   const passwordRegex =
     /^(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[a-z\d@$!%*?&]{8,20}$/;
@@ -48,6 +50,7 @@ export const useChangePw = () => {
       const accessToken = getCookie('accessToken');
       if (accessToken) {
         deleteToken();
+        resetUserName();
         toast({
           description: '비밀번호 변경이 완료되었습니다. 다시 로그인해주세요.',
         });

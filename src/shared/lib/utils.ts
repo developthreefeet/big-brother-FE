@@ -9,7 +9,6 @@ import {
   TransactionItem,
 } from '../types/type';
 import { deleteCookie } from 'cookies-next';
-import { useUserNameStore } from '@/features/account/model/useUserNameStore';
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -96,8 +95,6 @@ export const calculateTotals = (items: TransactionItem[]) => {
 
 //로그아웃
 export const deleteToken = () => {
-  const { resetUserName } = useUserNameStore();
-  resetUserName();
   deleteCookie('accessToken');
   deleteCookie('refreshToken');
 };

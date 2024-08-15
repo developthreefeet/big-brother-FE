@@ -4,10 +4,12 @@ import { deleteToken } from '@/shared/lib/utils';
 import { Button } from '@/shared/ui/ui/button';
 import { useRouter } from 'next/navigation';
 import { useWithdraw } from '../model/useWithdraw';
+import { useUserNameStore } from '../model/useUserNameStore';
 
 const AccountManagement = () => {
   const router = useRouter();
   const { handleWithdrawClick } = useWithdraw();
+  const { resetUserName } = useUserNameStore();
 
   return (
     <ul>
