@@ -1,5 +1,3 @@
-import { RuleItem } from '@/shared/types/type';
-
 export const noticeItems = [
   {
     notice_title: '공지 1',

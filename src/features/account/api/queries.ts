@@ -16,7 +16,6 @@ import {
   GetProfileResData,
   GetVerificationResData,
   PatchChangePwProps,
-  PatchProfileResData,
   PostJoinProps,
   PostLoginProps,
 } from './types';
