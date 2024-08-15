@@ -16,8 +16,14 @@ import { useJoin } from '../model/useJoin';
 import { departmentItems } from '@/shared/lib/assets';
 
 const JoinForm = () => {
-  const { form, onSubmit, isSubmitButtonEnabled, collegeNameList, isLoading } =
-    useJoin();
+  const {
+    form,
+    onSubmit,
+    isSubmitButtonEnabled,
+    collegeNameList,
+    isLoadingCollege,
+    departmentNameList,
+  } = useJoin();
 
   return (
     <Form {...form}>
@@ -67,7 +73,11 @@ const JoinForm = () => {
                 <FormControl>
                   <FormSelectComponent
                     placeholder="단과대를 선택해주세요."
-                    items={isLoading ? ['로딩중...'] : collegeNameList || [' ']}
+                    items={
+                      isLoadingCollege
+                        ? ['로딩중...']
+                        : collegeNameList || [' ']
+                    }
                     control={form.control}
                     name="college"
                   />
@@ -85,7 +95,7 @@ const JoinForm = () => {
                 <FormControl>
                   <FormSelectComponent
                     placeholder="학과를 선택해주세요."
-                    items={departmentItems}
+                    items={departmentNameList}
                     control={form.control}
                     name="department"
                   />

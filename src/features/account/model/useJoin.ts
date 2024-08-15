@@ -8,7 +8,11 @@ import { useJoinEmailStore } from './useJoinEmailStore';
 import { usePostJoin } from '../api/queries';
 import { PostJoinProps } from '../api/types';
 import { toast } from '@/shared/ui/ui/use-toast';
-import { useGetCollege } from '@/features/contentList/api/queries';
+import {
+  useGetCollege,
+  useGetDepartment,
+} from '@/features/contentList/api/queries';
+import { useEffect, useState } from 'react';
 
 export const useJoin = () => {
   const { email } = useJoinEmailStore();
@@ -36,6 +40,7 @@ export const useJoin = () => {
 
   const form = useForm({
     resolver: zodResolver(userSchema),
+    mode: 'onSubmit',
     defaultValues: {
       userName: '',
       password: '',
@@ -54,9 +59,35 @@ export const useJoin = () => {
     form.getValues('department') &&
     !errors.password;
 
-  const { data: collegeData, isLoading } = useGetCollege();
-
+  const { data: collegeData, isLoading: isLoadingCollege } = useGetCollege();
   const collegeNameList = collegeData?.data.map((v) => v.councilName);
+
+  const { refetch: refetchGetDepartment } = useGetDepartment(
+    form.getValues('college'),
+  );
+  const [departmentNameList, setDepartmentNameList] = useState([' ']);
+  const [resettingDepartment, setResettingDepartment] = useState(false);
+
+  const handleCollegeSelect = async () => {
+    const college = form.getValues('college');
+    if (college) {
+      const { data: departmentData } = await refetchGetDepartment();
+      const departmentNameList = departmentData?.data.map((v) => v.councilName);
+      setDepartmentNameList(departmentNameList || [' ']);
+      form.setValue('department', '');
+      setResettingDepartment(true);
+    }
+  };
+
+  useEffect(() => {
+    handleCollegeSelect();
+  }, [form.watch('college')]);
+
+  useEffect(() => {
+    if (resettingDepartment) {
+      setResettingDepartment(false);
+    }
+  }, [form.watch('department')]);
 
   const router = useRouter();
 
@@ -70,6 +101,7 @@ export const useJoin = () => {
       college: data.college,
       affiliation: data.department,
     };
+    console.log(joinData);
     try {
       await joinQuery.mutateAsync(joinData);
       toast({
@@ -89,6 +121,7 @@ export const useJoin = () => {
     onSubmit,
     isSubmitButtonEnabled,
     collegeNameList,
-    isLoading,
+    isLoadingCollege,
+    departmentNameList,
   };
 };
