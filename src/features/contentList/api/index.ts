@@ -66,10 +66,10 @@ export const NOTICE_API = {
   //학교 공지사항 detail api
   campusNoticeDetail: async (campusNoticeId: number) => {
     try {
-      const response = await instance.get<GetNoticeDetailResData>(
+      const response = await instance.get<ApiResponse<GetNoticeDetailResData>>(
         `/campusnotice/${campusNoticeId}`,
       );
-      return response.data;
+      return response.data.data;
     } catch (error: any) {
       throw error;
     }
