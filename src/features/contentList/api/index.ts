@@ -1,5 +1,9 @@
 import { instance } from '@/shared/api/instance';
-import { GetCollegeResData, GetDepartmentResData } from './types';
+import {
+  GetCampusNoticeResData,
+  GetCollegeResData,
+  GetDepartmentResData,
+} from './types';
 
 export const ORGANIZATION_API = {
   //단과대 리스트 api
@@ -21,6 +25,33 @@ export const ORGANIZATION_API = {
         {
           params: {
             councilName,
+          },
+        },
+      );
+      return response.data;
+    } catch (error) {
+      throw error;
+    }
+  },
+};
+
+export const NOTICE_API = {
+  //학교 공지사항 리스트 api
+  campusNotice: async (
+    campusNoticeType: string,
+    page?: number,
+    size?: number,
+    search?: string,
+  ) => {
+    try {
+      const response = await instance.get<GetCampusNoticeResData>(
+        '/campusnotice',
+        {
+          params: {
+            campusNoticeType,
+            page,
+            size,
+            search,
           },
         },
       );
