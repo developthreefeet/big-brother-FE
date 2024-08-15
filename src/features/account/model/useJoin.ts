@@ -101,7 +101,7 @@ export const useJoin = () => {
       college: data.college,
       affiliation: data.department,
     };
-    console.log(joinData);
+
     try {
       await joinQuery.mutateAsync(joinData);
       toast({
