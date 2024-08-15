@@ -1,10 +1,10 @@
 'use client';
 
 import { ListItem } from '@/shared/types/type';
-import ListComponent from '@/widgets/ListComponent';
 import OrganizationSelectComponent from '@/widgets/OrganizationSelectComponent';
 import Title from '@/widgets/Title';
-import useOrganizationRouter from '@/shared/hooks/useOrganizationRouter';
+import useOrganizationRouter from '@/features/contentList/model/useOrganizationRouter';
+import ListComponent from '@/features/contentList/ui/ListComponent';
 
 interface ListLayoutComponentProps {
   items: ListItem[];

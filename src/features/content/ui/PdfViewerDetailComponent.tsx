@@ -1,11 +1,9 @@
-import BackToListButton from './BackToListButton';
-import DateText from './DateText';
-import PdfViewer from './PdfViewer';
-import Title from './Title';
-import Preference from './Preference';
-import CommentComponent from './CommentComponent';
 import { ListItem } from '@/shared/types/type';
 import { formatDate, getTitle } from '@/shared/lib/utils';
+import BackToListButton from '@/features/content/ui/BackToListButton';
+import DateText from '@/widgets/DateText';
+import PdfViewer from '@/widgets/PdfViewer';
+import { Title } from '@radix-ui/react-toast';
 
 const PdfViewerDetailComponent = ({ item }: { item: ListItem }) => {
   return (
@@ -17,10 +15,7 @@ const PdfViewerDetailComponent = ({ item }: { item: ListItem }) => {
       <hr />
       <PdfViewer pdf="/static/test.pdf" />
       <hr />
-      {/*<div className="flex justify-center">
-        <Preference />
-      </div>
-      <CommentComponent />*/}
+
       <div className="flex justify-end">
         <BackToListButton />
       </div>

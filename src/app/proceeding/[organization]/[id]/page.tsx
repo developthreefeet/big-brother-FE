@@ -1,8 +1,7 @@
 'use client';
-
-import useDetail from '@/shared/hooks/useDetail';
+import useDetail from '@/features/content/model/useDetail';
+import PdfViewerDetailComponent from '@/features/content/ui/PdfViewerDetailComponent';
 import { proceedingItems } from '@/shared/mock/contentList';
-import PdfViewerDetailComponent from '@/widgets/PdfViewerDetailComponent';
 
 const page = () => {
   const proceedingItem = useDetail(proceedingItems);

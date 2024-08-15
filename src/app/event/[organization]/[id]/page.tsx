@@ -1,8 +1,8 @@
 'use client';
 
+import useDetail from '@/features/content/model/useDetail';
+import CommonDetailComponent from '@/features/content/ui/CommonDetailComponent';
 import { eventItems } from '@/shared/mock/contentList';
-import CommonDetailComponent from '@/widgets/CommonDetailComponent';
-import useDetail from '@/shared/hooks/useDetail';
 
 const page = () => {
   const eventItem = useDetail(eventItems);

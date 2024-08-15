@@ -1,8 +1,8 @@
-import BackToListButton from '@/widgets/BackToListButton';
 import DateText from '@/widgets/DateText';
 import Title from '@/widgets/Title';
 import { DetailItem } from '@/shared/types/type';
 import { formatDate } from '@/shared/lib/utils';
+import BackToListButton from '@/features/content/ui/BackToListButton';
 
 const CommonDetailComponent = ({
   content: data,

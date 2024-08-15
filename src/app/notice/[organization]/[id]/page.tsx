@@ -1,7 +1,7 @@
 'use client';
 
-import useDetail from '@/shared/hooks/useDetail';
-import CommonDetailComponent from '@/widgets/CommonDetailComponent';
+import useDetail from '@/features/content/model/useDetail';
+import CommonDetailComponent from '@/features/content/ui/CommonDetailComponent';
 import { usePathname } from 'next/navigation';
 
 const page = () => {
