@@ -46,15 +46,18 @@ export const NOTICE_API = {
     search?: string,
   ) => {
     try {
-      const response = await instance.get<GetNoticeResData>('/campusnotice', {
-        params: {
-          campusNoticeType,
-          page,
-          size,
-          search,
+      const response = await instance.get<ApiResponse<GetNoticeResData>>(
+        '/campusnotice',
+        {
+          params: {
+            campusNoticeType,
+            page,
+            size,
+            search,
+          },
         },
-      });
-      return response.data;
+      );
+      return response.data.data;
     } catch (error) {
       throw error;
     }

@@ -77,8 +77,8 @@ export const useGetInfiniteCampusNotice = (
     },
     initialPageParam: 0,
     getNextPageParam: (lastPage) => {
-      if (lastPage.data.content.length < 6) return undefined;
-      return lastPage.data.number + 1;
+      if (lastPage.content.length < 6) return undefined;
+      return lastPage.number + 1;
     },
     ...options,
   });
@@ -114,8 +114,8 @@ export const useGetNotice = (
     },
     initialPageParam: 0,
     getNextPageParam: (lastPage) => {
-      if (lastPage.data.content.length < 6) return undefined;
-      return lastPage.data.number + 1;
+      if (lastPage.content.length < 6) return undefined;
+      return lastPage.number + 1;
     },
     ...options,
   });
