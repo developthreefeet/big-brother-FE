@@ -3,6 +3,8 @@ import Title from '@/widgets/Title';
 import { DetailItem } from '@/shared/types/type';
 import { formatDate } from '@/shared/lib/utils';
 import BackToListButton from '@/features/content/ui/BackToListButton';
+import ReactMarkdown from 'react-markdown';
+import rehypeRaw from 'rehype-raw';
 
 const CommonDetailComponent = ({
   content: data,
@@ -26,7 +28,11 @@ const CommonDetailComponent = ({
           </div>
         </div>
         <hr />
-        <div className="p-2 text-md">{data.content}</div>
+        <div className="p-5 text-md">
+          <ReactMarkdown rehypePlugins={[rehypeRaw]}>
+            {data.content}
+          </ReactMarkdown>
+        </div>
         <div className="flex justify-end">
           <BackToListButton />
         </div>
