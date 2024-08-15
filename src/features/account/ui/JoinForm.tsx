@@ -14,11 +14,10 @@ import FormSelectComponent from '@/widgets/FormSelectComponent';
 import { Input } from '@/shared/ui/ui/input';
 import { useJoin } from '../model/useJoin';
 import { departmentItems } from '@/shared/lib/assets';
-import { useOrganizationList } from '@/features/contentList/model/useOrganizationList';
 
 const JoinForm = () => {
-  const { form, onSubmit, isSubmitButtonEnabled } = useJoin();
-  const { collegeNameList, isLoading } = useOrganizationList();
+  const { form, onSubmit, isSubmitButtonEnabled, collegeNameList, isLoading } =
+    useJoin();
 
   return (
     <Form {...form}>

@@ -8,6 +8,7 @@ import { useJoinEmailStore } from './useJoinEmailStore';
 import { usePostJoin } from '../api/queries';
 import { PostJoinProps } from '../api/types';
 import { toast } from '@/shared/ui/ui/use-toast';
+import { useGetCollege } from '@/features/contentList/api/queries';
 
 export const useJoin = () => {
   const { email } = useJoinEmailStore();
@@ -53,6 +54,10 @@ export const useJoin = () => {
     form.getValues('department') &&
     !errors.password;
 
+  const { data: collegeData, isLoading } = useGetCollege();
+
+  const collegeNameList = collegeData?.data.map((v) => v.councilName);
+
   const router = useRouter();
 
   const joinQuery = usePostJoin();
@@ -83,5 +88,7 @@ export const useJoin = () => {
     form,
     onSubmit,
     isSubmitButtonEnabled,
+    collegeNameList,
+    isLoading,
   };
 };
