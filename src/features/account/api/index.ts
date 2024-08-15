@@ -136,7 +136,7 @@ export const REFRESH_API = {
 export const CHANGE_PW_API = {
   changePw: async (props: PatchChangePwProps): Promise<{}> => {
     try {
-      const response = await instance.patch('/members', { ...props });
+      const response = await instance.patch('/members/password', { ...props });
       return response.data;
     } catch (error) {
       throw error;
