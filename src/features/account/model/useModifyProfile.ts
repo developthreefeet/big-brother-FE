@@ -6,6 +6,7 @@ import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { usePatchModifyProfile } from '../api/queries';
 import { toast } from '@/shared/ui/ui/use-toast';
+import { useUserNameStore } from './useUserNameStore';
 
 export const useModifyProfile = () => {
   const userNameRegex = /^[가-힣]+$/;
@@ -18,8 +19,11 @@ export const useModifyProfile = () => {
       .regex(userNameRegex, { message: '한글 조합만 사용 가능합니다.' }),
   });
 
+  const { userName } = useUserNameStore();
+
   const form = useForm({
     resolver: zodResolver(userSchema),
+    defaultValues: { userName: userName },
   });
 
   const router = useRouter();
@@ -28,7 +32,7 @@ export const useModifyProfile = () => {
   const onSubmit = (data: any) => {
     //정보 수정 api
     try {
-      modifyProfile(data.userName);
+      modifyProfile(data.userName as string);
       toast({
         description: '정보 수정이 완료되었습니다.',
       });

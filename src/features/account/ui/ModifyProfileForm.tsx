@@ -27,11 +27,7 @@ const ModifyProfileForm = () => {
             <FormItem>
               <FormLabel>이름</FormLabel>
               <FormControl>
-                <Input
-                  placeholder="한글 조합 (2~15자)"
-                  {...field}
-                  defaultValue={userName}
-                />
+                <Input placeholder="한글 조합 (2~15자)" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
