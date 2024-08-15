@@ -5,6 +5,7 @@ import { formatDate } from '@/shared/lib/utils';
 import BackToListButton from '@/features/content/ui/BackToListButton';
 import ReactMarkdown from 'react-markdown';
 import rehypeRaw from 'rehype-raw';
+import { TbDownload } from 'react-icons/tb';
 
 const CommonDetailComponent = ({
   content: data,
@@ -33,6 +34,18 @@ const CommonDetailComponent = ({
             {data.content}
           </ReactMarkdown>
         </div>
+        <hr />
+        {data.urlList.length > 0 &&
+          data.urlList.map(() => (
+            <a
+              className="flex flex-row items-center gap-1 pt-2 text-sm"
+              href={data.urlList[0]}
+              download="다운로드 되는 파일명"
+            >
+              <TbDownload size={16} />
+              첨부파일 다운로드
+            </a>
+          ))}
         <div className="flex justify-end">
           <BackToListButton />
         </div>
