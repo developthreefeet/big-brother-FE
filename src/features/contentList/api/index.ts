@@ -46,15 +46,18 @@ export const NOTICE_API = {
     search?: string,
   ) => {
     try {
-      const response = await instance.get<GetNoticeResData>('/campusnotice', {
-        params: {
-          campusNoticeType,
-          page,
-          size,
-          search,
+      const response = await instance.get<ApiResponse<GetNoticeResData>>(
+        '/campusnotice',
+        {
+          params: {
+            campusNoticeType,
+            page,
+            size,
+            search,
+          },
         },
-      });
-      return response.data;
+      );
+      return response.data.data;
     } catch (error) {
       throw error;
     }
@@ -63,15 +66,10 @@ export const NOTICE_API = {
   //학교 공지사항 detail api
   campusNoticeDetail: async (campusNoticeId: number) => {
     try {
-      const response = await instance.get<GetNoticeDetailResData>(
-        '/campusnotice',
-        {
-          params: {
-            campusNoticeId,
-          },
-        },
+      const response = await instance.get<ApiResponse<GetNoticeDetailResData>>(
+        `/campusnotice/${campusNoticeId}`,
       );
-      return response.data;
+      return response.data.data;
     } catch (error: any) {
       throw error;
     }

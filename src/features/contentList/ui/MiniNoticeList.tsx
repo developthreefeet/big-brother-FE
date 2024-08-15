@@ -29,7 +29,7 @@ const MiniNoticeList = () => {
 
       {isSuccess && data && (
         <div className="flex flex-col ml-1">
-          {data.data.content.slice(0, 5).map((content, index) => (
+          {data.content.slice(0, 5).map((content, index) => (
             <Link href={`/notice/general/${content.id}`} key={index}>
               <Button
                 variant="link"

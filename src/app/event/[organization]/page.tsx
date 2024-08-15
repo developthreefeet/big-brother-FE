@@ -1,5 +1,5 @@
+import ListLayoutComponent from '@/features/contentList/ui/ListLayoutComponent';
 import { eventItems } from '@/shared/mock/contentList';
-import ListLayoutComponent from '@/widgets/ListLayoutComponent';
 
 const page = () => {
   return <ListLayoutComponent items={eventItems} title="행사" />;

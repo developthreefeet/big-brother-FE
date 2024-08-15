@@ -1,8 +1,23 @@
-import { noticeItems } from '@/shared/mock/contentList';
-import ListLayoutComponent from '@/widgets/ListLayoutComponent';
+'use client';
+
+import useNotice from '@/features/contentList/model/useNotice';
+import ListLayoutComponent from '@/features/contentList/ui/ListLayoutComponent';
 
 const page = () => {
-  return <ListLayoutComponent items={noticeItems} title="공지사항" />;
+  const { data, fetchNextPage, hasNextPage, isFetchingNextPage, isLoading } =
+    useNotice();
+
+  const allContent = data?.pages.flatMap((page) => page.content);
+  return (
+    <ListLayoutComponent
+      items={allContent}
+      isLoading={isLoading}
+      title="공지사항"
+      onLoadMore={fetchNextPage}
+      hasMore={hasNextPage}
+      isLoadingMore={isFetchingNextPage}
+    />
+  );
 };
 
 export default page;

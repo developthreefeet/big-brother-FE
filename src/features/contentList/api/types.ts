@@ -23,34 +23,32 @@ export interface NoticeContent {
 }
 
 export interface GetNoticeResData {
-  data: {
-    totalPages: number;
-    totalElements: number;
-    size: number;
-    content: NoticeContent[];
-    number: number;
+  totalPages: number;
+  totalElements: number;
+  size: number;
+  content: NoticeContent[];
+  number: number;
+  sort: {
+    empty: boolean;
+    unsorted: boolean;
+    sorted: boolean;
+  };
+  numberOfElements: number;
+  pageable: {
+    offset: number;
     sort: {
       empty: boolean;
       unsorted: boolean;
       sorted: boolean;
     };
-    numberOfElements: number;
-    pageable: {
-      offset: number;
-      sort: {
-        empty: boolean;
-        unsorted: boolean;
-        sorted: boolean;
-      };
-      unpaged: boolean;
-      paged: boolean;
-      pageNumber: number;
-      pageSize: number;
-    };
-    first: boolean;
-    last: boolean;
-    empty: boolean;
+    unpaged: boolean;
+    paged: boolean;
+    pageNumber: number;
+    pageSize: number;
   };
+  first: boolean;
+  last: boolean;
+  empty: boolean;
 }
 
 export interface GetNoticeDetailResData {

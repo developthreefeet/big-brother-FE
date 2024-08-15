@@ -1,6 +1,7 @@
 import {
   useInfiniteQuery,
   UseInfiniteQueryOptions,
+  UseInfiniteQueryResult,
   useQuery,
   UseQueryOptions,
 } from '@tanstack/react-query';
@@ -60,10 +61,7 @@ export const useGetCampusNotice = (
 };
 
 //학교 공지 무한스크롤용
-export const useGetInfiniteCampusNotice = (
-  campusNoticeType: string,
-  options?: UseInfiniteQueryOptions<GetNoticeResData, AxiosError>,
-) => {
+export const useGetInfiniteCampusNotice = (campusNoticeType: string) => {
   return useInfiniteQuery({
     queryKey: ['infiniteCampusNotice', campusNoticeType],
     queryFn: async ({ pageParam }) => {
@@ -77,10 +75,9 @@ export const useGetInfiniteCampusNotice = (
     },
     initialPageParam: 0,
     getNextPageParam: (lastPage) => {
-      if (lastPage.data.content.length < 6) return undefined;
-      return lastPage.data.number + 1;
+      if (lastPage.content.length < 6) return undefined;
+      return lastPage.number + 1;
     },
-    ...options,
   });
 };
 
@@ -97,10 +94,7 @@ export const useGetCampusNoticeDetail = (
 };
 
 //자치단체 공지
-export const useGetNotice = (
-  affiliation: string,
-  options?: UseInfiniteQueryOptions<GetNoticeResData, AxiosError>,
-) => {
+export const useGetNotice = (affiliation: string) => {
   return useInfiniteQuery({
     queryKey: ['infiniteNotice', affiliation],
     queryFn: async ({ pageParam }) => {
@@ -114,10 +108,9 @@ export const useGetNotice = (
     },
     initialPageParam: 0,
     getNextPageParam: (lastPage) => {
-      if (lastPage.data.content.length < 6) return undefined;
-      return lastPage.data.number + 1;
+      if (lastPage.content.length < 6) return undefined;
+      return lastPage.number + 1;
     },
-    ...options,
   });
 };
 

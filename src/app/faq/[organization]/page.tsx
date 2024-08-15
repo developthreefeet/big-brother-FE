@@ -3,8 +3,8 @@
 import OrganizationTitleSelectComponent from '@/widgets/OrganizationSelectComponent';
 import Title from '@/widgets/Title';
 import { faqItems } from '@/shared/mock/contentList';
-import useOrganizationRouter from '@/shared/hooks/useOrganizationRouter';
-import AccordionComponent from '@/widgets/AccordionComponent';
+import useOrganizationRouter from '@/features/contentList/model/useOrganizationRouter';
+import AccordionComponent from '@/features/content/ui/AccordionComponent';
 
 const Page = () => {
   useOrganizationRouter();
