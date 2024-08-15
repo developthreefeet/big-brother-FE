@@ -13,7 +13,6 @@ import {
 import FormSelectComponent from '@/widgets/FormSelectComponent';
 import { Input } from '@/shared/ui/ui/input';
 import { useJoin } from '../model/useJoin';
-import { departmentItems } from '@/shared/lib/assets';
 
 const JoinForm = () => {
   const {
