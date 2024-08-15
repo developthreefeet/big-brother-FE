@@ -2,7 +2,7 @@
 
 import { formatDate, getId, getTitle, truncateTitle } from '@/shared/lib/utils';
 import { ListComponentProps } from '@/shared/types/type';
-import DateText from './DateText';
+import DateText from '@/widgets/DateText';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
