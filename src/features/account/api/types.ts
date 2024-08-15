@@ -17,11 +17,8 @@ export interface GetEmailCodeVerificationResData {
 export interface PostJoinProps {
   username: string;
   email: string;
-  create_at?: string;
-  update_at?: string;
-  role?: string;
-  is_active?: string;
   password: string;
+  college: string;
   affiliation: string;
 }
 
@@ -30,9 +27,8 @@ export interface PostJoinResData {
   memberName: string;
   email: string;
   create_at: string;
-  update_at: string;
-  roles: string[];
-  password: string;
+  college: string;
+  affiliation: string;
 }
 
 export interface PostLoginProps {
@@ -75,4 +71,21 @@ export interface GetRefreshResData {
 export interface PatchChangePwProps {
   email: string;
   password: string;
+}
+
+export interface PatchProfileResData {
+  data: {
+    memberName: string;
+    email: string;
+    createAt: string;
+    updateAt: string;
+    affiliationListDto: {
+      affiliationTypeList: Array<{
+        councilType: string;
+        role: string;
+        affiliationCode: string;
+      }>;
+      memberName: string;
+    };
+  };
 }

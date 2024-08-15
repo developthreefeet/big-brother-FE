@@ -62,6 +62,7 @@ export const useJoin = () => {
       username: data.userName,
       password: data.password,
       email,
+      college: data.college,
       affiliation: data.department,
     };
     try {
