@@ -1,7 +1,6 @@
 'use client';
 
-import { formatDate, getId, getTitle, truncateTitle } from '@/shared/lib/utils';
-import { ListComponentProps } from '@/shared/types/type';
+import { formatDate, truncateTitle } from '@/shared/lib/utils';
 import DateText from '@/widgets/DateText';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';

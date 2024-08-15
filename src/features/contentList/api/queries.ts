@@ -94,10 +94,7 @@ export const useGetCampusNoticeDetail = (
 };
 
 //자치단체 공지
-export const useGetNotice = (
-  affiliation: string,
-  options?: UseInfiniteQueryOptions<GetNoticeResData, AxiosError>,
-) => {
+export const useGetNotice = (affiliation: string) => {
   return useInfiniteQuery({
     queryKey: ['infiniteNotice', affiliation],
     queryFn: async ({ pageParam }) => {
@@ -114,7 +111,6 @@ export const useGetNotice = (
       if (lastPage.content.length < 6) return undefined;
       return lastPage.number + 1;
     },
-    ...options,
   });
 };
 
