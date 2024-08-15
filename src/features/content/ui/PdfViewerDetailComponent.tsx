@@ -2,8 +2,8 @@ import { ListItem } from '@/shared/types/type';
 import { formatDate, getTitle } from '@/shared/lib/utils';
 import BackToListButton from '@/features/content/ui/BackToListButton';
 import DateText from '@/widgets/DateText';
-import PdfViewer from '@/widgets/PdfViewer';
 import { Title } from '@radix-ui/react-toast';
+import PdfViewer from './PdfViewer';
 
 const PdfViewerDetailComponent = ({ item }: { item: ListItem }) => {
   return (
