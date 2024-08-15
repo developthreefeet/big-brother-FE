@@ -1,3 +1,5 @@
+import { GetNoticeDetailResData } from '@/features/contentList/api/types';
+
 //ListComponent를 위한 임시 타입 지정
 export interface EventItem {
   eventName: string;
@@ -88,3 +90,7 @@ export interface User {
   create_at: string;
   update_at: string;
 }
+
+/////////////////////////
+
+export type DetailItem = GetNoticeDetailResData;

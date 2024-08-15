@@ -1,3 +1,7 @@
+export interface ApiResponse<T> {
+  data: T;
+}
+
 export interface GetCollegeResData {
   data: Array<{
     val: number;
@@ -12,7 +16,7 @@ export interface GetDepartmentResData {
   }>;
 }
 
-export interface CampusNoticeContent {
+export interface NoticeContent {
   createAt: string;
   updateAt: string;
   id: number;
@@ -22,12 +26,12 @@ export interface CampusNoticeContent {
   files: string[];
 }
 
-export interface GetCampusNoticeResData {
+export interface GetNoticeResData {
   data: {
     totalPages: number;
     totalElements: number;
     size: number;
-    content: CampusNoticeContent[];
+    content: NoticeContent[];
     number: number;
     sort: {
       empty: boolean;
@@ -51,4 +55,14 @@ export interface GetCampusNoticeResData {
     last: boolean;
     empty: boolean;
   };
+}
+
+export interface GetNoticeDetailResData {
+  noticeId: number;
+  title: string;
+  content: string;
+  type: string;
+  urlList: string[];
+  createAt: string;
+  updateAt: string;
 }

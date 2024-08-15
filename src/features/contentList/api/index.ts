@@ -1,8 +1,10 @@
 import { instance } from '@/shared/api/instance';
 import {
-  GetCampusNoticeResData,
+  ApiResponse,
   GetCollegeResData,
   GetDepartmentResData,
+  GetNoticeDetailResData,
+  GetNoticeResData,
 } from './types';
 
 export const ORGANIZATION_API = {
@@ -44,18 +46,66 @@ export const NOTICE_API = {
     search?: string,
   ) => {
     try {
-      const response = await instance.get<GetCampusNoticeResData>(
+      const response = await instance.get<GetNoticeResData>('/campusnotice', {
+        params: {
+          campusNoticeType,
+          page,
+          size,
+          search,
+        },
+      });
+      return response.data;
+    } catch (error) {
+      throw error;
+    }
+  },
+
+  //학교 공지사항 detail api
+  campusNoticeDetail: async (campusNoticeId: number) => {
+    try {
+      const response = await instance.get<GetNoticeDetailResData>(
         '/campusnotice',
         {
           params: {
-            campusNoticeType,
-            page,
-            size,
-            search,
+            campusNoticeId,
           },
         },
       );
       return response.data;
+    } catch (error: any) {
+      throw error;
+    }
+  },
+
+  //자치단체 공지사항 리스트 api
+  notice: async (
+    affiliation: string,
+    page?: number,
+    size?: number,
+    search?: string,
+  ) => {
+    try {
+      const response = await instance.get<GetNoticeResData>('/notice', {
+        params: {
+          affiliation,
+          page,
+          size,
+          search,
+        },
+      });
+      return response.data;
+    } catch (error) {
+      throw error;
+    }
+  },
+
+  //자치단체 공지사항 detail api
+  noticeDetail: async (noticeId: number) => {
+    try {
+      const response = await instance.get<ApiResponse<GetNoticeDetailResData>>(
+        `/notice/${noticeId}`,
+      );
+      return response.data.data;
     } catch (error) {
       throw error;
     }

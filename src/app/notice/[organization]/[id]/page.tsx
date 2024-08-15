@@ -1,15 +1,17 @@
 'use client';
 
 import useDetail from '@/shared/hooks/useDetail';
-import { noticeItems } from '@/shared/mock/contentList';
 import CommonDetailComponent from '@/widgets/CommonDetailComponent';
+import { usePathname } from 'next/navigation';
 
 const page = () => {
-  const noticeItem = useDetail(noticeItems);
+  const pathname = usePathname();
+  const organization = pathname.split('/')[2];
+  const id = pathname.split('/')[3];
 
-  if (!noticeItem) {
-    return null;
-  }
+  const { returnNoticeDetailItem } = useDetail();
+
+  let noticeItem = returnNoticeDetailItem(organization, parseInt(id));
 
   return <CommonDetailComponent content={noticeItem} />;
 };

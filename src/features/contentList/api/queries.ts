@@ -1,14 +1,14 @@
 import {
-  QueryFunctionContext,
   useInfiniteQuery,
   UseInfiniteQueryOptions,
   useQuery,
   UseQueryOptions,
 } from '@tanstack/react-query';
 import {
-  GetCampusNoticeResData,
   GetCollegeResData,
   GetDepartmentResData,
+  GetNoticeDetailResData,
+  GetNoticeResData,
 } from './types';
 import { AxiosError } from 'axios';
 import { NOTICE_API, ORGANIZATION_API } from '.';
@@ -39,10 +39,10 @@ export const useGetDepartment = (
   });
 };
 
-//무한스크롤x
+//학교 공지 무한스크롤x
 export const useGetCampusNotice = (
   campusNoticeType: string,
-  options?: UseQueryOptions<GetCampusNoticeResData, AxiosError>,
+  options?: UseQueryOptions<GetNoticeResData, AxiosError>,
 ) => {
   return useQuery({
     queryKey: ['campusNotice', campusNoticeType],
@@ -59,13 +59,13 @@ export const useGetCampusNotice = (
   });
 };
 
-//무한스크롤용
+//학교 공지 무한스크롤용
 export const useGetInfiniteCampusNotice = (
   campusNoticeType: string,
-  options?: UseInfiniteQueryOptions<GetCampusNoticeResData, AxiosError>,
+  options?: UseInfiniteQueryOptions<GetNoticeResData, AxiosError>,
 ) => {
   return useInfiniteQuery({
-    queryKey: ['campusNotice', campusNoticeType],
+    queryKey: ['infiniteCampusNotice', campusNoticeType],
     queryFn: async ({ pageParam }) => {
       const result = await NOTICE_API.campusNotice(
         campusNoticeType,
@@ -80,6 +80,55 @@ export const useGetInfiniteCampusNotice = (
       if (lastPage.data.content.length < 6) return undefined;
       return lastPage.data.number + 1;
     },
+    ...options,
+  });
+};
+
+//학교 공지 detail
+export const useGetCampusNoticeDetail = (
+  campusNoticeId: number,
+  options?: UseQueryOptions<GetNoticeDetailResData, AxiosError>,
+) => {
+  return useQuery({
+    queryKey: ['campusNoticeDetail', campusNoticeId],
+    queryFn: () => NOTICE_API.campusNoticeDetail(campusNoticeId),
+    ...options,
+  });
+};
+
+//자치단체 공지
+export const useGetNotice = (
+  affiliation: string,
+  options?: UseInfiniteQueryOptions<GetNoticeResData, AxiosError>,
+) => {
+  return useInfiniteQuery({
+    queryKey: ['infiniteNotice', affiliation],
+    queryFn: async ({ pageParam }) => {
+      const result = await NOTICE_API.notice(
+        affiliation,
+        pageParam as number,
+        6,
+        '',
+      );
+      return result;
+    },
+    initialPageParam: 0,
+    getNextPageParam: (lastPage) => {
+      if (lastPage.data.content.length < 6) return undefined;
+      return lastPage.data.number + 1;
+    },
+    ...options,
+  });
+};
+
+//자치단체 공지 detail
+export const useGetNoticeDetail = (
+  noticeId: number,
+  options?: UseQueryOptions<GetNoticeDetailResData, AxiosError>,
+) => {
+  return useQuery({
+    queryKey: ['CcampusNoticeDetail', noticeId],
+    queryFn: () => NOTICE_API.noticeDetail(noticeId),
     ...options,
   });
 };
