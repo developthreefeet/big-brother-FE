@@ -127,8 +127,11 @@ export const useGetNoticeDetail = (
   options?: UseQueryOptions<GetNoticeDetailResData, AxiosError>,
 ) => {
   return useQuery({
-    queryKey: ['CcampusNoticeDetail', noticeId],
-    queryFn: () => NOTICE_API.noticeDetail(noticeId),
+    queryKey: ['campusNoticeDetail'],
+    queryFn: async () => {
+      const data = await NOTICE_API.noticeDetail(noticeId);
+      return data;
+    },
     ...options,
   });
 };
