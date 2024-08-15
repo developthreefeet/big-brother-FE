@@ -11,11 +11,9 @@ import {
 } from '@/shared/ui/ui/form';
 import { Input } from '@/shared/ui/ui/input';
 import { useModifyProfile } from '../model/useModifyProfile';
-import { useUserNameStore } from '../model/useUserNameStore';
 
 const ModifyProfileForm = () => {
   const { form, onSubmit } = useModifyProfile();
-  const { userName } = useUserNameStore();
 
   return (
     <Form {...form}>
