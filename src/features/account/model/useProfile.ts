@@ -5,7 +5,7 @@ import { useGetProfile } from '../api/queries';
 import { useUserNameStore } from './useUserNameStore';
 
 export const useProfile = () => {
-  const { data, isLoading, isError } = useGetProfile();
+  const { data, isLoading, isError, refetch } = useGetProfile();
   const { setUserName } = useUserNameStore();
 
   useEffect(() => {
@@ -18,5 +18,6 @@ export const useProfile = () => {
     data,
     isLoading,
     isError,
+    refetch,
   };
 };

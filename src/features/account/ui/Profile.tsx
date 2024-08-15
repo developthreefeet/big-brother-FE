@@ -1,11 +1,18 @@
+'use client';
+
 import { Button } from '@/shared/ui/ui/button';
 import Title from '@/widgets/Title';
 import Link from 'next/link';
 
 import { useProfile } from '../model/useProfile';
+import { useEffect } from 'react';
 
 const Profile = () => {
-  const { data, isLoading, isError } = useProfile();
+  const { data, isLoading, isError, refetch } = useProfile();
+
+  useEffect(() => {
+    refetch();
+  }, []);
 
   if (isLoading) {
     return <div>프로필 로딩중...</div>;
