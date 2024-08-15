@@ -26,7 +26,6 @@ const JoinEmailForm = () => {
     isEmailDuplicated,
     setIsDuplicationChecked,
     handleVerifyOtp,
-    setOtpVisible,
     otpVisible,
     sendEmailCode,
     setOtpInput,

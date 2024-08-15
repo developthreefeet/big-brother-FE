@@ -2,14 +2,22 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { useChangePwEmailStore } from './useChangePwEmailStore';
-import { useGetVerification } from '../api/queries';
-import { useEffect, useState } from 'react';
+import {
+  useGetVerification,
+  usePostEmailCode,
+  useGetEmailCodeVerification,
+} from '../api/queries';
+import { useState } from 'react';
 import { toast } from '@/shared/ui/ui/use-toast';
 
 export const useChangePwEmail = () => {
-  const { setIsEmailValid, setIsSubmitted, email, setEmail } =
-    useChangePwEmailStore();
-  const [isLoading, setIsLoading] = useState(false);
+  const { setVerificationComplete, setEmail } = useChangePwEmailStore();
+  const [otpVisible, setOtpVisible] = useState(false);
+  const [otpInput, setOtpInput] = useState('');
+  const [otpError, setOtpError] = useState(false);
+  const [clickSendButton, setClickSendButton] = useState(false);
+  const [isEmailValid, setIsEmailValid] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
   const emailSchema = z.object({
     email: z.string().email('Invalid email address'),
@@ -22,16 +30,15 @@ export const useChangePwEmail = () => {
     },
   });
 
-  useEffect(() => {
-    const emailValue = form.getValues('email');
-    setEmail(emailValue);
-  }, [form.watch('email')]);
+  const { refetch: refetchGetVerification } = useGetVerification(
+    form.getValues('email'),
+  );
+  const emailCodeQuery = usePostEmailCode(form.getValues('email'));
+  const { refetch: refetchGetEmailCodeVerification } =
+    useGetEmailCodeVerification(form.getValues('email'), otpInput);
 
-  const { refetch: refetchGetVerification } = useGetVerification(email);
-
-  const onSubmit = async () => {
-    setIsSubmitted(true);
-    setIsLoading(true);
+  const emailDuplicationCheck = async () => {
+    setIsSubmitted(false);
 
     const { isError, error } = await refetchGetVerification();
 
@@ -49,8 +56,53 @@ export const useChangePwEmail = () => {
       setIsEmailValid(false);
     }
 
-    setIsLoading(false);
+    setIsSubmitted(true);
   };
 
-  return { form, onSubmit, isLoading };
+  const sendEmailCode = async () => {
+    try {
+      await emailCodeQuery.mutateAsync();
+      setOtpVisible(true);
+      setClickSendButton(true);
+      toast({ description: '인증 번호가 전송되었습니다.' });
+    } catch (error) {
+      toast({
+        variant: 'destructive',
+        description: '인증 번호 전송에 실패했습니다. 관리자에게 문의하세요.',
+      });
+    }
+  };
+
+  const handleVerifyOtp = async () => {
+    const { isError, error } = await refetchGetEmailCodeVerification();
+    if (isError) {
+      if (error.response?.status === 404) {
+        setVerificationComplete(false);
+        setOtpError(true);
+      } else {
+        toast({
+          variant: 'destructive',
+          description: '인증 번호 검증에 실패했습니다. 관리자에게 문의하세요.',
+        });
+      }
+    } else {
+      setEmail(form.getValues('email'));
+      setVerificationComplete(true);
+      setOtpError(false);
+    }
+  };
+
+  return {
+    form,
+    emailDuplicationCheck,
+    otpVisible,
+    sendEmailCode,
+    setOtpInput,
+    otpInput,
+    otpError,
+    handleVerifyOtp,
+    clickSendButton,
+    isEmailValid,
+    isSubmitted,
+  };
 };

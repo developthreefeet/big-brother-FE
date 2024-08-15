@@ -4,15 +4,15 @@ import { useChangePwEmailStore } from '@/features/account/model/useChangePwEmail
 import EmailForm from '@/features/account/ui/EmailForm';
 import NewPasswordForm from '@/features/account/ui/NewPasswordForm';
 
-const page = () => {
-  const { isEmailValid } = useChangePwEmailStore();
+const Page = () => {
+  const { verificationComplete } = useChangePwEmailStore();
 
   return (
     <>
       <EmailForm />
-      {isEmailValid && <NewPasswordForm />}
+      {verificationComplete && <NewPasswordForm />}
     </>
   );
 };
 
-export default page;
+export default Page;
