@@ -110,6 +110,7 @@ export interface GetEventResData {
   empty: boolean;
 }
 
+/** faq content */
 export interface FaqContent {
   createAt: string;
   updateAt: string;
@@ -120,6 +121,7 @@ export interface FaqContent {
   files: ListFileInfo[];
 }
 
+/**faq 전체 조회 */
 export interface GetFaqResData {
   totalPages: number;
   totalElements: number;
