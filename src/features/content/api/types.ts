@@ -1,4 +1,5 @@
-export type DetailItem = GetNoticeDetailResData | GetEventDetailResData;
+export type CommonDetailItem = GetNoticeDetailResData | GetEventDetailResData;
+export type PdfDetailItem = GetRuleDetailResData;
 
 /** 상세조회 관련 file */
 interface DetailFileInfo {
@@ -28,13 +29,22 @@ export interface GetEventDetailResData {
   updateAt: string;
 }
 
-/** 회의록 detail */
-export interface GetProceedingDetailResData {
-  meetingsId: number;
+/** 학칙/회칙 detail */
+export interface GetRuleDetailResData {
+  ruleId: number;
   title: string;
-  content: string;
-  type: string;
-  fileInfo: DetailFileInfo[];
   createAt: string;
   updateAt: string;
+  affiliationId: number;
+  fileInfo: DetailFileInfo[];
+}
+
+/** 회의록 detail */
+export interface GetProceedingDetailResData {
+  proceedingId: number;
+  title: string;
+  createAt: string;
+  updateAt: string;
+  affiliationId: number;
+  fileInfo: DetailFileInfo[];
 }

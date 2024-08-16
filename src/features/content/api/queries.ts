@@ -34,6 +34,7 @@ export const useGetNoticeDetail = (
   });
 };
 
+//행사 detail
 export const useGetEventDetail = (
   eventId: number,
   options?: UseQueryOptions<GetEventDetailResData, AxiosError>,
@@ -42,20 +43,6 @@ export const useGetEventDetail = (
     queryKey: ['eventDetail', eventId],
     queryFn: async () => {
       const data = await EVENT_DETAIL_API.eventDetail(eventId);
-      return data;
-    },
-    ...options,
-  });
-};
-
-export const useGetProceedingDetail = (
-  proceedingId: number,
-  options?: UseQueryOptions<GetProceedingDetailResData, AxiosError>,
-) => {
-  return useQuery({
-    queryKey: ['proceedingDetail', proceedingId],
-    queryFn: async () => {
-      const data = await PROCEEDING_DETAIL_API.proceedingDetail(proceedingId);
       return data;
     },
     ...options,

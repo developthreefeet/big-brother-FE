@@ -15,8 +15,10 @@ import {
   NOTICE_API,
   ORGANIZATION_API,
   PROCEEDING_API,
+  RULE_API,
 } from '.';
 
+//단과대
 export const useGetCollege = (
   options?: UseQueryOptions<GetCollegeResData, AxiosError>,
 ) => {
@@ -27,6 +29,7 @@ export const useGetCollege = (
   });
 };
 
+//학과
 export const useGetDepartment = (
   councilName: string,
   options?: UseQueryOptions<GetDepartmentResData, AxiosError>,
@@ -105,6 +108,7 @@ export const useGetNotice = (affiliation: string) => {
   });
 };
 
+//행사
 export const useGetEvent = (affiliation: string) => {
   return useInfiniteQuery({
     queryKey: ['event', affiliation],
@@ -125,6 +129,7 @@ export const useGetEvent = (affiliation: string) => {
   });
 };
 
+//faq
 export const useGetFaq = (affiliation: string) => {
   return useInfiniteQuery({
     queryKey: ['faq', affiliation],
@@ -145,6 +150,27 @@ export const useGetProceeding = (affiliation: string) => {
     queryKey: ['proceeding', affiliation],
     queryFn: async ({ pageParam }) => {
       const result = await PROCEEDING_API.proceeding(
+        affiliation,
+        pageParam as number,
+        6,
+        '',
+      );
+      return result;
+    },
+    initialPageParam: 0,
+    getNextPageParam: (lastPage) => {
+      if (lastPage.content.length < 6) return undefined;
+      return lastPage.number + 1;
+    },
+  });
+};
+
+//회칙/학칙
+export const useGetRule = (affiliation: string) => {
+  return useInfiniteQuery({
+    queryKey: ['rule', affiliation],
+    queryFn: async ({ pageParam }) => {
+      const result = await RULE_API.rule(
         affiliation,
         pageParam as number,
         6,
