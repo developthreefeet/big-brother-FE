@@ -6,12 +6,10 @@ import {
 import {
   GetCollegeResData,
   GetDepartmentResData,
-  GetEventDetailResData,
-  GetNoticeDetailResData,
   GetNoticeResData,
 } from './types';
 import { AxiosError } from 'axios';
-import { EVENT_API, NOTICE_API, ORGANIZATION_API } from '.';
+import { EVENT_API, FAQ_API, NOTICE_API, ORGANIZATION_API } from '.';
 
 export const useGetCollege = (
   options?: UseQueryOptions<GetCollegeResData, AxiosError>,
@@ -80,18 +78,6 @@ export const useGetInfiniteCampusNotice = (campusNoticeType: string) => {
   });
 };
 
-//학교 공지 detail
-export const useGetCampusNoticeDetail = (
-  campusNoticeId: number,
-  options?: UseQueryOptions<GetNoticeDetailResData, AxiosError>,
-) => {
-  return useQuery({
-    queryKey: ['campusNoticeDetail', campusNoticeId],
-    queryFn: () => NOTICE_API.campusNoticeDetail(campusNoticeId),
-    ...options,
-  });
-};
-
 //자치단체 공지
 export const useGetNotice = (affiliation: string) => {
   return useInfiniteQuery({
@@ -110,21 +96,6 @@ export const useGetNotice = (affiliation: string) => {
       if (lastPage.content.length < 6) return undefined;
       return lastPage.number + 1;
     },
-  });
-};
-
-//자치단체 공지 detail
-export const useGetNoticeDetail = (
-  noticeId: number,
-  options?: UseQueryOptions<GetNoticeDetailResData, AxiosError>,
-) => {
-  return useQuery({
-    queryKey: ['campusNoticeDetail'],
-    queryFn: async () => {
-      const data = await NOTICE_API.noticeDetail(noticeId);
-      return data;
-    },
-    ...options,
   });
 };
 
@@ -148,16 +119,17 @@ export const useGetEvent = (affiliation: string) => {
   });
 };
 
-export const useGetEventDetail = (
-  eventId: number,
-  options?: UseQueryOptions<GetEventDetailResData, AxiosError>,
-) => {
-  return useQuery({
-    queryKey: ['eventDetail', eventId],
-    queryFn: async () => {
-      const data = await EVENT_API.eventDetail(eventId);
-      return data;
+export const useGetFaq = (affiliation: string) => {
+  return useInfiniteQuery({
+    queryKey: ['faq', affiliation],
+    queryFn: async ({ pageParam }) => {
+      const result = await FAQ_API.faq(affiliation, pageParam as number, 6, '');
+      return result;
     },
-    ...options,
+    initialPageParam: 0,
+    getNextPageParam: (lastPage) => {
+      if (lastPage.content.length < 6) return undefined;
+      return lastPage.number + 1;
+    },
   });
 };

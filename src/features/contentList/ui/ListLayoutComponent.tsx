@@ -5,6 +5,8 @@ import Title from '@/widgets/Title';
 import ListComponent from '@/features/contentList/ui/ListComponent';
 import useOrganizationRouter from '../model/useOrganizationRouter';
 import { ListLayoutItems } from '../api/types';
+import { Button } from '@/shared/ui/ui/button';
+import { IoIosArrowDown } from 'react-icons/io';
 
 interface ListLayoutComponentProps {
   items: ListLayoutItems;
@@ -38,9 +40,20 @@ const ListLayoutComponent = ({
               <>
                 <ListComponent list={items} />
                 {hasMore && (
-                  <button onClick={onLoadMore} disabled={isLoadingMore}>
-                    {isLoadingMore ? 'Loading...' : 'Load More'}
-                  </button>
+                  <Button
+                    onClick={onLoadMore}
+                    variant="outline"
+                    disabled={isLoadingMore}
+                    className="border-none"
+                  >
+                    {isLoadingMore ? (
+                      'Loading...'
+                    ) : (
+                      <>
+                        <IoIosArrowDown /> 더보기
+                      </>
+                    )}
+                  </Button>
                 )}
               </>
             )}

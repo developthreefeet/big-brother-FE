@@ -1,3 +1,6 @@
+export type ListLayoutItems = NoticeContent[] | EventContent[] | undefined;
+export type ListItems = NoticeContent[] | EventContent[];
+
 /**학과, 대학 get */
 export interface GetCollegeResData {
   data: Array<{
@@ -11,12 +14,6 @@ export interface GetDepartmentResData {
     val: number;
     councilName: string;
   }>;
-}
-
-/** 상세조회 관련 file */
-interface DetailFileInfo {
-  fileName: string;
-  url: string;
 }
 
 /** 전체조회 관련 file */
@@ -70,17 +67,6 @@ export interface GetNoticeResData {
   empty: boolean;
 }
 
-/**공지사항 detail */
-export interface GetNoticeDetailResData {
-  noticeId: number;
-  title: string;
-  content: string;
-  type: string;
-  fileInfo: DetailFileInfo[];
-  createAt: string;
-  updateAt: string;
-}
-
 /**이벤트 content */
 export interface EventContent {
   createAt: string;
@@ -124,17 +110,41 @@ export interface GetEventResData {
   empty: boolean;
 }
 
-/** 이벤트 detail */
-export interface GetEventDetailResData {
-  eventId: number;
-  title: string;
-  content: string;
-  type: string;
-  fileInfo: DetailFileInfo[];
+export interface FaqContent {
   createAt: string;
   updateAt: string;
+  id: number;
+  title: string;
+  content: string;
+  affiliationId: number;
+  files: ListFileInfo[];
 }
 
-export type ListLayoutItems = NoticeContent[] | EventContent[] | undefined;
-export type ListItems = NoticeContent[] | EventContent[];
-export type DetailItem = GetNoticeDetailResData | GetEventDetailResData;
+export interface GetFaqResData {
+  totalPages: number;
+  totalElements: number;
+  size: number;
+  content: FaqContent[];
+  number: number;
+  sort: {
+    empty: boolean;
+    sorted: boolean;
+    unsorted: boolean;
+  };
+  numberOfElements: number;
+  pageable: {
+    offset: number;
+    sort: {
+      empty: boolean;
+      sorted: boolean;
+      unsorted: boolean;
+    };
+    paged: boolean;
+    pageNumber: number;
+    pageSize: number;
+    unpaged: boolean;
+  };
+  first: boolean;
+  last: boolean;
+  empty: boolean;
+}

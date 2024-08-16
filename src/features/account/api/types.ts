@@ -62,10 +62,8 @@ export interface GetProfileResData {
 }
 
 export interface GetRefreshResData {
-  data: {
-    accessToken: string;
-    refreshToken: string;
-  };
+  accessToken: string;
+  refreshToken: string;
 }
 
 export interface PatchChangePwProps {

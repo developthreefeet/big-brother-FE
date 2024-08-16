@@ -1,14 +1,11 @@
-'use client';
-
+import { useGetFaq } from '@/features/contentList/api/queries';
 import {
   useGetCampusNoticeDetail,
-  useGetEventDetail,
   useGetNoticeDetail,
-} from '@/features/contentList/api/queries';
-import { useRouter } from 'next/navigation';
+  useGetEventDetail,
+} from '../api/queries';
 
 const useDetail = () => {
-  const router = useRouter();
   const returnNoticeDetailItem = (organization: string, id: number) => {
     if (organization === 'general') {
       const { data: generalData, isSuccess: isSuccessGeneral } =
@@ -56,11 +53,32 @@ const useDetail = () => {
       if (isSuccessDepartment) {
         return departmentData;
       }
-    } else {
-      throw new Error('Invalid organization type');
     }
   };
-  return { returnNoticeDetailItem, returnEventDetailItem };
+
+  const returnFaqDetailItem = (organization: string) => {
+    if (organization === 'studentCouncil') {
+      const { data: studentCouncilData, isSuccess: isSuccessStudentCouncil } =
+        useGetFaq('총학');
+      if (isSuccessStudentCouncil) {
+        return studentCouncilData;
+      }
+    } else if (organization === 'college') {
+      const { data: collegeData, isSuccess: isSuccessCollege } =
+        useGetFaq('단과대');
+      if (isSuccessCollege) {
+        return collegeData;
+      }
+    } else if (organization === 'department') {
+      const { data: departmentData, isSuccess: isSuccessDepartment } =
+        useGetFaq('학과');
+      if (isSuccessDepartment) {
+        return departmentData;
+      }
+    }
+  };
+
+  return { returnNoticeDetailItem, returnEventDetailItem, returnFaqDetailItem };
 };
 
 export default useDetail;
