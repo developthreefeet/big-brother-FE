@@ -2,18 +2,17 @@
 
 import OrganizationTitleSelectComponent from '@/widgets/OrganizationSelectComponent';
 import Title from '@/widgets/Title';
-import { faqItems } from '@/shared/mock/contentList';
 import useOrganizationRouter from '@/features/contentList/model/useOrganizationRouter';
 import AccordionComponent from '@/features/content/ui/AccordionComponent';
 import { usePathname } from 'next/navigation';
-import useDetail from '@/features/content/model/useDetail';
+import useCommonDetail from '@/features/content/model/useCommonDetail';
 
 const Page = () => {
   useOrganizationRouter();
   const pathname = usePathname();
   const organization = pathname.split('/')[2];
 
-  const { returnFaqDetailItem } = useDetail();
+  const { returnFaqDetailItem } = useCommonDetail();
 
   let faqData = returnFaqDetailItem(organization);
   const faqItem = faqData?.pages.flatMap((page) => page.content);

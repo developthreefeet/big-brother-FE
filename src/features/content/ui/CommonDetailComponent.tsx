@@ -5,12 +5,12 @@ import BackToListButton from '@/features/content/ui/BackToListButton';
 import ReactMarkdown from 'react-markdown';
 import rehypeRaw from 'rehype-raw';
 import { TbDownload } from 'react-icons/tb';
-import { DetailItem } from '../api/types';
+import { CommonDetailItem } from '../api/types';
 
 const CommonDetailComponent = ({
   content: data,
 }: {
-  content: DetailItem | undefined;
+  content: CommonDetailItem | undefined;
 }) => {
   if (data) {
     return (

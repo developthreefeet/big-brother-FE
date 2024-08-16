@@ -1,7 +1,11 @@
 import { UseQueryOptions, useQuery } from '@tanstack/react-query';
 import { AxiosError } from 'axios';
-import { GetNoticeDetailResData, GetEventDetailResData } from './types';
-import { EVENT_DETAIL_API, NOTICE_DETAIL_API } from '.';
+import {
+  GetNoticeDetailResData,
+  GetEventDetailResData,
+  GetRuleDetailResData,
+} from './types';
+import { EVENT_DETAIL_API, NOTICE_DETAIL_API, RULE_DETAIL_API } from '.';
 
 //학교 공지 detail
 export const useGetCampusNoticeDetail = (
@@ -30,6 +34,7 @@ export const useGetNoticeDetail = (
   });
 };
 
+//행사 detail
 export const useGetEventDetail = (
   eventId: number,
   options?: UseQueryOptions<GetEventDetailResData, AxiosError>,
@@ -38,6 +43,21 @@ export const useGetEventDetail = (
     queryKey: ['eventDetail', eventId],
     queryFn: async () => {
       const data = await EVENT_DETAIL_API.eventDetail(eventId);
+      return data;
+    },
+    ...options,
+  });
+};
+
+//회칙/학칙 detail
+export const useGetRuleDetail = (
+  ruleId: number,
+  options?: UseQueryOptions<GetRuleDetailResData, AxiosError>,
+) => {
+  return useQuery({
+    queryKey: ['ruleDetail', ruleId],
+    queryFn: async () => {
+      const data = await RULE_DETAIL_API.ruleDetail(ruleId);
       return data;
     },
     ...options,
