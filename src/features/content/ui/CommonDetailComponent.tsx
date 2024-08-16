@@ -35,16 +35,16 @@ const CommonDetailComponent = ({
           </ReactMarkdown>
         </div>
         <hr />
-        {data.urlList.length > 0 &&
-          data.urlList.map((_, index) => (
+        {data.fileInfo.length > 0 &&
+          data.fileInfo.map((data, index) => (
             <a
               className="flex flex-row items-center gap-1 pt-2 text-sm"
-              href={data.urlList[0]}
-              download="다운로드 되는 파일명"
+              href={data.url}
+              download
               key={index}
             >
-              <TbDownload size={16} />
-              첨부파일 다운로드
+              <TbDownload size={16} color="#7B7B7B" />
+              {data.fileName}
             </a>
           ))}
         <div className="flex justify-end">
