@@ -102,5 +102,16 @@ export interface GetEventResData {
   empty: boolean;
 }
 
+export interface GetEventDetailResData {
+  eventId: number;
+  title: string;
+  content: string;
+  type: string;
+  urlList: string[];
+  createAt: string;
+  updateAt: string;
+}
+
 export type ListLayoutItems = NoticeContent[] | EventContent[] | undefined;
 export type ListItems = NoticeContent[] | EventContent[];
+export type DetailItem = GetNoticeDetailResData | GetEventDetailResData;

@@ -6,6 +6,7 @@ import {
 import {
   GetCollegeResData,
   GetDepartmentResData,
+  GetEventDetailResData,
   GetNoticeDetailResData,
   GetNoticeResData,
 } from './types';
@@ -144,5 +145,19 @@ export const useGetEvent = (affiliation: string) => {
       if (lastPage.content.length < 6) return undefined;
       return lastPage.number + 1;
     },
+  });
+};
+
+export const useGetEventDetail = (
+  eventId: number,
+  options?: UseQueryOptions<GetEventDetailResData, AxiosError>,
+) => {
+  return useQuery({
+    queryKey: ['eventDetail', eventId],
+    queryFn: async () => {
+      const data = await EVENT_API.eventDetail(eventId);
+      return data;
+    },
+    ...options,
   });
 };

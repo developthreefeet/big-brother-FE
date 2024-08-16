@@ -1,11 +1,11 @@
 import DateText from '@/widgets/DateText';
 import Title from '@/widgets/Title';
-import { DetailItem } from '@/shared/types/type';
 import { formatDate } from '@/shared/lib/utils';
 import BackToListButton from '@/features/content/ui/BackToListButton';
 import ReactMarkdown from 'react-markdown';
 import rehypeRaw from 'rehype-raw';
 import { TbDownload } from 'react-icons/tb';
+import { DetailItem } from '@/features/contentList/api/types';
 
 const CommonDetailComponent = ({
   content: data,

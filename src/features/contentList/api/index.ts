@@ -2,6 +2,7 @@ import { instance } from '@/shared/api/instance';
 import {
   GetCollegeResData,
   GetDepartmentResData,
+  GetEventDetailResData,
   GetEventResData,
   GetNoticeDetailResData,
   GetNoticeResData,
@@ -139,10 +140,10 @@ export const EVENT_API = {
     }
   },
 
-  eventDetail: async (noticeId: number) => {
+  eventDetail: async (eventId: number) => {
     try {
-      const response = await instance.get<ApiResponse<GetNoticeDetailResData>>(
-        `/notice/${noticeId}`,
+      const response = await instance.get<ApiResponse<GetEventDetailResData>>(
+        `/event/${eventId}`,
       );
       return response.data.data;
     } catch (error) {
