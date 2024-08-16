@@ -151,7 +151,7 @@ export const PROCEEDING_API = {
     search?: string,
   ) => {
     try {
-      const response = await instance.get<ApiResponse<GetRuleResData>>(
+      const response = await instance.get<ApiResponse<GetProceedingResData>>(
         '/meetings',
         {
           params: {
@@ -178,7 +178,7 @@ export const RULE_API = {
     search?: string,
   ) => {
     try {
-      const response = await instance.get<ApiResponse<GetProceedingResData>>(
+      const response = await instance.get<ApiResponse<GetRuleResData>>(
         '/rule',
         {
           params: {
