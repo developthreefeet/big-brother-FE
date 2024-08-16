@@ -1,9 +1,9 @@
+import { useGetFaq } from '@/features/contentList/api/queries';
 import {
   useGetCampusNoticeDetail,
-  useGetEventDetail,
-  useGetFaq,
   useGetNoticeDetail,
-} from '@/features/contentList/api/queries';
+  useGetEventDetail,
+} from '../api/queries';
 
 const useDetail = () => {
   const returnNoticeDetailItem = (organization: string, id: number) => {

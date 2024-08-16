@@ -1,6 +1,5 @@
 export type ListLayoutItems = NoticeContent[] | EventContent[] | undefined;
 export type ListItems = NoticeContent[] | EventContent[];
-export type DetailItem = GetNoticeDetailResData | GetEventDetailResData;
 
 /**학과, 대학 get */
 export interface GetCollegeResData {
@@ -15,12 +14,6 @@ export interface GetDepartmentResData {
     val: number;
     councilName: string;
   }>;
-}
-
-/** 상세조회 관련 file */
-interface DetailFileInfo {
-  fileName: string;
-  url: string;
 }
 
 /** 전체조회 관련 file */
@@ -74,17 +67,6 @@ export interface GetNoticeResData {
   empty: boolean;
 }
 
-/**공지사항 detail */
-export interface GetNoticeDetailResData {
-  noticeId: number;
-  title: string;
-  content: string;
-  type: string;
-  fileInfo: DetailFileInfo[];
-  createAt: string;
-  updateAt: string;
-}
-
 /**이벤트 content */
 export interface EventContent {
   createAt: string;
@@ -126,17 +108,6 @@ export interface GetEventResData {
   first: boolean;
   last: boolean;
   empty: boolean;
-}
-
-/** 이벤트 detail */
-export interface GetEventDetailResData {
-  eventId: number;
-  title: string;
-  content: string;
-  type: string;
-  fileInfo: DetailFileInfo[];
-  createAt: string;
-  updateAt: string;
 }
 
 export interface FaqContent {

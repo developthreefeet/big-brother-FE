@@ -2,10 +2,8 @@ import { instance } from '@/shared/api/instance';
 import {
   GetCollegeResData,
   GetDepartmentResData,
-  GetEventDetailResData,
   GetEventResData,
   GetFaqResData,
-  GetNoticeDetailResData,
   GetNoticeResData,
 } from './types';
 import { ApiResponse } from '@/shared/types/type';
@@ -66,18 +64,6 @@ export const NOTICE_API = {
     }
   },
 
-  //학교 공지사항 detail api
-  campusNoticeDetail: async (campusNoticeId: number) => {
-    try {
-      const response = await instance.get<ApiResponse<GetNoticeDetailResData>>(
-        `/campusnotice/${campusNoticeId}`,
-      );
-      return response.data.data;
-    } catch (error: any) {
-      throw error;
-    }
-  },
-
   //자치단체 공지사항 리스트 api
   notice: async (
     affiliation: string,
@@ -96,18 +82,6 @@ export const NOTICE_API = {
             search,
           },
         },
-      );
-      return response.data.data;
-    } catch (error) {
-      throw error;
-    }
-  },
-
-  //자치단체 공지사항 detail api
-  noticeDetail: async (noticeId: number) => {
-    try {
-      const response = await instance.get<ApiResponse<GetNoticeDetailResData>>(
-        `/notice/${noticeId}`,
       );
       return response.data.data;
     } catch (error) {
@@ -134,17 +108,6 @@ export const EVENT_API = {
             search,
           },
         },
-      );
-      return response.data.data;
-    } catch (error) {
-      throw error;
-    }
-  },
-
-  eventDetail: async (eventId: number) => {
-    try {
-      const response = await instance.get<ApiResponse<GetEventDetailResData>>(
-        `/event/${eventId}`,
       );
       return response.data.data;
     } catch (error) {
