@@ -56,6 +56,7 @@ instance.interceptors.response.use(
           deleteToken();
           alert('세션이 만료되었습니다. 다시 로그인해주세요.');
           window.location.replace('/login');
+          return;
         }
       }
       // Refresh 토큰이 만료된 경우
@@ -63,6 +64,7 @@ instance.interceptors.response.use(
         deleteToken();
         alert('세션이 만료되었습니다. 다시 로그인해주세요.');
         window.location.replace('/login');
+        return;
       }
     }
     return Promise.reject(error);
