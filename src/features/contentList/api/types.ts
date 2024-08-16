@@ -12,6 +12,11 @@ export interface GetDepartmentResData {
   }>;
 }
 
+interface FileInfo {
+  fileName: string;
+  url: string;
+}
+
 export interface NoticeContent {
   createAt: string;
   updateAt: string;
@@ -56,7 +61,7 @@ export interface GetNoticeDetailResData {
   title: string;
   content: string;
   type: string;
-  urlList: string[];
+  fileInfo: FileInfo[];
   createAt: string;
   updateAt: string;
 }
@@ -107,7 +112,7 @@ export interface GetEventDetailResData {
   title: string;
   content: string;
   type: string;
-  urlList: string[];
+  fileInfo: FileInfo[];
   createAt: string;
   updateAt: string;
 }
