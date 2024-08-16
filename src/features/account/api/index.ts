@@ -126,14 +126,8 @@ export const MYPAGE_API = {
 export const REFRESH_API = {
   refresh: async () => {
     try {
-      const response = await instance.get<ApiResponse<GetRefreshResData>>(
-        '/members/refresh',
-        {
-          params: {
-            Authorization: getCookie('refreshToken') as string,
-          },
-        },
-      );
+      const response =
+        await instance.get<ApiResponse<GetRefreshResData>>('/members/refresh');
       return response.data.data;
     } catch (error) {
       throw error;
