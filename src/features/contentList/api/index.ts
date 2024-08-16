@@ -5,6 +5,7 @@ import {
   GetEventResData,
   GetFaqResData,
   GetNoticeResData,
+  GetProceedingResData,
 } from './types';
 import { ApiResponse } from '@/shared/types/type';
 
@@ -132,6 +133,32 @@ export const FAQ_API = {
           search,
         },
       });
+      return response.data.data;
+    } catch (error) {
+      throw error;
+    }
+  },
+};
+
+export const PROCEEDING_API = {
+  proceeding: async (
+    affiliation: string,
+    page?: number,
+    size?: number,
+    search?: string,
+  ) => {
+    try {
+      const response = await instance.get<ApiResponse<GetProceedingResData>>(
+        '/meetings',
+        {
+          params: {
+            affiliation,
+            page,
+            size,
+            search,
+          },
+        },
+      );
       return response.data.data;
     } catch (error) {
       throw error;

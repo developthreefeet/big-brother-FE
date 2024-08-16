@@ -9,7 +9,13 @@ import {
   GetNoticeResData,
 } from './types';
 import { AxiosError } from 'axios';
-import { EVENT_API, FAQ_API, NOTICE_API, ORGANIZATION_API } from '.';
+import {
+  EVENT_API,
+  FAQ_API,
+  NOTICE_API,
+  ORGANIZATION_API,
+  PROCEEDING_API,
+} from '.';
 
 export const useGetCollege = (
   options?: UseQueryOptions<GetCollegeResData, AxiosError>,
@@ -124,6 +130,26 @@ export const useGetFaq = (affiliation: string) => {
     queryKey: ['faq', affiliation],
     queryFn: async ({ pageParam }) => {
       const result = await FAQ_API.faq(affiliation, pageParam as number, 6, '');
+      return result;
+    },
+    initialPageParam: 0,
+    getNextPageParam: (lastPage) => {
+      if (lastPage.content.length < 6) return undefined;
+      return lastPage.number + 1;
+    },
+  });
+};
+
+export const useGetProceeding = (affiliation: string) => {
+  return useInfiniteQuery({
+    queryKey: ['proceeding', affiliation],
+    queryFn: async ({ pageParam }) => {
+      const result = await PROCEEDING_API.proceeding(
+        affiliation,
+        pageParam as number,
+        6,
+        '',
+      );
       return result;
     },
     initialPageParam: 0,
