@@ -36,11 +36,12 @@ const CommonDetailComponent = ({
         </div>
         <hr />
         {data.urlList.length > 0 &&
-          data.urlList.map(() => (
+          data.urlList.map((_, index) => (
             <a
               className="flex flex-row items-center gap-1 pt-2 text-sm"
               href={data.urlList[0]}
               download="다운로드 되는 파일명"
+              key={index}
             >
               <TbDownload size={16} />
               첨부파일 다운로드
