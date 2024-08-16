@@ -139,11 +139,21 @@ export interface GetEventDetailResData {
   updateAt: string;
 }
 
+export interface FaqContent {
+  createAt: string;
+  updateAt: string;
+  id: number;
+  title: string;
+  content: string;
+  affiliationId: number;
+  files: ListFileInfo[];
+}
+
 export interface GetFaqResData {
   totalPages: number;
   totalElements: number;
   size: number;
-  content: EventContent[];
+  content: FaqContent[];
   number: number;
   sort: {
     empty: boolean;
