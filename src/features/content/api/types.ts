@@ -27,3 +27,11 @@ export interface GetEventDetailResData {
   createAt: string;
   updateAt: string;
 }
+
+/** 학칙/회칙 detail */
+export interface GetRuleDetailResData {
+  ruleId: number;
+  title: string;
+  affiliationId: number;
+  fileInfo: DetailFileInfo[];
+}
