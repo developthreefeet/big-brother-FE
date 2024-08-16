@@ -1,34 +1,18 @@
 'use client';
 
 import { useJoinEmailStore } from '@/features/account/model/useJoinEmailStore';
-import AlreadyLoggedInNotice from '@/features/account/ui/AlreadyLoggedInNotice';
 import ChangePassword from '@/features/account/ui/ChangePassword';
 import GoToJoin from '@/features/account/ui/GoToJoin';
 import LoginForm from '@/features/account/ui/LoginForm';
-import { getCookie } from 'cookies-next';
 import Image from 'next/image';
-import { useRouter } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 
 const Page = () => {
   const { resetVerificationComplete } = useJoinEmailStore();
-  const router = useRouter();
-  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     resetVerificationComplete();
-    const accessToken = getCookie('accessToken');
-
-    if (accessToken) {
-      setLoading(true);
-      router.push('/main');
-      setLoading(false);
-    }
-  }, [router]);
-
-  if (loading) {
-    return <AlreadyLoggedInNotice />;
-  }
+  }, []);
 
   return (
     <>
