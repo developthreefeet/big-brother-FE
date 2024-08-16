@@ -6,6 +6,7 @@ import {
 } from '../api/queries';
 
 const useDetail = () => {
+  //공지사항 detail
   const returnNoticeDetailItem = (organization: string, id: number) => {
     if (organization === 'general') {
       const { data: generalData, isSuccess: isSuccessGeneral } =
@@ -34,6 +35,7 @@ const useDetail = () => {
     }
   };
 
+  //행사 detail
   const returnEventDetailItem = (organization: string, id: number) => {
     if (organization === 'studentCouncil') {
       const { data: studentCouncilData, isSuccess: isSuccessStudentCouncil } =
@@ -56,6 +58,7 @@ const useDetail = () => {
     }
   };
 
+  //faq detail
   const returnFaqDetailItem = (organization: string) => {
     if (organization === 'studentCouncil') {
       const { data: studentCouncilData, isSuccess: isSuccessStudentCouncil } =
