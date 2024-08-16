@@ -1,6 +1,5 @@
 'use client';
 
-import useEvent from '@/features/contentList/model/useEvent';
 import useProceeding from '@/features/contentList/model/useProceeding';
 import ListLayoutComponent from '@/features/contentList/ui/ListLayoutComponent';
 
