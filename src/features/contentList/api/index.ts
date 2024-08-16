@@ -152,7 +152,7 @@ export const PROCEEDING_API = {
   ) => {
     try {
       const response = await instance.get<ApiResponse<GetRuleResData>>(
-        '/rule',
+        '/meetings',
         {
           params: {
             affiliation,
@@ -168,6 +168,7 @@ export const PROCEEDING_API = {
     }
   },
 };
+
 //학칙/회칙 리스트 api
 export const RULE_API = {
   rule: async (
@@ -178,7 +179,7 @@ export const RULE_API = {
   ) => {
     try {
       const response = await instance.get<ApiResponse<GetProceedingResData>>(
-        '/meetings',
+        '/rule',
         {
           params: {
             affiliation,

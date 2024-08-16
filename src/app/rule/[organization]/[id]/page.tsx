@@ -2,7 +2,6 @@
 
 import usePdfDetail from '@/features/content/model/usePdfDetail';
 import PdfViewerDetailComponent from '@/features/content/ui/PdfViewerDetailComponent';
-import { ruleItems } from '@/shared/mock/contentList';
 import { usePathname } from 'next/navigation';
 
 const page = () => {

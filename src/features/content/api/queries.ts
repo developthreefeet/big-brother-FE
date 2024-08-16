@@ -4,8 +4,14 @@ import {
   GetNoticeDetailResData,
   GetEventDetailResData,
   GetProceedingDetailResData,
+  GetRuleDetailResData,
 } from './types';
-import { EVENT_DETAIL_API, NOTICE_DETAIL_API, PROCEEDING_DETAIL_API } from '.';
+import {
+  EVENT_DETAIL_API,
+  NOTICE_DETAIL_API,
+  PROCEEDING_DETAIL_API,
+  RULE_DETAIL_API,
+} from '.';
 
 //학교 공지 detail
 export const useGetCampusNoticeDetail = (
@@ -43,6 +49,36 @@ export const useGetEventDetail = (
     queryKey: ['eventDetail', eventId],
     queryFn: async () => {
       const data = await EVENT_DETAIL_API.eventDetail(eventId);
+      return data;
+    },
+    ...options,
+  });
+};
+
+//학칙/회칙 detail
+export const useGetRuleDetail = (
+  ruleId: number,
+  options?: UseQueryOptions<GetRuleDetailResData, AxiosError>,
+) => {
+  return useQuery({
+    queryKey: ['ruleDetail', ruleId],
+    queryFn: async () => {
+      const data = await RULE_DETAIL_API.ruleDetail(ruleId);
+      return data;
+    },
+    ...options,
+  });
+};
+
+//회의록 detail
+export const useGetProceedingDetail = (
+  proceedingId: number,
+  options?: UseQueryOptions<GetProceedingDetailResData, AxiosError>,
+) => {
+  return useQuery({
+    queryKey: ['proceedingDetail', proceedingId],
+    queryFn: async () => {
+      const data = await PROCEEDING_DETAIL_API.proceedingDetail(proceedingId);
       return data;
     },
     ...options,

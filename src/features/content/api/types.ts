@@ -1,5 +1,5 @@
 export type CommonDetailItem = GetNoticeDetailResData | GetEventDetailResData;
-export type PdfDetailItem = GetRuleDetailResData;
+export type PdfDetailItem = GetRuleDetailResData | GetProceedingDetailResData;
 
 /** 상세조회 관련 file */
 interface DetailFileInfo {

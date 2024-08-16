@@ -1,4 +1,4 @@
-import { useGetRuleDetail } from '../api/queries';
+import { useGetProceedingDetail, useGetRuleDetail } from '../api/queries';
 
 const usePdfDetail = () => {
   //회칙/학칙 detail
@@ -24,7 +24,30 @@ const usePdfDetail = () => {
     }
   };
 
-  return { returnRuleDetailItem };
+  //회의록 detail
+  const returnProceedingDetailItem = (organization: string, id: number) => {
+    if (organization === 'studentCouncil') {
+      const { data: studentCouncilData, isSuccess: isSuccessStudentCouncil } =
+        useGetProceedingDetail(id);
+      if (isSuccessStudentCouncil) {
+        return studentCouncilData;
+      }
+    } else if (organization === 'college') {
+      const { data: collegeData, isSuccess: isSuccessCollege } =
+        useGetProceedingDetail(id);
+      if (isSuccessCollege) {
+        return collegeData;
+      }
+    } else if (organization === 'department') {
+      const { data: departmentData, isSuccess: isSuccessDepartment } =
+        useGetProceedingDetail(id);
+      if (isSuccessDepartment) {
+        return departmentData;
+      }
+    }
+  };
+
+  return { returnRuleDetailItem, returnProceedingDetailItem };
 };
 
 export default usePdfDetail;
