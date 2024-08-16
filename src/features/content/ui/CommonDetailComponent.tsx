@@ -44,7 +44,7 @@ const CommonDetailComponent = ({
               key={index}
             >
               <TbDownload size={16} color="#7B7B7B" />
-              첨부파일 다운로드
+              {data.fileName}
             </a>
           ))}
         <div className="flex justify-end">
