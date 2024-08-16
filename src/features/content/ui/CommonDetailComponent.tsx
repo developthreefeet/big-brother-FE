@@ -40,7 +40,7 @@ const CommonDetailComponent = ({
             <a
               className="flex flex-row items-center gap-1 pt-2 text-sm"
               href={data.url}
-              download={data.fileName}
+              download
               key={index}
             >
               <TbDownload size={16} color="#7B7B7B" />
