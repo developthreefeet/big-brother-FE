@@ -1,18 +1,17 @@
 import {
   useInfiniteQuery,
-  UseInfiniteQueryOptions,
-  UseInfiniteQueryResult,
   useQuery,
   UseQueryOptions,
 } from '@tanstack/react-query';
 import {
   GetCollegeResData,
   GetDepartmentResData,
+  GetEventDetailResData,
   GetNoticeDetailResData,
   GetNoticeResData,
 } from './types';
 import { AxiosError } from 'axios';
-import { NOTICE_API, ORGANIZATION_API } from '.';
+import { EVENT_API, NOTICE_API, ORGANIZATION_API } from '.';
 
 export const useGetCollege = (
   options?: UseQueryOptions<GetCollegeResData, AxiosError>,
@@ -123,6 +122,40 @@ export const useGetNoticeDetail = (
     queryKey: ['campusNoticeDetail'],
     queryFn: async () => {
       const data = await NOTICE_API.noticeDetail(noticeId);
+      return data;
+    },
+    ...options,
+  });
+};
+
+export const useGetEvent = (affiliation: string) => {
+  return useInfiniteQuery({
+    queryKey: ['event', affiliation],
+    queryFn: async ({ pageParam }) => {
+      const result = await EVENT_API.event(
+        affiliation,
+        pageParam as number,
+        6,
+        '',
+      );
+      return result;
+    },
+    initialPageParam: 0,
+    getNextPageParam: (lastPage) => {
+      if (lastPage.content.length < 6) return undefined;
+      return lastPage.number + 1;
+    },
+  });
+};
+
+export const useGetEventDetail = (
+  eventId: number,
+  options?: UseQueryOptions<GetEventDetailResData, AxiosError>,
+) => {
+  return useQuery({
+    queryKey: ['eventDetail', eventId],
+    queryFn: async () => {
+      const data = await EVENT_API.eventDetail(eventId);
       return data;
     },
     ...options,

@@ -4,10 +4,10 @@ import OrganizationSelectComponent from '@/widgets/OrganizationSelectComponent';
 import Title from '@/widgets/Title';
 import ListComponent from '@/features/contentList/ui/ListComponent';
 import useOrganizationRouter from '../model/useOrganizationRouter';
-import { NoticeContent } from '../api/types';
+import { ListLayoutItems } from '../api/types';
 
 interface ListLayoutComponentProps {
-  items: NoticeContent[] | undefined;
+  items: ListLayoutItems;
   title: string;
   onLoadMore: () => void;
   hasMore: boolean;

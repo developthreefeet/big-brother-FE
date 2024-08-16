@@ -2,16 +2,18 @@
 
 import useDetail from '@/features/content/model/useDetail';
 import CommonDetailComponent from '@/features/content/ui/CommonDetailComponent';
-import { eventItems } from '@/shared/mock/contentList';
+import { usePathname } from 'next/navigation';
 
 const page = () => {
-  const eventItem = useDetail(eventItems);
+  const pathname = usePathname();
+  const organization = pathname.split('/')[2];
+  const id = pathname.split('/')[3];
 
-  if (!eventItem) {
-    return null;
-  }
+  const { returnEventDetailItem } = useDetail();
 
-  return <CommonDetailComponent content={eventItem} />;
+  let noticeItem = returnEventDetailItem(organization, parseInt(id));
+
+  return <CommonDetailComponent content={noticeItem} />;
 };
 
 export default page;

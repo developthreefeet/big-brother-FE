@@ -94,7 +94,3 @@ export interface User {
   create_at: string;
   update_at: string;
 }
-
-/////////////////////////
-
-export type DetailItem = GetNoticeDetailResData;

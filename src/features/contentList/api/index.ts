@@ -2,6 +2,8 @@ import { instance } from '@/shared/api/instance';
 import {
   GetCollegeResData,
   GetDepartmentResData,
+  GetEventDetailResData,
+  GetEventResData,
   GetNoticeDetailResData,
   GetNoticeResData,
 } from './types';
@@ -83,15 +85,18 @@ export const NOTICE_API = {
     search?: string,
   ) => {
     try {
-      const response = await instance.get<GetNoticeResData>('/notice', {
-        params: {
-          affiliation,
-          page,
-          size,
-          search,
+      const response = await instance.get<ApiResponse<GetNoticeResData>>(
+        '/notice',
+        {
+          params: {
+            affiliation,
+            page,
+            size,
+            search,
+          },
         },
-      });
-      return response.data;
+      );
+      return response.data.data;
     } catch (error) {
       throw error;
     }
@@ -102,6 +107,43 @@ export const NOTICE_API = {
     try {
       const response = await instance.get<ApiResponse<GetNoticeDetailResData>>(
         `/notice/${noticeId}`,
+      );
+      return response.data.data;
+    } catch (error) {
+      throw error;
+    }
+  },
+};
+
+export const EVENT_API = {
+  event: async (
+    affiliation: string,
+    page?: number,
+    size?: number,
+    search?: string,
+  ) => {
+    try {
+      const response = await instance.get<ApiResponse<GetEventResData>>(
+        '/event',
+        {
+          params: {
+            affiliation,
+            page,
+            size,
+            search,
+          },
+        },
+      );
+      return response.data.data;
+    } catch (error) {
+      throw error;
+    }
+  },
+
+  eventDetail: async (eventId: number) => {
+    try {
+      const response = await instance.get<ApiResponse<GetEventDetailResData>>(
+        `/event/${eventId}`,
       );
       return response.data.data;
     } catch (error) {

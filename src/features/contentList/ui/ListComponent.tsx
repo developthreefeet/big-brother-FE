@@ -4,9 +4,9 @@ import { formatDate, truncateTitle } from '@/shared/lib/utils';
 import DateText from '@/widgets/DateText';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { NoticeContent } from '../api/types';
+import { ListItems } from '../api/types';
 
-const ListComponent = ({ list }: { list: NoticeContent[] }) => {
+const ListComponent = ({ list }: { list: ListItems }) => {
   const pathname = usePathname();
 
   return (
