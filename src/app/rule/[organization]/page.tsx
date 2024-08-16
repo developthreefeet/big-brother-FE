@@ -1,6 +1,5 @@
 'use client';
 
-import useNotice from '@/features/contentList/model/useNotice';
 import useRule from '@/features/contentList/model/useRule';
 import ListLayoutComponent from '@/features/contentList/ui/ListLayoutComponent';
 
@@ -13,7 +12,7 @@ const page = () => {
     <ListLayoutComponent
       items={allContent}
       isLoading={isLoading}
-      title="공지사항"
+      title="학칙/회칙"
       onLoadMore={fetchNextPage}
       hasMore={hasNextPage}
       isLoadingMore={isFetchingNextPage}
