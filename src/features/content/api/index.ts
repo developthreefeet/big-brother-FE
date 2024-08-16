@@ -28,6 +28,7 @@ export const NOTICE_DETAIL_API = {
   },
 };
 
+//행사 공지사항 detail api
 export const EVENT_DETAIL_API = {
   eventDetail: async (eventId: number) => {
     try {

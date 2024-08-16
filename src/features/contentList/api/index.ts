@@ -90,6 +90,7 @@ export const NOTICE_API = {
   },
 };
 
+//행사 리스트 api
 export const EVENT_API = {
   event: async (
     affiliation: string,
@@ -116,6 +117,7 @@ export const EVENT_API = {
   },
 };
 
+//faq 리스트 api
 export const FAQ_API = {
   faq: async (
     affiliation: string,

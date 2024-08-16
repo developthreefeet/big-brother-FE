@@ -30,6 +30,7 @@ export const useGetNoticeDetail = (
   });
 };
 
+//행사 공지사항 detail
 export const useGetEventDetail = (
   eventId: number,
   options?: UseQueryOptions<GetEventDetailResData, AxiosError>,

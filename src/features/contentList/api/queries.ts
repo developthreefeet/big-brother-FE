@@ -11,6 +11,7 @@ import {
 import { AxiosError } from 'axios';
 import { EVENT_API, FAQ_API, NOTICE_API, ORGANIZATION_API } from '.';
 
+//단과대
 export const useGetCollege = (
   options?: UseQueryOptions<GetCollegeResData, AxiosError>,
 ) => {
@@ -21,6 +22,7 @@ export const useGetCollege = (
   });
 };
 
+//학과
 export const useGetDepartment = (
   councilName: string,
   options?: UseQueryOptions<GetDepartmentResData, AxiosError>,
@@ -99,6 +101,7 @@ export const useGetNotice = (affiliation: string) => {
   });
 };
 
+//행사
 export const useGetEvent = (affiliation: string) => {
   return useInfiniteQuery({
     queryKey: ['event', affiliation],
@@ -119,6 +122,7 @@ export const useGetEvent = (affiliation: string) => {
   });
 };
 
+//faq
 export const useGetFaq = (affiliation: string) => {
   return useInfiniteQuery({
     queryKey: ['faq', affiliation],
