@@ -4,6 +4,7 @@ import {
   GetDepartmentResData,
   GetEventDetailResData,
   GetEventResData,
+  GetFaqResData,
   GetNoticeDetailResData,
   GetNoticeResData,
 } from './types';
@@ -145,6 +146,29 @@ export const EVENT_API = {
       const response = await instance.get<ApiResponse<GetEventDetailResData>>(
         `/event/${eventId}`,
       );
+      return response.data.data;
+    } catch (error) {
+      throw error;
+    }
+  },
+};
+
+export const FAQ_API = {
+  faq: async (
+    affiliation: string,
+    page?: number,
+    size?: number,
+    search?: string,
+  ) => {
+    try {
+      const response = await instance.get<ApiResponse<GetFaqResData>>('/faq', {
+        params: {
+          affiliation,
+          page,
+          size,
+          search,
+        },
+      });
       return response.data.data;
     } catch (error) {
       throw error;
