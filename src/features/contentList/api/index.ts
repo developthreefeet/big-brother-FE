@@ -5,6 +5,7 @@ import {
   GetEventResData,
   GetFaqResData,
   GetNoticeResData,
+  GetRuleResData,
 } from './types';
 import { ApiResponse } from '@/shared/types/type';
 
@@ -134,6 +135,33 @@ export const FAQ_API = {
           search,
         },
       });
+      return response.data.data;
+    } catch (error) {
+      throw error;
+    }
+  },
+};
+
+//학칙/회칙 리스트 api
+export const RULE_API = {
+  rule: async (
+    affiliation: string,
+    page?: number,
+    size?: number,
+    search?: string,
+  ) => {
+    try {
+      const response = await instance.get<ApiResponse<GetRuleResData>>(
+        '/rule',
+        {
+          params: {
+            affiliation,
+            page,
+            size,
+            search,
+          },
+        },
+      );
       return response.data.data;
     } catch (error) {
       throw error;

@@ -9,7 +9,7 @@ import {
   GetNoticeResData,
 } from './types';
 import { AxiosError } from 'axios';
-import { EVENT_API, FAQ_API, NOTICE_API, ORGANIZATION_API } from '.';
+import { EVENT_API, FAQ_API, NOTICE_API, ORGANIZATION_API, RULE_API } from '.';
 
 //단과대
 export const useGetCollege = (
@@ -128,6 +128,27 @@ export const useGetFaq = (affiliation: string) => {
     queryKey: ['faq', affiliation],
     queryFn: async ({ pageParam }) => {
       const result = await FAQ_API.faq(affiliation, pageParam as number, 6, '');
+      return result;
+    },
+    initialPageParam: 0,
+    getNextPageParam: (lastPage) => {
+      if (lastPage.content.length < 6) return undefined;
+      return lastPage.number + 1;
+    },
+  });
+};
+
+//회칙/학칙
+export const useGetRule = (affiliation: string) => {
+  return useInfiniteQuery({
+    queryKey: ['rule', affiliation],
+    queryFn: async ({ pageParam }) => {
+      const result = await RULE_API.rule(
+        affiliation,
+        pageParam as number,
+        6,
+        '',
+      );
       return result;
     },
     initialPageParam: 0,
