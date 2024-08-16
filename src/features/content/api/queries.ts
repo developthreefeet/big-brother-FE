@@ -1,7 +1,11 @@
 import { UseQueryOptions, useQuery } from '@tanstack/react-query';
 import { AxiosError } from 'axios';
-import { GetNoticeDetailResData, GetEventDetailResData } from './types';
-import { EVENT_DETAIL_API, NOTICE_DETAIL_API } from '.';
+import {
+  GetNoticeDetailResData,
+  GetEventDetailResData,
+  GetProceedingDetailResData,
+} from './types';
+import { EVENT_DETAIL_API, NOTICE_DETAIL_API, PROCEEDING_DETAIL_API } from '.';
 
 //학교 공지 detail
 export const useGetCampusNoticeDetail = (
@@ -38,6 +42,20 @@ export const useGetEventDetail = (
     queryKey: ['eventDetail', eventId],
     queryFn: async () => {
       const data = await EVENT_DETAIL_API.eventDetail(eventId);
+      return data;
+    },
+    ...options,
+  });
+};
+
+export const useGetProceedingDetail = (
+  proceedingId: number,
+  options?: UseQueryOptions<GetProceedingDetailResData, AxiosError>,
+) => {
+  return useQuery({
+    queryKey: ['proceedingDetail', proceedingId],
+    queryFn: async () => {
+      const data = await PROCEEDING_DETAIL_API.proceedingDetail(proceedingId);
       return data;
     },
     ...options,

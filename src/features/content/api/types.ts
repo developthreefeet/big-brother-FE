@@ -27,3 +27,14 @@ export interface GetEventDetailResData {
   createAt: string;
   updateAt: string;
 }
+
+/** 회의록 detail */
+export interface GetProceedingDetailResData {
+  meetingsId: number;
+  title: string;
+  content: string;
+  type: string;
+  fileInfo: DetailFileInfo[];
+  createAt: string;
+  updateAt: string;
+}
