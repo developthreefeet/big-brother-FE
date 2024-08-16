@@ -5,7 +5,7 @@ import {
   useGetEventDetail,
 } from '../api/queries';
 
-const useDetail = () => {
+const useCommonDetail = () => {
   //공지사항 detail
   const returnNoticeDetailItem = (organization: string, id: number) => {
     if (organization === 'general') {
@@ -84,4 +84,4 @@ const useDetail = () => {
   return { returnNoticeDetailItem, returnEventDetailItem, returnFaqDetailItem };
 };
 
-export default useDetail;
+export default useCommonDetail;
