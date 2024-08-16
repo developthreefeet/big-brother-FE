@@ -11,6 +11,8 @@ import {
   PostLoginProps,
   PostLoginResData,
 } from './types';
+import { ApiResponse } from '@/shared/types/type';
+import { getCookie } from 'cookies-next';
 
 export const JOIN_API = {
   //이메일 중복 검사 api
@@ -124,9 +126,15 @@ export const MYPAGE_API = {
 export const REFRESH_API = {
   refresh: async () => {
     try {
-      const response =
-        await instance.get<GetRefreshResData>('/members/refresh');
-      return response.data;
+      const response = await instance.get<ApiResponse<GetRefreshResData>>(
+        '/members/refresh',
+        {
+          params: {
+            Authorization: getCookie('refreshToken') as string,
+          },
+        },
+      );
+      return response.data.data;
     } catch (error) {
       throw error;
     }
