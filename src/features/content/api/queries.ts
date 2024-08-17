@@ -1,7 +1,11 @@
 import { UseQueryOptions, useQuery } from '@tanstack/react-query';
 import { AxiosError } from 'axios';
-import { GetNoticeDetailResData, GetEventDetailResData } from './types';
-import { EVENT_DETAIL_API, NOTICE_DETAIL_API } from '.';
+import {
+  GetNoticeDetailResData,
+  GetEventDetailResData,
+  GetTransactionDetailResData,
+} from './types';
+import { EVENT_DETAIL_API, NOTICE_DETAIL_API, TRANSACTION_DETAIL_API } from '.';
 
 //학교 공지 detail
 export const useGetCampusNoticeDetail = (
@@ -41,5 +45,30 @@ export const useGetEventDetail = (
       return data;
     },
     ...options,
+  });
+};
+
+export const useGetTransactionDetail = (
+  affiliation: string,
+  year: number,
+  month: number,
+  options?: UseQueryOptions<GetTransactionDetailResData[], AxiosError>,
+) => {
+  return useQuery({
+    queryKey: ['transactionDetail', affiliation, year, month],
+    queryFn: async () => {
+      const data = await TRANSACTION_DETAIL_API.transaction(
+        affiliation,
+        year,
+        month,
+      );
+      return data;
+    },
+    ...options,
+    enabled: false,
+    refetchOnWindowFocus: false,
+    refetchOnReconnect: false,
+    refetchOnMount: false,
+    retry: false,
   });
 };
