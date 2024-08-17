@@ -18,9 +18,8 @@ const PdfViewerDetailComponent = ({
           <DateText date={formatDate(item.createAt)} />
         </div>
         <hr />
-        <PdfViewer pdf="/static/test.pdf" />
+        <PdfViewer pdf={item.fileInfo[0].url} />
         <hr />
-
         <div className="flex justify-end">
           <BackToListButton />
         </div>
