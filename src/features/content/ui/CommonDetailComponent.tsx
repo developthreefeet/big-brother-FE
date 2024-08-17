@@ -18,6 +18,8 @@ const CommonDetailComponent = ({
   const pathname = usePathname();
   const isEventDetailPage = pathname.includes('event');
 
+  const arr = [1, 2, 3, 4, 5, 6, 2];
+
   if (data) {
     return (
       <div className="flex flex-col space-y-3">
@@ -35,15 +37,17 @@ const CommonDetailComponent = ({
           </div>
         </div>
         <hr />
-        <div className="p-5 text-md">
+        <div className="p-5 text-md flex flex-col gap-4">
           <ReactMarkdown rehypePlugins={[rehypeRaw]}>
             {data.content}
           </ReactMarkdown>
-          {isEventDetailPage &&
-            data.fileInfo.length > 0 &&
-            data.fileInfo.map((data, index) => (
-              <img key={index} src={data.url} />
-            ))}
+          <div className="flex flex-col gap-2">
+            {isEventDetailPage &&
+              data.fileInfo.length > 0 &&
+              data.fileInfo.map((data, index) => (
+                <img src={data.url} key={index} className="w-70" />
+              ))}
+          </div>
         </div>
         <hr />
         {!isEventDetailPage &&
