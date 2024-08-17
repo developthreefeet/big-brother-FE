@@ -6,13 +6,7 @@ import {
   CarouselNext,
 } from '@/shared/ui/ui/carousel';
 
-const MonthComponent = ({
-  currentMonth,
-  onMonthChange,
-}: {
-  currentMonth: number;
-  onMonthChange: (month: number) => void;
-}) => {
+const MonthComponent = () => {
   const months = [
     '1월',
     '2월',
@@ -28,14 +22,20 @@ const MonthComponent = ({
     '12월',
   ];
 
+  const currentMonthIndex = new Date().getMonth();
+
+  const reorderedMonths = [
+    months[currentMonthIndex],
+    ...months.slice(currentMonthIndex + 1),
+    ...months.slice(0, currentMonthIndex),
+  ];
+
   return (
     <div className="mx-auto">
-      <Carousel opts={{ loop: false, watchDrag: false }}>
-        <CarouselContent className=" w-16 -ml-0">
-          {months.slice(0, currentMonth).map((month, index) => (
-            <CarouselItem key={index} onClick={() => onMonthChange(index + 1)}>
-              {month}
-            </CarouselItem>
+      <Carousel opts={{ loop: true, watchDrag: false }}>
+        <CarouselContent className="w-16 -ml-0">
+          {reorderedMonths.map((month, index) => (
+            <CarouselItem key={index}>{month}</CarouselItem>
           ))}
         </CarouselContent>
         <CarouselPrevious />
