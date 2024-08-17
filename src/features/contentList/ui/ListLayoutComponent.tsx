@@ -47,7 +47,7 @@ const ListLayoutComponent = ({
                     className="border-none"
                   >
                     {isLoadingMore ? (
-                      'Loading...'
+                      '로딩중...'
                     ) : (
                       <>
                         <IoIosArrowDown /> 더보기
