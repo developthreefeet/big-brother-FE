@@ -1,8 +1,23 @@
+'use client';
+
+import useProceeding from '@/features/contentList/model/useProceeding';
 import ListLayoutComponent from '@/features/contentList/ui/ListLayoutComponent';
-import { proceedingItems } from '@/shared/mock/contentList';
 
 const page = () => {
-  return <ListLayoutComponent items={proceedingItems} title="회의록" />;
+  const { data, fetchNextPage, hasNextPage, isFetchingNextPage, isLoading } =
+    useProceeding();
+
+  const allContent = data?.pages.flatMap((page) => page.content);
+  return (
+    <ListLayoutComponent
+      items={allContent}
+      isLoading={isLoading}
+      title="회의록"
+      onLoadMore={fetchNextPage}
+      hasMore={hasNextPage}
+      isLoadingMore={isFetchingNextPage}
+    />
+  );
 };
 
 export default page;

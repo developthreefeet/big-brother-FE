@@ -4,6 +4,7 @@ import {
   GetNoticeDetailResData,
   GetEventDetailResData,
   GetRuleDetailResData,
+  GetProceedingDetailResData,
 } from './types';
 
 export const NOTICE_DETAIL_API = {
@@ -45,7 +46,6 @@ export const EVENT_DETAIL_API = {
     }
   },
 };
-
 //학칙/회칙 detail api
 export const RULE_DETAIL_API = {
   ruleDetail: async (ruleId: number) => {
@@ -53,6 +53,19 @@ export const RULE_DETAIL_API = {
       const response = await instance.get<ApiResponse<GetRuleDetailResData>>(
         `/rule/${ruleId}`,
       );
+      return response.data.data;
+    } catch (error) {
+      throw error;
+    }
+  },
+};
+
+export const PROCEEDING_DETAIL_API = {
+  proceedingDetail: async (eventId: number) => {
+    try {
+      const response = await instance.get<
+        ApiResponse<GetProceedingDetailResData>
+      >(`/meetings/${eventId}`);
       return response.data.data;
     } catch (error) {
       throw error;

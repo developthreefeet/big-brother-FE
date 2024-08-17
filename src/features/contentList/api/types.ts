@@ -155,13 +155,54 @@ export interface GetFaqResData {
   empty: boolean;
 }
 
+export interface ProceedingContent {
+  createAt: string;
+  updateAt: string;
+  id: number;
+  title: string;
+  content: string;
+  affiliationId: number;
+  files: ListFileInfo[];
+}
+
 /** 학칙/회칙 content */
 export interface RuleContent {
   createAt: string;
   updateAt: string;
   id: number;
   title: string;
+  content: string;
   affiliationId: number;
+  files: ListFileInfo[];
+}
+
+export interface GetProceedingResData {
+  totalPages: number;
+  totalElements: number;
+  size: number;
+  content: ProceedingContent[];
+  number: number;
+  sort: {
+    empty: boolean;
+    sorted: boolean;
+    unsorted: boolean;
+  };
+  numberOfElements: number;
+  pageable: {
+    offset: number;
+    sort: {
+      empty: boolean;
+      sorted: boolean;
+      unsorted: boolean;
+    };
+    paged: boolean;
+    pageNumber: number;
+    pageSize: number;
+    unpaged: boolean;
+  };
+  first: boolean;
+  last: boolean;
+  empty: boolean;
 }
 
 /** 회칙/학칙 전체 조회 */
