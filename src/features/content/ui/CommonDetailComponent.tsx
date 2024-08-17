@@ -1,3 +1,5 @@
+'use client';
+
 import DateText from '@/widgets/DateText';
 import Title from '@/widgets/Title';
 import { formatDate } from '@/shared/lib/utils';
@@ -6,12 +8,16 @@ import ReactMarkdown from 'react-markdown';
 import rehypeRaw from 'rehype-raw';
 import { TbDownload } from 'react-icons/tb';
 import { CommonDetailItem } from '../api/types';
+import { usePathname } from 'next/navigation';
 
 const CommonDetailComponent = ({
   content: data,
 }: {
   content: CommonDetailItem | undefined;
 }) => {
+  const pathname = usePathname();
+  const isEventDetailPage = pathname.includes('event');
+
   if (data) {
     return (
       <div className="flex flex-col space-y-3">
@@ -33,9 +39,15 @@ const CommonDetailComponent = ({
           <ReactMarkdown rehypePlugins={[rehypeRaw]}>
             {data.content}
           </ReactMarkdown>
+          {isEventDetailPage &&
+            data.fileInfo.length > 0 &&
+            data.fileInfo.map((data, index) => (
+              <img key={index} src={data.url} />
+            ))}
         </div>
         <hr />
-        {data.fileInfo.length > 0 &&
+        {!isEventDetailPage &&
+          data.fileInfo.length > 0 &&
           data.fileInfo.map((data, index) => (
             <a
               className="flex flex-row items-center gap-1 pt-2 text-sm"
