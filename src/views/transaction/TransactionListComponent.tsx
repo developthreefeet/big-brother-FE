@@ -1,30 +1,34 @@
 import { formatDate } from '@/shared/lib/utils';
-import { TransactionListComponentProps } from '@/shared/types/type';
 import DateText from '@/widgets/DateText';
+import { GetTransactionDetailResData } from '@/features/content/api/types';
 
-const TransactionListComponent = ({ list }: TransactionListComponentProps) => {
+const TransactionListComponent = ({
+  list,
+}: {
+  list: GetTransactionDetailResData[];
+}) => {
   return (
     <div className="flex flex-col space-y-3">
       <p className="text-xl font-bold">내역</p>
       <div className="flex flex-col">
-        {list.map((item, index) => (
-          <div key={index} className="py-4 px-0 border-b ">
+        {list.map((item) => (
+          <div key={item.transactionId} className="py-4 px-0 border-b">
             <div className="flex justify-between items-center">
               <div className="flex flex-col space-y-1">
                 <p className="text-md font-bold text-blue-500">
-                  {item.trans_direction === 'deposit'
-                    ? '+ ' + item.deposit
-                    : '- ' + item.withdraw}
+                  {item.amount > 0
+                    ? '+ ' + item.amount.toLocaleString()
+                    : '- ' + Math.abs(item.amount).toLocaleString()}
                 </p>
                 <div className="flex space-x-1 text-xs">
-                  <p>{item.trans_direction === 'deposit' ? '입금' : '출금'}</p>
-                  <p>| {item.trans}</p>
+                  <p>{item.amount > 0 ? '입금' : '출금'}</p>
+                  <p>| {item.description}</p>
                 </div>
                 <span className="text-sm font-semibold">
-                  잔액: <span>{item.balance}</span>
+                  잔액: <span>{item.balance.toLocaleString()}</span>
                 </span>
               </div>
-              <DateText date={formatDate(item.trans_date)} />
+              <DateText date={formatDate(item.date)} />
             </div>
           </div>
         ))}

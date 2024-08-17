@@ -1,7 +1,7 @@
+import { GetTransactionDetailResData } from '@/features/content/api/types';
 import { calculateTotals } from '@/shared/lib/utils';
-import { TransactionItem } from '@/shared/types/type';
 
-const TotalAmount = ({ items }: { items: TransactionItem[] }) => {
+const TotalAmount = ({ items }: { items: GetTransactionDetailResData[] }) => {
   const { totalDeposit, totalWithdraw } = calculateTotals(items);
 
   return (
