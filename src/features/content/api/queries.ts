@@ -4,8 +4,16 @@ import {
   GetNoticeDetailResData,
   GetEventDetailResData,
   GetTransactionDetailResData,
+  GetRuleDetailResData,
+  GetProceedingDetailResData,
 } from './types';
-import { EVENT_DETAIL_API, NOTICE_DETAIL_API, TRANSACTION_DETAIL_API } from '.';
+import {
+  EVENT_DETAIL_API,
+  NOTICE_DETAIL_API,
+  PROCEEDING_DETAIL_API,
+  RULE_DETAIL_API,
+  TRANSACTION_DETAIL_API,
+} from '.';
 
 //학교 공지 detail
 export const useGetCampusNoticeDetail = (
@@ -63,6 +71,34 @@ export const useGetTransactionDetail = (
         year,
         month,
       );
+      return data;
+    },
+    ...options,
+  });
+};
+
+export const useGetProceedingDetail = (
+  proceedingId: number,
+  options?: UseQueryOptions<GetProceedingDetailResData, AxiosError>,
+) => {
+  return useQuery({
+    queryKey: ['proceedingDetail', proceedingId],
+    queryFn: async () => {
+      const data = await PROCEEDING_DETAIL_API.proceedingDetail(proceedingId);
+      return data;
+    },
+    ...options,
+  });
+};
+
+export const useGetRuleDetail = (
+  ruleId: number,
+  options?: UseQueryOptions<GetRuleDetailResData, AxiosError>,
+) => {
+  return useQuery({
+    queryKey: ['ruleDetail', ruleId],
+    queryFn: async () => {
+      const data = await RULE_DETAIL_API.ruleDetail(ruleId);
       return data;
     },
     ...options,
