@@ -1,16 +1,18 @@
 'use client';
-import useDetail from '@/features/content/model/useDetail';
+
+import usePdfDetail from '@/features/content/model/usePdfDetail';
 import PdfViewerDetailComponent from '@/features/content/ui/PdfViewerDetailComponent';
-import { proceedingItems } from '@/shared/mock/contentList';
+import { usePathname } from 'next/navigation';
 
 const page = () => {
-  const proceedingItem = useDetail(proceedingItems);
+  const pathname = usePathname();
+  const organization = pathname.split('/')[2];
+  const id = pathname.split('/')[3];
 
-  if (!proceedingItem) {
-    return null;
-  }
+  const { returnProceedingDetailItem } = usePdfDetail();
+  const ruleItem = returnProceedingDetailItem(organization, parseInt(id));
 
-  return <PdfViewerDetailComponent item={proceedingItem} />;
+  return <PdfViewerDetailComponent item={ruleItem} />;
 };
 
 export default page;

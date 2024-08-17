@@ -1,6 +1,6 @@
 'use client';
 
-import useDetail from '@/features/content/model/useDetail';
+import useCommonDetail from '@/features/content/model/useCommonDetail';
 import CommonDetailComponent from '@/features/content/ui/CommonDetailComponent';
 import { usePathname } from 'next/navigation';
 
@@ -9,7 +9,7 @@ const page = () => {
   const organization = pathname.split('/')[2];
   const id = pathname.split('/')[3];
 
-  const { returnEventDetailItem } = useDetail();
+  const { returnEventDetailItem } = useCommonDetail();
 
   let noticeItem = returnEventDetailItem(organization, parseInt(id));
 

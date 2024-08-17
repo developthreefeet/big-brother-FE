@@ -1,26 +1,32 @@
-import { ListItem } from '@/shared/types/type';
-import { formatDate, getTitle } from '@/shared/lib/utils';
+import { formatDate } from '@/shared/lib/utils';
 import BackToListButton from '@/features/content/ui/BackToListButton';
 import DateText from '@/widgets/DateText';
-import { Title } from '@radix-ui/react-toast';
 import PdfViewer from './PdfViewer';
+import { PdfDetailItem } from '../api/types';
+import Title from '@/widgets/Title';
 
-const PdfViewerDetailComponent = ({ item }: { item: ListItem }) => {
-  return (
-    <div className="flex flex-col space-y-3">
-      <div className="flex flex-col space-y-1">
-        <Title text={getTitle(item)} />
-        <DateText date={formatDate(item.create_at)} />
-      </div>
-      <hr />
-      <PdfViewer pdf="/static/test.pdf" />
-      <hr />
+const PdfViewerDetailComponent = ({
+  item,
+}: {
+  item: PdfDetailItem | undefined;
+}) => {
+  if (item) {
+    return (
+      <div className="flex flex-col space-y-3">
+        <div className="flex flex-col space-y-1">
+          <Title text={item.title} />
+          <DateText date={formatDate(item.createAt)} />
+        </div>
+        <hr />
+        <PdfViewer pdf="/static/test.pdf" />
+        <hr />
 
-      <div className="flex justify-end">
-        <BackToListButton />
+        <div className="flex justify-end">
+          <BackToListButton />
+        </div>
       </div>
-    </div>
-  );
+    );
+  }
 };
 
 export default PdfViewerDetailComponent;

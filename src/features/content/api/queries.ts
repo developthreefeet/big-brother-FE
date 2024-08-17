@@ -34,6 +34,7 @@ export const useGetNoticeDetail = (
   });
 };
 
+//행사 detail
 export const useGetEventDetail = (
   eventId: number,
   options?: UseQueryOptions<GetEventDetailResData, AxiosError>,

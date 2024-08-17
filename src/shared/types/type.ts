@@ -2,8 +2,7 @@ export interface ApiResponse<T> {
   data: T;
 }
 
-import { GetNoticeDetailResData } from '@/features/contentList/api/types';
-
+/////여기 밑까지 다 mock data 관련
 //ListComponent를 위한 임시 타입 지정
 export interface EventItem {
   eventName: string;
