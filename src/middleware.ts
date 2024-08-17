@@ -21,6 +21,9 @@ export function middleware(req: NextRequest) {
   }
 
   if (!isAuthenticated) {
+    if (pathname.includes('/changePw')) {
+      return NextResponse.next();
+    }
     const url = req.nextUrl.clone();
     url.pathname = '/login';
     return NextResponse.redirect(url);

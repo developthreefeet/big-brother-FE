@@ -1,5 +1,3 @@
-import { useGetProceedingDetail, useGetRuleDetail } from '../api/queries';
-
 const usePdfDetail = () => {
   //회칙/학칙 detail
   const returnRuleDetailItem = (organization: string, id: number) => {
@@ -51,3 +49,10 @@ const usePdfDetail = () => {
 };
 
 export default usePdfDetail;
+function useGetRuleDetail(id: number): { data: any; isSuccess: any } {
+  throw new Error('Function not implemented.');
+}
+
+function useGetProceedingDetail(id: number): { data: any; isSuccess: any } {
+  throw new Error('Function not implemented.');
+}

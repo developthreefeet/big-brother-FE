@@ -5,6 +5,7 @@ import {
   GetEventDetailResData,
   GetRuleDetailResData,
   GetProceedingDetailResData,
+  GetTransactionDetailResData,
 } from './types';
 
 export const NOTICE_DETAIL_API = {
@@ -46,6 +47,26 @@ export const EVENT_DETAIL_API = {
     }
   },
 };
+
+export const TRANSACTION_DETAIL_API = {
+  transaction: async (affiliation: string, year: number, month: number) => {
+    try {
+      const response = await instance.get<
+        ApiResponse<GetTransactionDetailResData[]>
+      >('/transactions', {
+        params: {
+          affiliation,
+          year,
+          month,
+        },
+      });
+      return response.data.data;
+    } catch (error) {
+      throw error;
+    }
+  },
+};
+
 //학칙/회칙 detail api
 export const RULE_DETAIL_API = {
   ruleDetail: async (ruleId: number) => {

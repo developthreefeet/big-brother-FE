@@ -9,6 +9,7 @@ import {
   TransactionItem,
 } from '../types/type';
 import { deleteCookie } from 'cookies-next';
+import { GetTransactionDetailResData } from '@/features/content/api/types';
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -74,16 +75,15 @@ export const getContent = (item: ListItem): string => {
 };
 
 /** 입/출금내역 총 거래 계산 함수 */
-export const calculateTotals = (items: TransactionItem[]) => {
+export const calculateTotals = (items: GetTransactionDetailResData[]) => {
   let totalDeposit = 0;
   let totalWithdraw = 0;
 
   items.forEach((item) => {
-    if (item.deposit) {
-      totalDeposit += parseInt(item.deposit.replace(/,/g, ''), 10);
-    }
-    if (item.withdraw) {
-      totalWithdraw += parseInt(item.withdraw.replace(/,/g, ''), 10);
+    if (item.amount > 0) {
+      totalDeposit += item.amount;
+    } else if (item.amount < 0) {
+      totalWithdraw += -item.amount;
     }
   });
 

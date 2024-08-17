@@ -48,3 +48,15 @@ export interface GetProceedingDetailResData {
   affiliationId: number;
   fileInfo: DetailFileInfo[];
 }
+
+/** 입/출금 내역 detail */
+export interface GetTransactionDetailResData {
+  transactionId: number;
+  accountNumber: string;
+  date: string;
+  type: string;
+  amount: number;
+  balance: number;
+  description: string;
+  note: string | null;
+}
