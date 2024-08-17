@@ -1,25 +1,34 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import useTransactionDetail from '@/features/content/model/useTransactionDetail';
-import MonthComponent from '@/views/transaction/MonthComponent';
 import TotalAmount from '@/views/transaction/TotalAmount';
 import TransactionListComponent from '@/views/transaction/TransactionListComponent';
 import Title from '@/widgets/Title';
 import { usePathname } from 'next/navigation';
 import { GetTransactionDetailResData } from '@/features/content/api/types';
 import { useMonthStore } from '@/features/content/model/useTransactionMonthStore';
+import MonthSelectComponent from '@/views/transaction/MonthSelectComponent';
 
 const Page = () => {
   const pathname = usePathname();
   const organization = pathname.split('/')[2];
-  const { currentMonth, setCurrentMonth } = useMonthStore();
+  const { selectMonth } = useMonthStore();
 
   const [transactionItems, setTransactionItems] = useState<
     GetTransactionDetailResData[]
   >([]);
+  const { data, isLoading } = useTransactionDetail(
+    organization,
+    new Date().getFullYear(),
+    selectMonth,
+  );
 
-  const { returnTransactionDetailItem } = useTransactionDetail();
+  useEffect(() => {
+    if (data) {
+      setTransactionItems(data);
+    }
+  }, [data]);
 
   return (
     <div className="flex flex-col space-y-10">
@@ -33,12 +42,13 @@ const Page = () => {
         } 입/출금 내역`}
       />
       <div className="flex flex-col space-y-12">
-        {/*<MonthComponent
-          currentMonth={currentMonth}
-        />*/}
+        <MonthSelectComponent />
         <>
-          <TotalAmount items={transactionItems} />
-          <TransactionListComponent list={transactionItems} />
+          <TotalAmount items={transactionItems} isLoading={isLoading} />
+          <TransactionListComponent
+            list={transactionItems}
+            isLoading={isLoading}
+          />
         </>
       </div>
     </div>

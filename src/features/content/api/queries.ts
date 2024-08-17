@@ -66,10 +66,5 @@ export const useGetTransactionDetail = (
       return data;
     },
     ...options,
-    enabled: false,
-    refetchOnWindowFocus: false,
-    refetchOnReconnect: false,
-    refetchOnMount: false,
-    retry: false,
   });
 };
