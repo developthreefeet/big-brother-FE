@@ -95,6 +95,7 @@ export const useJoinEmail = () => {
   const emailCodeQuery = usePostEmailCode(email);
 
   const sendEmailCode = async () => {
+    setOtpError(false);
     try {
       await emailCodeQuery.mutateAsync();
       setOtpVisible(true);
