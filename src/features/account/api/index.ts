@@ -11,8 +11,7 @@ import {
   PostLoginProps,
   PostLoginResData,
 } from './types';
-import { ApiResponse } from '@/shared/types/type';
-import { getCookie } from 'cookies-next';
+import { ApiResponse } from '@/shared/types';
 
 export const JOIN_API = {
   //이메일 중복 검사 api

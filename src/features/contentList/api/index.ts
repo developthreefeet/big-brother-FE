@@ -8,7 +8,7 @@ import {
   GetRuleResData,
   GetProceedingResData,
 } from './types';
-import { ApiResponse } from '@/shared/types/type';
+import { ApiResponse } from '@/shared/types';
 
 export const ORGANIZATION_API = {
   //단과대 리스트 api
