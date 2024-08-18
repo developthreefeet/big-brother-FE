@@ -48,7 +48,7 @@ const EmailForm = () => {
                       placeholder="bigBrother@mju.ac.kr"
                       className="mr-3"
                       {...field}
-                      disabled={isEmailValid && verificationComplete}
+                      disabled={isEmailValid}
                     />
                   </FormControl>
                   <Button
