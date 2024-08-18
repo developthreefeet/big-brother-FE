@@ -67,6 +67,6 @@ instance.interceptors.response.use(
         return;
       }
     }
-    return Promise.reject(error);
+    window.location.replace('/404');
   },
 );
