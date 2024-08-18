@@ -1,5 +1,4 @@
 import { instance } from '@/shared/api/instance';
-import { ApiResponse } from '@/shared/types/type';
 import {
   GetNoticeDetailResData,
   GetEventDetailResData,
@@ -7,6 +6,7 @@ import {
   GetProceedingDetailResData,
   GetTransactionDetailResData,
 } from './types';
+import { ApiResponse } from '@/shared/types';
 
 export const NOTICE_DETAIL_API = {
   //학교 공지사항 detail api
