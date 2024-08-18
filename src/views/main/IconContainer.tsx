@@ -1,5 +1,5 @@
 import IconComponent from '@/widgets/IconComponent';
-import { pages } from '@/shared/mock/pages';
+import { pages } from '@/shared/lib/pages';
 
 const IconContainer = () => {
   return (
