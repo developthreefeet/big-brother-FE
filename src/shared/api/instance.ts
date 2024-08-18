@@ -67,6 +67,18 @@ instance.interceptors.response.use(
         return;
       }
     }
+
+    if (
+      error.config.url.includes('transactions') ||
+      error.config.url.includes('notice') ||
+      error.config.url.includes('meetings') ||
+      error.config.url.includes('faq') ||
+      error.config.url.includes('event') ||
+      error.config.url.includes('rule') ||
+      error.config.url.includes('campusnotice')
+    ) {
+      window.location.replace('/404');
+    }
     return Promise.reject(error);
   },
 );
