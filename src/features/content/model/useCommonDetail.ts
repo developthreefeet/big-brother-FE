@@ -59,27 +59,23 @@ const useCommonDetail = () => {
   };
 
   //faq detail
-  const returnFaqDetailItem = (organization: string) => {
+  const getFaq = (organization: string) => {
     if (organization === 'studentCouncil') {
-      const { data: studentCouncilData, isSuccess: isSuccessStudentCouncil } =
-        useGetFaq('총학');
-      if (isSuccessStudentCouncil) {
-        return studentCouncilData;
-      }
+      return useGetFaq('총학');
     } else if (organization === 'college') {
-      const { data: collegeData, isSuccess: isSuccessCollege } =
-        useGetFaq('단과대');
-      if (isSuccessCollege) {
-        return collegeData;
-      }
+      return useGetFaq('단과대');
     } else if (organization === 'department') {
-      const { data: departmentData, isSuccess: isSuccessDepartment } =
-        useGetFaq('학과');
-      if (isSuccessDepartment) {
-        return departmentData;
-      }
+      return useGetFaq('학과');
     }
+    return { data: undefined, isLoading: false };
   };
+
+  const returnFaqDetailItem = (organization: string) => {
+    const { data, isLoading } = getFaq(organization);
+    return { data, isLoading };
+  };
+
+  return { returnFaqDetailItem };
 
   return { returnNoticeDetailItem, returnEventDetailItem, returnFaqDetailItem };
 };
