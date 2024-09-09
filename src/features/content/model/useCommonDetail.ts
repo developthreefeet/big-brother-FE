@@ -6,56 +6,33 @@ import {
 } from '../api/queries';
 
 const useCommonDetail = () => {
-  //공지사항 detail
   const returnNoticeDetailItem = (organization: string, id: number) => {
+    let data;
+    let isLoading = true;
+
     if (organization === 'general') {
-      const { data: generalData, isSuccess: isSuccessGeneral } =
-        useGetCampusNoticeDetail(id);
-      if (isSuccessGeneral) {
-        return generalData;
-      }
-    } else if (organization === 'studentCouncil') {
-      const { data: studentCouncilData, isSuccess: isSuccessStudentCouncil } =
-        useGetNoticeDetail(id);
-      if (isSuccessStudentCouncil) {
-        return studentCouncilData;
-      }
-    } else if (organization === 'college') {
-      const { data: collegeData, isSuccess: isSuccessCollege } =
-        useGetNoticeDetail(id);
-      if (isSuccessCollege) {
-        return collegeData;
-      }
-    } else if (organization === 'department') {
-      const { data: departmentData, isSuccess: isSuccessDepartment } =
-        useGetNoticeDetail(id);
-      if (isSuccessDepartment) {
-        return departmentData;
-      }
+      const response = useGetCampusNoticeDetail(id);
+      data = response.data;
+      isLoading = response.isLoading;
+    } else {
+      const response = useGetNoticeDetail(id);
+      data = response.data;
+      isLoading = response.isLoading;
     }
+
+    return { data, isLoading };
   };
 
-  //행사 detail
-  const returnEventDetailItem = (organization: string, id: number) => {
-    if (organization === 'studentCouncil') {
-      const { data: studentCouncilData, isSuccess: isSuccessStudentCouncil } =
-        useGetEventDetail(id);
-      if (isSuccessStudentCouncil) {
-        return studentCouncilData;
-      }
-    } else if (organization === 'college') {
-      const { data: collegeData, isSuccess: isSuccessCollege } =
-        useGetEventDetail(id);
-      if (isSuccessCollege) {
-        return collegeData;
-      }
-    } else if (organization === 'department') {
-      const { data: departmentData, isSuccess: isSuccessDepartment } =
-        useGetEventDetail(id);
-      if (isSuccessDepartment) {
-        return departmentData;
-      }
-    }
+  // 행사 detail
+  const returnEventDetailItem = (id: number) => {
+    let data;
+    let isLoading = true;
+
+    const response = useGetEventDetail(id);
+    data = response.data;
+    isLoading = response.isLoading;
+
+    return { data, isLoading };
   };
 
   //faq detail
