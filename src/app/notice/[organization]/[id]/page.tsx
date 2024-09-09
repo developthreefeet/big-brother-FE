@@ -11,9 +11,12 @@ const page = () => {
 
   const { returnNoticeDetailItem } = useCommonDetail();
 
-  let noticeItem = returnNoticeDetailItem(organization, parseInt(id));
+  let { data: noticeItem, isLoading } = returnNoticeDetailItem(
+    organization,
+    parseInt(id),
+  );
 
-  return <CommonDetailComponent content={noticeItem} />;
+  return <CommonDetailComponent content={noticeItem} isLoading={isLoading} />;
 };
 
 export default page;
