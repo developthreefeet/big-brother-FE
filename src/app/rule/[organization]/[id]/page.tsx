@@ -6,13 +6,12 @@ import { usePathname } from 'next/navigation';
 
 const page = () => {
   const pathname = usePathname();
-  const organization = pathname.split('/')[2];
   const id = pathname.split('/')[3];
 
   const { returnRuleDetailItem } = usePdfDetail();
-  const ruleItem = returnRuleDetailItem(organization, parseInt(id));
+  const { data: ruleItem, isLoading } = returnRuleDetailItem(parseInt(id));
 
-  return <PdfViewerDetailComponent item={ruleItem} />;
+  return <PdfViewerDetailComponent item={ruleItem} isLoading={isLoading} />;
 };
 
 export default page;
