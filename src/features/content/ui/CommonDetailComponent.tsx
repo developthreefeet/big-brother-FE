@@ -18,8 +18,6 @@ const CommonDetailComponent = ({
   const pathname = usePathname();
   const isEventDetailPage = pathname.includes('event');
 
-  const arr = [1, 2, 3, 4, 5, 6, 2];
-
   if (data) {
     return (
       <div className="flex flex-col space-y-3">
