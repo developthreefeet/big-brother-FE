@@ -7,6 +7,7 @@ import useOrganizationRouter from '../model/useOrganizationRouter';
 import { ListLayoutItems } from '../api/types';
 import { Button } from '@/shared/ui/ui/button';
 import { IoIosArrowDown } from 'react-icons/io';
+import { Skeleton } from '@/shared/ui/ui/skeleton';
 
 interface ListLayoutComponentProps {
   items: ListLayoutItems;
@@ -33,7 +34,14 @@ const ListLayoutComponent = ({
         <Title text={title} />
         <OrganizationSelectComponent />
         {isLoading ? (
-          <div>로딩중...</div>
+          <div className="flex flex-col gap-10">
+            {Array.from({ length: 6 }).map((_, index) => (
+              <div className="flex flex-col gap-2">
+                <Skeleton key={index} className="h-5 w-72" />
+                <Skeleton key={index} className="h-3 w-20" />
+              </div>
+            ))}
+          </div>
         ) : (
           <>
             {items && (
