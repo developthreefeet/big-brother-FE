@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { Button } from '@/shared/ui/ui/button';
 import { truncateTitle } from '@/shared/lib/utils';
 import { useGetCampusNotice } from '../api/queries';
+import { Skeleton } from '@/shared/ui/ui/skeleton';
 
 const MiniNoticeList = () => {
   const { data, isSuccess, isLoading, isError } =
@@ -21,7 +22,13 @@ const MiniNoticeList = () => {
         </Button>
       </div>
 
-      {isLoading && <div>로딩중...</div>}
+      {isLoading && (
+        <div className="flex flex-col gap-2">
+          {Array.from({ length: 5 }).map((_, index) => (
+            <Skeleton key={index} className="h-5 w-80" />
+          ))}
+        </div>
+      )}
 
       {isError && (
         <div>공지사항을 불러오지 못했습니다. 관리자에게 문의해주세요.</div>

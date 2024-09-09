@@ -57,7 +57,7 @@ export const useGetCampusNotice = (
       const result = await NOTICE_API.campusNotice(
         campusNoticeType,
         pageParam as number,
-        6,
+        7,
         '',
       );
       return result;
@@ -74,14 +74,14 @@ export const useGetInfiniteCampusNotice = (campusNoticeType: string) => {
       const result = await NOTICE_API.campusNotice(
         campusNoticeType,
         pageParam as number,
-        6,
+        7,
         '',
       );
       return result;
     },
     initialPageParam: 0,
     getNextPageParam: (lastPage) => {
-      if (lastPage.content.length < 6) return undefined;
+      if (lastPage.content.length < 7) return undefined;
       return lastPage.number + 1;
     },
   });
@@ -95,14 +95,14 @@ export const useGetNotice = (affiliation: string) => {
       const result = await NOTICE_API.notice(
         affiliation,
         pageParam as number,
-        6,
+        7,
         '',
       );
       return result;
     },
     initialPageParam: 0,
     getNextPageParam: (lastPage) => {
-      if (lastPage.content.length < 6) return undefined;
+      if (lastPage.content.length < 7) return undefined;
       return lastPage.number + 1;
     },
   });
@@ -116,14 +116,14 @@ export const useGetEvent = (affiliation: string) => {
       const result = await EVENT_API.event(
         affiliation,
         pageParam as number,
-        6,
+        7,
         '',
       );
       return result;
     },
     initialPageParam: 0,
     getNextPageParam: (lastPage) => {
-      if (lastPage.content.length < 6) return undefined;
+      if (lastPage.content.length < 7) return undefined;
       return lastPage.number + 1;
     },
   });
@@ -134,12 +134,12 @@ export const useGetFaq = (affiliation: string) => {
   return useInfiniteQuery({
     queryKey: ['faq', affiliation],
     queryFn: async ({ pageParam }) => {
-      const result = await FAQ_API.faq(affiliation, pageParam as number, 6, '');
+      const result = await FAQ_API.faq(affiliation, pageParam as number, 7, '');
       return result;
     },
     initialPageParam: 0,
     getNextPageParam: (lastPage) => {
-      if (lastPage.content.length < 6) return undefined;
+      if (lastPage.content.length < 7) return undefined;
       return lastPage.number + 1;
     },
   });
@@ -152,14 +152,14 @@ export const useGetProceeding = (affiliation: string) => {
       const result = await PROCEEDING_API.proceeding(
         affiliation,
         pageParam as number,
-        6,
+        7,
         '',
       );
       return result;
     },
     initialPageParam: 0,
     getNextPageParam: (lastPage) => {
-      if (lastPage.content.length < 6) return undefined;
+      if (lastPage.content.length < 7) return undefined;
       return lastPage.number + 1;
     },
   });
@@ -173,14 +173,14 @@ export const useGetRule = (affiliation: string) => {
       const result = await RULE_API.rule(
         affiliation,
         pageParam as number,
-        6,
+        7,
         '',
       );
       return result;
     },
     initialPageParam: 0,
     getNextPageParam: (lastPage) => {
-      if (lastPage.content.length < 6) return undefined;
+      if (lastPage.content.length < 7) return undefined;
       return lastPage.number + 1;
     },
   });

@@ -6,14 +6,13 @@ import { usePathname } from 'next/navigation';
 
 const page = () => {
   const pathname = usePathname();
-  const organization = pathname.split('/')[2];
   const id = pathname.split('/')[3];
 
   const { returnEventDetailItem } = useCommonDetail();
 
-  let noticeItem = returnEventDetailItem(organization, parseInt(id));
+  let { data: noticeItem, isLoading } = returnEventDetailItem(parseInt(id));
 
-  return <CommonDetailComponent content={noticeItem} />;
+  return <CommonDetailComponent content={noticeItem} isLoading={isLoading} />;
 };
 
 export default page;
