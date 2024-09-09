@@ -35,7 +35,7 @@ const ListLayoutComponent = ({
         <OrganizationSelectComponent />
         {isLoading ? (
           <div className="flex flex-col gap-10">
-            {Array.from({ length: 6 }).map((_, index) => (
+            {Array.from({ length: 7 }).map((_, index) => (
               <div className="flex flex-col gap-2">
                 <Skeleton key={index} className="h-5 w-72" />
                 <Skeleton key={index} className="h-3 w-20" />
