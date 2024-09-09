@@ -75,8 +75,6 @@ const useCommonDetail = () => {
     return { data, isLoading };
   };
 
-  return { returnFaqDetailItem };
-
   return { returnNoticeDetailItem, returnEventDetailItem, returnFaqDetailItem };
 };
 
