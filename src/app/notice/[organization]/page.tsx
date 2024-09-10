@@ -22,8 +22,8 @@ const page = () => {
       items={allContent}
       isLoading={isLoading}
       title="공지사항"
-      onLoadMore={fetchNextPage}
-      hasMore={hasNextPage}
+      fetchNextPage={fetchNextPage}
+      hasNextPage={hasNextPage}
       isLoadingMore={isFetchingNextPage}
     />
   );

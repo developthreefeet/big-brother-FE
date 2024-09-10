@@ -22,8 +22,8 @@ const page = () => {
       items={allContent}
       isLoading={isLoading}
       title="학칙/회칙"
-      onLoadMore={fetchNextPage}
-      hasMore={hasNextPage}
+      fetchNextPage={fetchNextPage}
+      hasNextPage={hasNextPage}
       isLoadingMore={isFetchingNextPage}
     />
   );
