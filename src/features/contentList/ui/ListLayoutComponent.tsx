@@ -8,12 +8,14 @@ import { ListLayoutItems } from '../api/types';
 import { Button } from '@/shared/ui/ui/button';
 import { IoIosArrowDown } from 'react-icons/io';
 import { Skeleton } from '@/shared/ui/ui/skeleton';
+import { useIntersectionObserver } from '../model/useIntersectionObserver';
+import { InfiniteQueryObserverResult } from '@tanstack/react-query';
 
 interface ListLayoutComponentProps {
   items: ListLayoutItems;
   title: string;
-  onLoadMore: () => void;
-  hasMore: boolean;
+  fetchNextPage: () => Promise<InfiniteQueryObserverResult>;
+  hasNextPage: boolean;
   isLoadingMore: boolean;
   isLoading: boolean;
 }
@@ -21,12 +23,16 @@ interface ListLayoutComponentProps {
 const ListLayoutComponent = ({
   items,
   title,
-  onLoadMore,
-  hasMore,
+  fetchNextPage,
+  hasNextPage,
   isLoadingMore,
   isLoading,
 }: ListLayoutComponentProps) => {
   useOrganizationRouter();
+  const { setTarget } = useIntersectionObserver({
+    hasNextPage,
+    fetchNextPage,
+  });
 
   return (
     <div className="flex flex-col space-y-10">
@@ -47,21 +53,11 @@ const ListLayoutComponent = ({
             {items && (
               <>
                 <ListComponent list={items} />
-                {hasMore && (
-                  <Button
-                    onClick={onLoadMore}
-                    variant="outline"
-                    disabled={isLoadingMore}
-                    className="border-none"
-                  >
-                    {isLoadingMore ? (
-                      '로딩중...'
-                    ) : (
-                      <>
-                        <IoIosArrowDown /> 더보기
-                      </>
-                    )}
-                  </Button>
+                <div ref={setTarget} />
+                {isLoadingMore ? (
+                  <p className="text-sm text-gray-300">로딩중...</p>
+                ) : (
+                  <p className="text-xs text-gray-300">페이지의 끝입니다.</p>
                 )}
               </>
             )}

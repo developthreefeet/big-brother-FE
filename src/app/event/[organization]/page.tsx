@@ -22,8 +22,8 @@ const page = () => {
       items={allContent}
       isLoading={isLoading}
       title="행사"
-      onLoadMore={fetchNextPage}
-      hasMore={hasNextPage}
+      fetchNextPage={fetchNextPage}
+      hasNextPage={hasNextPage}
       isLoadingMore={isFetchingNextPage}
     />
   );
