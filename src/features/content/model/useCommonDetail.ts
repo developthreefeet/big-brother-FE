@@ -10,7 +10,7 @@ const useCommonDetail = () => {
     let data;
     let isLoading = true;
 
-    if (organization === 'general') {
+    if (organization === 'general' || organization === 'academic') {
       const response = useGetCampusNoticeDetail(id);
       data = response.data;
       isLoading = response.isLoading;
