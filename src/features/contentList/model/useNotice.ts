@@ -8,6 +8,8 @@ const useNotice = () => {
 
   if (pathname.includes('general')) {
     return useGetInfiniteCampusNotice('일반공지');
+  } else if (pathname.includes('academic')) {
+    return useGetInfiniteCampusNotice('학사공지');
   } else {
     let affiliation = '';
     if (pathname.includes('studentCouncil')) {

@@ -53,6 +53,7 @@ const CommonHeader = () => {
       '/notice/college',
       '/notice/department',
       '/notice/general',
+      '/notice/academic',
       '/rule/studentCouncil',
       '/rule/college',
       '/rule/department',

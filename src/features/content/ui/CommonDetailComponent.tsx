@@ -70,13 +70,13 @@ const CommonDetailComponent = ({
         data?.fileInfo &&
         data?.fileInfo.map((file, index) => (
           <a
-            className="flex flex-row items-center gap-1 pt-2 text-sm"
+            className="flex flex-row items-center space-x-1 pt-2"
             href={file.url}
             download
             key={index}
           >
             <TbDownload size={16} color="#7B7B7B" />
-            {file.fileName}
+            <p className=" text-sm">{file.fileName}</p>
           </a>
         ))}
       <div className="flex justify-end">
