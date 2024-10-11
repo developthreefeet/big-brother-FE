@@ -51,7 +51,7 @@ const CommonDetailComponent = ({
             </div>
           </div>
           <hr />
-          <div className="p-5 text-md flex flex-col gap-4">
+          <div className="p-5 text-md flex flex-col gap-4 break-all">
             <ReactMarkdown rehypePlugins={[rehypeRaw]}>
               {data.content}
             </ReactMarkdown>
